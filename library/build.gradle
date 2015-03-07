@@ -16,7 +16,18 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
+    // The Support Libraries
     compile 'com.android.support:support-v4:21.0.3'
     compile 'com.android.support:appcompat-v7:21.0.3'
+
+    // Dagger Import
+    compile 'com.squareup.dagger:dagger:1.2.2'
+    provided 'com.squareup.dagger:dagger-compiler:1.2.2'
+
+    // Wharton Libraries
+    compile 'com.jakewharton.timber:timber:2.7.1'
+    compile 'com.jakewharton:butterknife:6.1.0'
+
+
 
 }
