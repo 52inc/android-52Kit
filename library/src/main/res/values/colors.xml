@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015 52inc
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+
+    <!--
+        Standard Color Values
+    -->
+    <color name="transparent">#00000000</color>
+
+    <!-- Black Shades -->
+	<color name="black10">#19000000</color>
+    <color name="black15">#26000000</color>
+	<color name="black20">#33000000</color>
+    <color name="black25">#3f000000</color>
+	<color name="black30">#4c000000</color>
+    <color name="black35">#59000000</color>
+	<color name="black40">#66000000</color>
+    <color name="black45">#72000000</color>
+    <color name="black50">#80000000</color>
+    <color name="black55">#8c000000</color>
+	<color name="black60">#99000000</color>
+    <color name="black65">#a5000000</color>
+	<color name="black70">#b2000000</color>
+    <color name="black75">#bf000000</color>
+	<color name="black80">#cc000000</color>
+    <color name="black85">#d8000000</color>
+	<color name="black90">#e5000000</color>
+    <color name="black95">#f2000000</color>
+    <color name="black">#000</color>
+
+    <!-- White Shades -->
+    <color name="white10">#19FFFFFF</color>
+    <color name="white15">#26FFFFFF</color>
+    <color name="white20">#33FFFFFF</color>
+    <color name="white25">#3fFFFFFF</color>
+    <color name="white30">#4cFFFFFF</color>
+    <color name="white35">#59FFFFFF</color>
+    <color name="white40">#66FFFFFF</color>
+    <color name="white45">#72FFFFFF</color>
+    <color name="white50">#80FFFFFF</color>
+    <color name="white55">#8cFFFFFF</color>
+    <color name="white60">#99FFFFFF</color>
+    <color name="white65">#a5FFFFFF</color>
+    <color name="white70">#b2FFFFFF</color>
+    <color name="white75">#bfFFFFFF</color>
+    <color name="white80">#ccFFFFFF</color>
+    <color name="white85">#d8FFFFFF</color>
+    <color name="white90">#e5FFFFFF</color>
+    <color name="white95">#f2FFFFFF</color>
+    <color name="white">#FFFFFF</color>
+
+    <!-- Typography shades -->
+    <color name="black87">#de000000</color>
+    <color name="black54">#8a000000</color>
+    <color name="black12">#1f000000</color>
+
+</resources>
