@@ -19,7 +19,6 @@ package com.ftinc.kit.mvp;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
-import com.r0adkll.haystack.HaystackApp;
 
 import dagger.ObjectGraph;
 
