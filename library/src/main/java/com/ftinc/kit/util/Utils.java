@@ -16,32 +16,19 @@
 
 package com.ftinc.kit.util;
 
-import android.app.ActivityManager;
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.graphics.Bitmap;
 import android.graphics.PointF;
-import android.media.MediaMetadataRetriever;
-import android.net.Uri;
-import android.os.Build;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.webkit.MimeTypeMap;
 
 import com.ftinc.kit.preferences.StringPreference;
 
 import java.net.URLConnection;
-import java.sql.Date;
-import java.text.DecimalFormat;
 import java.util.Calendar;
-import java.util.IllegalFormatException;
-import java.util.Locale;
 import java.util.Random;
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
 /**
  * This is the standard utils file containing common util functions
@@ -261,7 +248,15 @@ public class Utils {
     public static int compare(int lhs, int rhs) {
         return lhs < rhs ? -1 : (lhs == rhs ? 0 : 1);
     }
-    public static float safeParseFloat(String val, float defVal){
+
+    /**
+     * Parse a float from a String in a safe manner.
+     *
+     * @param val           the string to parse
+     * @param defVal        the default value to return if parsing fails
+     * @return              the parsed float, or default value
+     */
+    public static float parseFloat(String val, float defVal){
         if(TextUtils.isEmpty(val)) return defVal;
         try{
             return Float.parseFloat(val);
@@ -270,11 +265,50 @@ public class Utils {
         }
     }
 
-    public static int safeParseInt(String val, int defValue){
+    /**
+     * Parse a int from a String in a safe manner.
+     *
+     * @param val           the string to parse
+     * @param defValue      the default value to return if parsing fails
+     * @return              the parsed int, or default value
+     */
+    public static int parseInt(String val, int defValue){
         if(TextUtils.isEmpty(val)) return defValue;
         try{
             return Integer.parseInt(val);
         }catch (NumberFormatException e){
+            return defValue;
+        }
+    }
+
+    /**
+     * Parse a long from a String in a safe manner.
+     *
+     * @param val           the string to parse
+     * @param defValue      the default value to return if parsing fails
+     * @return              the parsed long, or default value
+     */
+    public static long parseLong(String val, long defValue){
+        if(TextUtils.isEmpty(val)) return defValue;
+        try{
+            return Long.parseLong(val);
+        }catch (NumberFormatException e){
+            return defValue;
+        }
+    }
+
+    /**
+     * Parse a double from a String in a safe manner
+     *
+     * @param val           the string to parse
+     * @param defValue      the default value to return in parsing fails
+     * @return              the parsed double, or default value
+     */
+    public static double parseDouble(String val, double defValue){
+        if(TextUtils.isEmpty(val)) return defValue;
+        try{
+            return Double.parseDouble(val);
+        }catch(NumberFormatException e){
             return defValue;
         }
     }
