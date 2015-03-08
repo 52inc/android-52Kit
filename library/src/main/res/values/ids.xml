@@ -14,11 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Widget.Kit.HeaderBar" parent="">
-        <item name="android:background">?attr/colorPrimary</item>
-        <item name="android:elevation" tools:ignore="NewApi">@dimen/appbar_elevation</item>
-    </style>
-
+<resources>
+    <item name="toolbar_actionbar" type="id" />
 </resources>

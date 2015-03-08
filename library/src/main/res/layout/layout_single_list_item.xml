@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/text"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:paddingLeft="@dimen/activity_padding"
+    android:gravity="start|center_vertical"
+
+    android:singleLine="true"
+    android:ellipsize="end"
+
+    tools:text="@string/placeholder_lorem_ipsum"
+    android:textSize="16sp"
+    android:textColor="@color/black87"
+
+    android:background="?attr/selectableItemBackground"
+    />

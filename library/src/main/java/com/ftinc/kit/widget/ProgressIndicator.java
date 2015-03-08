@@ -27,7 +27,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
-import co.ftinc.healthyeating.R;
+import com.ftinc.kit.R;
 
 /**
  * Project: DII
@@ -90,15 +90,15 @@ public class ProgressIndicator extends View {
         final TypedArray a = context.obtainStyledAttributes(attrs,
                 R.styleable.ProgressIndicator, defStyle, 0);
         if (a == null) {
-            setBackgroundColor(context.getResources().getColor(R.color.theme_accent_1_light));
-            mProgressColor = context.getResources().getColor(R.color.theme_accent_1);
+            setBackgroundColor(context.getResources().getColor(R.color.primary_material_light));
+            mProgressColor = context.getResources().getColor(R.color.primary_dark_material_light);
             return;
         }
 
         mProgress = a.getInteger(R.styleable.ProgressIndicator_progress, 0);
         mMax = a.getInteger(R.styleable.ProgressIndicator_max, 0);
         mProgressColor = a.getColor(R.styleable.ProgressIndicator_progressColor,
-                context.getResources().getColor(R.color.theme_accent_1));
+                context.getResources().getColor(R.color.primary_dark_material_light));
 
     }
 

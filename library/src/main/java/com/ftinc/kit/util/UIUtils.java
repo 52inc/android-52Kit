@@ -17,10 +17,16 @@
 package com.ftinc.kit.util;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.text.TextUtils;
+import android.util.Pair;
 import android.util.TypedValue;
 import android.view.View;
 
@@ -30,6 +36,41 @@ import com.ftinc.kit.R;
  * Created by r0adkll on 11/13/14.
  */
 public class UIUtils {
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public static void startActivityWithTransition(Activity activity,
+                                                   Intent intent,
+                                                   final View clickedView,
+                                                   final String transitionName) {
+        ActivityOptions options = null;
+        if (BuildUtils.isLollipop() && clickedView != null && !TextUtils.isEmpty(transitionName)) {
+            options = ActivityOptions
+                    .makeSceneTransitionAnimation(activity, clickedView, transitionName);
+        }
+
+        if(BuildUtils.isJellyBean()) {
+            activity.startActivity(intent, (options != null) ? options.toBundle() : null);
+        }else{
+            activity.startActivity(intent);
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public static void startActivityWithTransition(Activity activity,
+                                                   Intent intent,
+                                                   Pair<View, String>... transitions){
+        ActivityOptions options = null;
+        if (BuildUtils.isLollipop() && transitions != null) {
+            options = ActivityOptions
+                    .makeSceneTransitionAnimation(activity, transitions);
+        }
+
+        if(BuildUtils.isJellyBean()) {
+            activity.startActivity(intent, (options != null) ? options.toBundle() : null);
+        }else{
+            activity.startActivity(intent);
+        }
+    }
 
     public static void setAccessibilityIgnore(View view) {
         view.setClickable(false);

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">52Kit</string>
+    <string name="placeholder_lorem_ipsum">Lorem ipsum dolor set</string>
+    <string name="day_title_today">Today</string>
+    <string name="day_title_yesterday">Yesterday</string>
+    <string name="day_title_tomorrow">Tomorrow</string>
 </resources>

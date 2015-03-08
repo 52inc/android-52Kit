@@ -78,35 +78,12 @@ public class BuildUtils {
     }
 
     /**
-     * Return whether or not this device is a tablet or a phone (2)
-     * This one is slightly more efficient than the first one
-     * by using the same comparison as the resource buckets for determining
-     * which layouts/resources to grab
+     * Return whether or not this device is a tablet
      *
-     * @param ctx       the application context
      * @return          true if tablet, false if phone
      */
-    public static boolean isTablet(Context ctx){
-        if(ctx == null) return false;
-
-        // Check to see if it is a large display
-        boolean isLargeDisplay = (ctx.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
-                >= Configuration.SCREENLAYOUT_SIZE_LARGE;
-
-        if(isLargeDisplay){
-            // get Display Metrics
-            DisplayMetrics metrics = ctx.getResources().getDisplayMetrics();
-
-            // Compute widthDP
-            float widthDP = metrics.widthPixels / metrics.density;
-
-            // If widthDp is > 600dp, then the device is a tablet
-            if(widthDP >= 600){
-                return true;
-            }
-        }
-
-        return false;
+    public static boolean isTablet(Context context) {
+        return context.getResources().getConfiguration().smallestScreenWidthDp >= 600;
     }
 
 
