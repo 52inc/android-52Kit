@@ -89,7 +89,8 @@ public abstract class BetterListAdapter<T, VH extends BetterListAdapter.ViewHold
 			holder = (VH) convertView.getTag();
 			
 		}	
-		
+
+
 		// bind the data to the holder
 		bindHolder(holder, position, getItem(position));
 		

@@ -24,7 +24,7 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.widget.ScrollView;
-;import com.ftinc.kit.R;
+import com.ftinc.kit.R;
 
 
 /**

@@ -386,6 +386,11 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
         return super.getItemViewType(position);
     }
 
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
     /***********************************************************************************************
      *
      * Interfaces
