@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.ftinc.kit.mvp;
+package com.ftinc.kit.mvp.modules;
 
 /**
  * Created by r0adkll on 3/9/15.

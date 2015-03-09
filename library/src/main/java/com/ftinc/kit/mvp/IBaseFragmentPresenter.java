@@ -17,31 +17,28 @@
 package com.ftinc.kit.mvp;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-
-
-import dagger.ObjectGraph;
 
 /**
- * Created by r0adkll on 12/1/14.
+ * Project: 52Kit
+ * Package: com.ftinc.kit.mvp
+ * Created by drew.heavner on 3/9/15.
  */
-public abstract class BaseFragment extends Fragment {
+public interface IBaseFragmentPresenter {
 
-    private ObjectGraph fragmentGraph;
+    /**
+     * Parse the extras from {@link android.app.Activity#getIntent()} or the
+     * savedInstanceState(icicle) bundles for this view
+     *
+     * @param args          the arguments bundle from a Fragment
+     * @param icicle        the saved instance state bundle
+     */
+    public void parseExtras(Bundle args, Bundle icicle);
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        fragmentGraph = BaseApplication.get(getActivity()).createScopedGraph(getModules());
-        fragmentGraph.inject(this);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        fragmentGraph = null;
-    }
-
-    protected abstract Object[] getModules();
+    /**
+     * Save the instance state for a given activity
+     *
+     * @param outState      the out state bundle to store in
+     */
+    public void saveInstanceState(Bundle outState);
 
 }

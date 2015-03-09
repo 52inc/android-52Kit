@@ -22,6 +22,7 @@ import android.app.Service;
 import android.content.Context;
 
 import com.ftinc.kit.BuildConfig;
+import com.ftinc.kit.mvp.modules.Mods;
 
 import dagger.ObjectGraph;
 import timber.log.Timber;
@@ -31,7 +32,19 @@ import timber.log.Timber;
  */
 public abstract class BaseApplication extends Application {
 
+    /***********************************************************************************************
+     *
+     * Variables
+     *
+     */
+
     private ObjectGraph mObjectGraph;
+
+    /***********************************************************************************************
+     *
+     * Lifecycle Methods
+     *
+     */
 
     @Override
     public void onCreate() {
@@ -76,7 +89,7 @@ public abstract class BaseApplication extends Application {
     public abstract Timber.Tree[] getReleaseTrees();
 
     /**
-     * Get the module manager, {@link Mods}, to get the list of modules
+     * Get the module manager, {@link com.ftinc.kit.mvp.modules.Mods}, to get the list of modules
      * for dependency Injection
      *
      * @return      the module manager
@@ -120,8 +133,6 @@ public abstract class BaseApplication extends Application {
      *
      */
 
-
-
     /**
      * Get a reference to the Application
      *
@@ -136,17 +147,29 @@ public abstract class BaseApplication extends Application {
      * Get a reference to this application with a service
      * object
      *
-     * @param ctx
-     * @return
+     * @param ctx       the service object
+     * @return          the Application reference for injection
      */
     public static BaseApplication get(Service ctx){
         return (BaseApplication) ctx.getApplication();
     }
 
+    /**
+     * Get the reference to this application with a Fragment object
+     *
+     * @param fragment      the fragment object
+     * @return              the Application reference for injection
+     */
     public static BaseApplication get(Fragment fragment){
         return (BaseApplication) fragment.getActivity().getApplication();
     }
 
+    /**
+     * Get the reference to this application with a Fragment object
+     *
+     * @param fragment      the fragment object
+     * @return              the Application reference for injection
+     */
     public static BaseApplication get(android.support.v4.app.Fragment fragment){
         return (BaseApplication) fragment.getActivity().getApplication();
     }
