@@ -32,7 +32,7 @@ public class Library {
     public String name;
     public String author;
     public String source;
-    public String licenseText;
+    public License license;
 
 
 }
