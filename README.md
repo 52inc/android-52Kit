@@ -37,6 +37,6 @@ See [here](https://github.com/52inc/android-52Kit/tree/master/library/src/main/j
 
 Include this line in your gradle build file:
 
-``` 
+```groovy
 compile 'com.52inc:kit:{current_version}'
 ```
