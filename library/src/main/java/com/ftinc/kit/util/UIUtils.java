@@ -25,6 +25,8 @@ import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.annotation.AttrRes;
+import android.support.annotation.ColorRes;
 import android.text.TextUtils;
 import android.util.Pair;
 import android.util.TypedValue;
@@ -98,6 +100,32 @@ public class UIUtils {
         int actionBarSize = a.getDimensionPixelSize(indexOfAttrTextSize, -1);
         a.recycle();
         return actionBarSize;
+    }
+
+    /**
+     * Get the selectableItemBackground attribute drawable
+     * @return
+     */
+    public static Drawable getSelectableItemBackground(Context ctx){
+        int[] attrs = new int[] { R.attr.selectableItemBackground /* index 0 */};
+        TypedArray ta = ctx.obtainStyledAttributes(attrs);
+        Drawable drawableFromTheme = ta.getDrawable(0 /* index */);
+        ta.recycle();
+        return drawableFromTheme;
+    }
+
+    /**
+     * Get the color value for give attribute
+     * @param ctx
+     * @param colorAttrId
+     * @return
+     */
+    public static int getColorAttr(Context ctx, @AttrRes int colorAttrId){
+        int[] attrs = new int[] { colorAttrId /* index 0 */};
+        TypedArray ta = ctx.obtainStyledAttributes(attrs);
+        int colorFromTheme = ta.getColor(0, 0);
+        ta.recycle();
+        return colorFromTheme;
     }
 
     public static String makeFragmentName(View view, int index) {

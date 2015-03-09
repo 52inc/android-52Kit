@@ -33,6 +33,9 @@ See [here](https://github.com/52inc/android-52Kit/tree/master/library/src/main/j
 
 See [here](https://github.com/52inc/android-52Kit/tree/master/library/src/main/java/com/ftinc/kit/adapter) for Subclassed List and Recycler Adapters that make it easier to build list views
 
+### Pre-built layout files
+Pre-built layouts for common list item configurations includeing, one line, two line, and three line items with and without avatars.
+
 ## Including in your project
 
 Include this line in your gradle build file:
