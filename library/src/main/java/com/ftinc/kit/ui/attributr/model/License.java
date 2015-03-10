@@ -24,7 +24,8 @@ import java.util.IllegalFormatException;
  * Created by drew.heavner on 3/9/15.
  */
 public enum License {
-    APACHE2("Copyright %d %s\n" +
+    APACHE2("apache",
+            "Copyright %d %s\n" +
             "\n" +
             "Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
             "you may not use this file except in compliance with the License.\n" +
@@ -38,7 +39,8 @@ public enum License {
             "See the License for the specific language governing permissions and\n" +
             "limitations under the License."),
 
-    MIT("The MIT License (MIT)\n" +
+    MIT("mit",
+        "The MIT License (MIT)\n" +
         "\n" +
         "Copyright (c) %d %s\n" +
         "\n" +
@@ -61,6 +63,7 @@ public enum License {
         "SOFTWARE."),
 
     AFFERO_GPL_V3(
+            "a-gpl-v3",
             "%s\n" +
             "Copyright (C) %d  %s\n" +
             "\n" +
@@ -77,7 +80,7 @@ public enum License {
             "You should have received a copy of the GNU Affero General Public License\n" +
             "along with this program.  If not, see <http://www.gnu.org/licenses/>."),
 
-    GPL_V2(
+    GPL_V2( "gpl-v2",
             "%s}\n" +
             "Copyright (C) %d  %s\n" +
             "\n" +
@@ -94,7 +97,7 @@ public enum License {
             "You should have received a copy of the GNU General Public License along\n" +
             "with this program; if not, write to the Free Software Foundation, Inc.,\n" +
             "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA."),
-    GPL_V3(
+    GPL_V3( "gpl-v3",
             "%s\n" +
             "Copyright (C) %d  %s\n" +
             "\n" +
@@ -112,7 +115,7 @@ public enum License {
             "along with this program.  If not, see <http://www.gnu.org/licenses/>."
     ),
 
-    ARTISTIC(
+    ARTISTIC("artistic",
             "               The Artistic License 2.0\n" +
             "\n" +
             "           Copyright (c) %d %s\n" +
@@ -316,7 +319,7 @@ public enum License {
             "ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
     ),
 
-    ECLIPSE(
+    ECLIPSE("eclipse",
         "Eclipse Public License - v 1.0\n" +
         "\n" +
         "THE ACCOMPANYING PROGRAM IS PROVIDED UNDER THE TERMS OF THIS ECLIPSE PUBLIC\n" +
@@ -522,7 +525,7 @@ public enum License {
         "any resulting litigation.\n"
     ),
 
-    SIMPLE_BSD(
+    SIMPLE_BSD("simple-bsd",
         "Copyright (c) %d, %s\n" +
         "All rights reserved.\n" +
         "\n" +
@@ -548,7 +551,7 @@ public enum License {
         "OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
     ),
 
-    NEW_BSD(
+    NEW_BSD("new-bsd",
         "Copyright (c) %d, %s\n" +
         "All rights reserved.\n" +
         "\n" +
@@ -578,7 +581,7 @@ public enum License {
         "OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
     ),
 
-    ISC_LICENSE(
+    ISC_LICENSE("isc-license",
         "Copyright (c) %d, %s %s\n" +
         "\n" +
         "Permission to use, copy, modify, and/or distribute this software for any\n" +
@@ -594,7 +597,7 @@ public enum License {
         "OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE."
     ),
 
-    LGPL_V2_1(
+    LGPL_V2_1("lgpl-v2.1",
         "%s\n" +
         "Copyright (C) %d %s\n" +
         "\n" +
@@ -614,7 +617,7 @@ public enum License {
         "USA"
     ),
 
-    LGPL_V3(
+    LGPL_V3("lgpl-v3",
         "                   GNU LESSER GENERAL PUBLIC LICENSE\n" +
         "                       Version 3, 29 June 2007\n" +
         "\n" +
@@ -782,7 +785,7 @@ public enum License {
         "Library.\n"
     ),
 
-    MOZILLA(
+    MOZILLA("mozilla",
         "This Source Code Form is subject to the\n" +
         "terms of the Mozilla Public License, v.\n" +
         "2.0. If a copy of the MPL was not\n" +
@@ -791,7 +794,7 @@ public enum License {
         "http://mozilla.org/MPL/2.0/."
     ),
 
-    UNLICENSE(
+    UNLICENSE("unlicense",
         "This is free and unencumbered software released into the public domain.\n" +
         "\n" +
         "Anyone is free to copy, modify, publish, use, compile, sell, or\n" +
@@ -816,15 +819,19 @@ public enum License {
         "OTHER DEALINGS IN THE SOFTWARE.\n" +
         "\n" +
         "For more information, please refer to <http://unlicense.org>\n"
-    );
+    ),
 
+    NONE("", "");
+
+    private final String mKey;
     private final String mLicenseText;
 
     /**
      * Constructor
      * @param license       the license text with format
      */
-    License(String license){
+    License(String key,String license){
+        mKey = key;
         mLicenseText = license;
     }
 
@@ -851,6 +858,22 @@ public enum License {
                 }
             }
         }
+    }
+
+    /**
+     * Get a license from it's specified KEY
+     *
+     * @param key       the license key, i.e. 'apache', 'mit', 'gpl-v3', etc...
+     * @return          the License ENUM
+     */
+    public static License fromKey(String key){
+        for(int i=0; i<License.values().length; i++){
+            License license = License.values()[i];
+            if(license.mKey.equalsIgnoreCase(key)){
+                return license;
+            }
+        }
+        return null;
     }
 
 }
