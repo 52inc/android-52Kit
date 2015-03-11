@@ -2,6 +2,12 @@
     package="com.ftinc.kit">
 
     <application>
+
+        <!-- Activity definition for Attributr -->
+        <activity android:name=".ui.attributr.ui.LicenseActivity"
+            android:label="@string/activity_license_label"
+            />
+
     </application>
 
 </manifest>

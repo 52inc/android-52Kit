@@ -33,7 +33,7 @@ import android.widget.TextView;
 
 import com.ftinc.kit.R;
 import com.ftinc.kit.font.FontLoader;
-import com.ftinc.kit.font.Types;
+import com.ftinc.kit.font.Face;
 
 /**
  * Project: Chipper
@@ -153,7 +153,7 @@ public class EmptyView extends RelativeLayout {
         mMessage.setTextColor(mAccentColor);
         mMessage.setGravity(Gravity.CENTER);
         mMessage.setText(mEmptyMessage);
-        FontLoader.applyTypeface(mMessage, Types.ROBOTO_REGULAR);
+        FontLoader.apply(mMessage, Face.ROBOTO_REGULAR);
 
         // Add to the layout
         container.addView(mMessage, msgParams);

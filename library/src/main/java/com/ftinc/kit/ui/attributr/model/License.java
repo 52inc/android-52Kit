@@ -25,7 +25,7 @@ import java.util.IllegalFormatException;
  */
 public enum License {
     APACHE2("apache",
-            "Copyright %d %s\n" +
+            "Copyright %s %s\n" +
             "\n" +
             "Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
             "you may not use this file except in compliance with the License.\n" +
@@ -42,7 +42,7 @@ public enum License {
     MIT("mit",
         "The MIT License (MIT)\n" +
         "\n" +
-        "Copyright (c) %d %s\n" +
+        "Copyright (c) %s %s\n" +
         "\n" +
         "Permission is hereby granted, free of charge, to any person obtaining a copy\n" +
         "of this software and associated documentation files (the \"Software\"), to deal\n" +
@@ -65,7 +65,7 @@ public enum License {
     AFFERO_GPL_V3(
             "a-gpl-v3",
             "%s\n" +
-            "Copyright (C) %d  %s\n" +
+            "Copyright (C) %s  %s\n" +
             "\n" +
             "This program is free software: you can redistribute it and/or modify\n" +
             "it under the terms of the GNU Affero General Public License as published\n" +
@@ -82,7 +82,7 @@ public enum License {
 
     GPL_V2( "gpl-v2",
             "%s}\n" +
-            "Copyright (C) %d  %s\n" +
+            "Copyright (C) %s  %s\n" +
             "\n" +
             "This program is free software; you can redistribute it and/or modify\n" +
             "it under the terms of the GNU General Public License as published by\n" +
@@ -99,7 +99,7 @@ public enum License {
             "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA."),
     GPL_V3( "gpl-v3",
             "%s\n" +
-            "Copyright (C) %d  %s\n" +
+            "Copyright (C) %s  %s\n" +
             "\n" +
             "This program is free software: you can redistribute it and/or modify\n" +
             "it under the terms of the GNU General Public License as published by\n" +
@@ -118,7 +118,7 @@ public enum License {
     ARTISTIC("artistic",
             "               The Artistic License 2.0\n" +
             "\n" +
-            "           Copyright (c) %d %s\n" +
+            "           Copyright (c) %s %s\n" +
             "\n" +
             "     Everyone is permitted to copy and distribute verbatim copies\n" +
             "      of this license document, but changing it is not allowed.\n" +
@@ -129,7 +129,7 @@ public enum License {
             "Package may be copied, modified, distributed, and/or redistributed.\n" +
             "The intent is that the Copyright Holder maintains some artistic\n" +
             "control over the development of that Package while still keeping the\n" +
-            "Package available as open source and free software.\n" +
+            "Package available as open url and free software.\n" +
             "\n" +
             "You are always permitted to make arrangements wholly outside of this\n" +
             "license directly with the Copyright Holder of a given Package.  If the\n" +
@@ -174,7 +174,7 @@ public enum License {
             "    the Standard Version of the Package, in its current version or as\n" +
             "    it may be modified by The Perl Foundation in the future.\n" +
             "\n" +
-            "    \"Source\" form means the source code, documentation source, and\n" +
+            "    \"Source\" form means the url code, documentation url, and\n" +
             "    configuration files for the Package.\n" +
             "\n" +
             "    \"Compiled\" form means the compiled bytecode, object code, binary,\n" +
@@ -361,11 +361,11 @@ public enum License {
         "     Recipient a non-exclusive, worldwide, royalty-free copyright license to\n" +
         "     reproduce, prepare derivative works of, publicly display, publicly\n" +
         "     perform, distribute and sublicense the Contribution of such Contributor,\n" +
-        "     if any, and such derivative works, in source code and object code form.\n" +
+        "     if any, and such derivative works, in url code and object code form.\n" +
         "  b) Subject to the terms of this Agreement, each Contributor hereby grants\n" +
         "     Recipient a non-exclusive, worldwide, royalty-free patent license under\n" +
         "     Licensed Patents to make, use, sell, offer to sell, import and otherwise\n" +
-        "     transfer the Contribution of such Contributor, if any, in source code and\n" +
+        "     transfer the Contribution of such Contributor, if any, in url code and\n" +
         "     object code form. This patent license shall apply to the combination of\n" +
         "     the Contribution and the Program if, at the time the Contribution is\n" +
         "     added by the Contributor, such addition of the Contribution causes such\n" +
@@ -404,11 +404,11 @@ public enum License {
         "         consequential damages, such as lost profits;\n" +
         "    iii) states that any provisions which differ from this Agreement are\n" +
         "         offered by that Contributor alone and not by any other party; and\n" +
-        "     iv) states that source code for the Program is available from such\n" +
+        "     iv) states that url code for the Program is available from such\n" +
         "         Contributor, and informs licensees how to obtain it in a reasonable\n" +
         "         manner on or through a medium customarily used for software exchange.\n" +
         "\n" +
-        "When the Program is made available in source code form:\n" +
+        "When the Program is made available in url code form:\n" +
         "\n" +
         "  a) it must be made available under this Agreement; and\n" +
         "  b) a copy of this Agreement must be included with each copy of the Program.\n" +
@@ -526,13 +526,13 @@ public enum License {
     ),
 
     SIMPLE_BSD("simple-bsd",
-        "Copyright (c) %d, %s\n" +
+        "Copyright (c) %s, %s\n" +
         "All rights reserved.\n" +
         "\n" +
-        "Redistribution and use in source and binary forms, with or without\n" +
+        "Redistribution and use in url and binary forms, with or without\n" +
         "modification, are permitted provided that the following conditions are met:\n" +
         "\n" +
-        "* Redistributions of source code must retain the above copyright notice, this\n" +
+        "* Redistributions of url code must retain the above copyright notice, this\n" +
         "  list of conditions and the following disclaimer.\n" +
         "\n" +
         "* Redistributions in binary form must reproduce the above copyright notice,\n" +
@@ -552,13 +552,13 @@ public enum License {
     ),
 
     NEW_BSD("new-bsd",
-        "Copyright (c) %d, %s\n" +
+        "Copyright (c) %s, %s\n" +
         "All rights reserved.\n" +
         "\n" +
-        "Redistribution and use in source and binary forms, with or without\n" +
+        "Redistribution and use in url and binary forms, with or without\n" +
         "modification, are permitted provided that the following conditions are met:\n" +
         "\n" +
-        "* Redistributions of source code must retain the above copyright notice, this\n" +
+        "* Redistributions of url code must retain the above copyright notice, this\n" +
         "  list of conditions and the following disclaimer.\n" +
         "\n" +
         "* Redistributions in binary form must reproduce the above copyright notice,\n" +
@@ -582,7 +582,7 @@ public enum License {
     ),
 
     ISC_LICENSE("isc-license",
-        "Copyright (c) %d, %s %s\n" +
+        "Copyright (c) %s, %s %s\n" +
         "\n" +
         "Permission to use, copy, modify, and/or distribute this software for any\n" +
         "purpose with or without fee is hereby granted, provided that the above\n" +
@@ -599,7 +599,7 @@ public enum License {
 
     LGPL_V2_1("lgpl-v2.1",
         "%s\n" +
-        "Copyright (C) %d %s\n" +
+        "Copyright (C) %s %s\n" +
         "\n" +
         "This library is free software; you can redistribute it and/or\n" +
         "modify it under the terms of the GNU Lesser General Public\n" +
@@ -650,12 +650,12 @@ public enum License {
         "Version\".\n" +
         "\n" +
         "  The \"Minimal Corresponding Source\" for a Combined Work means the\n" +
-        "Corresponding Source for the Combined Work, excluding any source code\n" +
+        "Corresponding Source for the Combined Work, excluding any url code\n" +
         "for portions of the Combined Work that, considered in isolation, are\n" +
         "based on the Application, and not on the Linked Version.\n" +
         "\n" +
         "  The \"Corresponding Application Code\" for a Combined Work means the\n" +
-        "object code and/or source code for the Application, including any data\n" +
+        "object code and/or url code for the Application, including any data\n" +
         "and utility programs needed for reproducing the Combined Work from the\n" +
         "Application, but excluding the System Libraries of the Combined Work.\n" +
         "\n" +
@@ -798,7 +798,7 @@ public enum License {
         "This is free and unencumbered software released into the public domain.\n" +
         "\n" +
         "Anyone is free to copy, modify, publish, use, compile, sell, or\n" +
-        "distribute this software, either in source code form or as a compiled\n" +
+        "distribute this software, either in url code form or as a compiled\n" +
         "binary, for any purpose, commercial or non-commercial, and by any\n" +
         "means.\n" +
         "\n" +
@@ -844,7 +844,7 @@ public enum License {
      * @param email             the email of the code/project, if applicable
      * @return                  the formated license text string
      */
-    public String getLicense(String description, int year, String name, String email){
+    public String getLicense(String description, String year, String name, String email){
         try {
             return String.format(mLicenseText, description, year, name, email);
         }catch (IllegalFormatException e){

@@ -33,8 +33,8 @@ public class TypefaceSpan extends MetricAffectingSpan {
     /**
      * Load the {@link android.graphics.Typeface} and apply to a {@link android.text.Spannable}.
      */
-    public TypefaceSpan(Context context, String typefaceType) {
-        mTypeface = FontLoader.getTypeface(context, typefaceType);
+    public TypefaceSpan(Context context, Face typeface) {
+        mTypeface = FontLoader.getTypeface(context, typeface);
     }
 
     @Override

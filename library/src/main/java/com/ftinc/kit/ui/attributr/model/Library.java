@@ -31,9 +31,23 @@ public class Library {
 
     public String name;
     public String author;
-    public String source;
+    public String description;
+    public String url;
+    public String year;
+    public String email;
     public License license;
 
+    /***********************************************************************************************
+     *
+     * Helper Methods
+     *
+     */
 
+    public String getLicenseText(){
+        if(license != null){
+            return license.getLicense(description, year, name, email);
+        }
+        return "N/A";
+    }
 
 }

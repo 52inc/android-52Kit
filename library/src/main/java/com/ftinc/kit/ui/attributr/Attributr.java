@@ -16,6 +16,13 @@
 
 package com.ftinc.kit.ui.attributr;
 
+import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.XmlRes;
+
+import com.ftinc.kit.R;
+import com.ftinc.kit.ui.attributr.ui.LicenseActivity;
+
 /**
  * Static tool class for generating and displaying third party License attribution in a
  * Material Design manner.
@@ -26,6 +33,15 @@ package com.ftinc.kit.ui.attributr;
  */
 public class Attributr {
 
+    public static void openLicenses(Context ctx, @XmlRes int configResId, String title){
+        Intent intent = new Intent(ctx, LicenseActivity.class);
+        intent.putExtra(LicenseActivity.EXTRA_CONFIG, configResId);
+        intent.putExtra(LicenseActivity.EXTRA_TITLE, title);
+        ctx.startActivity(intent);
+    }
 
+    public static void openLicenses(Context ctx, @XmlRes int configResId){
+        openLicenses(ctx, configResId, ctx.getString(R.string.activity_license_label));
+    }
 
 }
