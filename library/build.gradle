@@ -32,6 +32,7 @@ dependencies {
     // UI Libraries
     compile 'com.melnykov:floatingactionbutton:1.2.0'
     compile 'com.nispok:snackbar:2.10.2'
+    compile 'com.timehop.stickyheadersrecyclerview:library:0.3.6@aar'
 
 }
 

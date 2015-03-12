@@ -16,6 +16,10 @@
 
 package com.ftinc.kit.ui.attributr.model;
 
+import com.ftinc.kit.util.Utils;
+
+import java.util.Comparator;
+
 /**
  * Project: 52Kit
  * Package: com.ftinc.kit.ui.attributr.model
@@ -48,6 +52,13 @@ public class Library {
             return license.getLicense(description, year, name, email);
         }
         return "N/A";
+    }
+
+    public static class LibraryComparator implements Comparator<Library> {
+        @Override
+        public int compare(Library lhs, Library rhs) {
+            return Utils.compare(lhs.license.ordinal(), rhs.license.ordinal());
+        }
     }
 
 }

@@ -34,6 +34,7 @@ import com.ftinc.kit.ui.attributr.model.Library;
 import java.util.List;
 
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 /**
  * Created by r0adkll on 3/11/15.
@@ -114,6 +115,7 @@ public class LicenseActivity extends ActionBarActivity implements View.OnClickLi
     public void onItemClick(View v, Library item, int position) {
 
         // TODO: Open up detail view
+        Timber.i("Library clicked: %s", item.name);
 
     }
 

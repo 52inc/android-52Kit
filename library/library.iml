@@ -94,6 +94,7 @@
     <orderEntry type="library" exported="" name="guava-15.0" level="project" />
     <orderEntry type="library" exported="" name="dagger-1.2.2" level="project" />
     <orderEntry type="library" exported="" name="support-v4-21.0.3" level="project" />
+    <orderEntry type="library" exported="" name="library-0.3.6" level="project" />
     <orderEntry type="library" exported="" name="recyclerview-v7-21.0.2" level="project" />
     <orderEntry type="library" exported="" name="dagger-compiler-1.2.2" level="project" />
     <orderEntry type="library" exported="" name="cardview-v7-21.0.3" level="project" />
