@@ -16,6 +16,7 @@
 
 package com.ftinc.kit.ui.attributr.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -24,12 +25,16 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Pair;
 import android.view.View;
 
 import com.ftinc.kit.R;
 import com.ftinc.kit.adapter.BetterRecyclerAdapter;
 import com.ftinc.kit.ui.attributr.internal.Parser;
 import com.ftinc.kit.ui.attributr.model.Library;
+import com.ftinc.kit.util.BuildUtils;
+import com.ftinc.kit.util.UIUtils;
+import com.ftinc.kit.util.Utils;
 import com.ftinc.kit.widget.StickyRecyclerHeadersElevationDecoration;
 
 import java.util.List;
@@ -113,12 +118,26 @@ public class LicenseActivity extends ActionBarActivity implements View.OnClickLi
     /**
      * Called when a Library item is clicked.
      */
+    @SuppressLint("NewApi")
     @Override
     public void onItemClick(View v, Library item, int position) {
+        if(BuildUtils.isLollipop()){
+            v.setElevation(Utils.dpToPx(this, 4));
+        }
 
-        // TODO: Open up detail view
-        Timber.i("Library clicked: %s", item.name);
+        View name = ButterKnife.findById(v, R.id.line_1);
+        View author = ButterKnife.findById(v, R.id.line_2);
 
+        Pair<View, String>[] transitions = new Pair[]{
+                new Pair<>(v, "app_bar"),
+                new Pair<>(name, "library_name"),
+                new Pair<>(author, "library_author")
+        };
+
+        Intent details = new Intent(this, DetailActivity.class);
+        details.putExtra(DetailActivity.EXTRA_LIBRARY, item);
+
+        UIUtils.startActivityWithTransition(this, details, transitions);
     }
 
     /***********************************************************************************************

@@ -16,6 +16,9 @@
 
 package com.ftinc.kit.ui.attributr.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.ftinc.kit.util.Utils;
 
 import java.util.Comparator;
@@ -25,7 +28,7 @@ import java.util.Comparator;
  * Package: com.ftinc.kit.ui.attributr.model
  * Created by drew.heavner on 3/9/15.
  */
-public class Library {
+public class Library implements Parcelable{
 
     /***********************************************************************************************
      *
@@ -41,19 +44,74 @@ public class Library {
     public String email;
     public License license;
 
+    /**
+     * Default constructor
+     */
+    public Library(){}
+
+    /**
+     * Parcelable constructor
+     * @param in        the parcel to reconstruct from
+     */
+    private Library(Parcel in){
+        name = in.readString();
+        author = in.readString();
+        description = in.readString();
+        url = in.readString();
+        year = in.readString();
+        email = in.readString();
+        license = License.values()[in.readInt()];
+    }
+
     /***********************************************************************************************
      *
      * Helper Methods
      *
      */
 
+    /**
+     * Get the formatted license text for display
+     *
+     * @return      the formatted user facing license text
+     */
     public String getLicenseText(){
         if(license != null){
-            return license.getLicense(description, year, name, email);
+            return license.getLicense(description, year, author, email);
         }
         return "N/A";
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(author);
+        dest.writeString(description);
+        dest.writeString(url);
+        dest.writeString(year);
+        dest.writeString(email);
+        dest.writeInt(license.ordinal());
+    }
+
+    public static final Creator<Library> CREATOR = new Creator<Library>() {
+        @Override
+        public Library createFromParcel(Parcel source) {
+            return new Library(source);
+        }
+
+        @Override
+        public Library[] newArray(int size) {
+            return new Library[size];
+        }
+    };
+
+    /**
+     * The Library comparator for sorting it by it's license
+     */
     public static class LibraryComparator implements Comparator<Library> {
         @Override
         public int compare(Library lhs, Library rhs) {

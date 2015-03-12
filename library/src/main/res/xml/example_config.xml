@@ -61,4 +61,276 @@
         <Url>https://github.com/timehop/sticky-headers-recyclerview/</Url>
     </Library>
 
+    <Library license="mit">
+        <Name>Example 1</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="mit">
+        <Name>Example 2</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="a-gpl-v3">
+        <Name>Example 3</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="a-gpl-v3">
+        <Name>Example 4</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="a-gpl-v3">
+        <Name>Example 5</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="a-gpl-v3">
+        <Name>Example 6</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="gpl-v2">
+        <Name>Example 7</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="gpl-v2">
+        <Name>Example 8</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="gpl-v2">
+        <Name>Example 9</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="gpl-v3">
+        <Name>Example 10</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="gpl-v3">
+        <Name>Example 11</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="gpl-v3">
+        <Name>Example 12</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="artistic">
+        <Name>Example 13</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="artistic">
+        <Name>Example 14</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="artistic">
+        <Name>Example 15</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="eclipse">
+        <Name>Example 16</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="eclipse">
+        <Name>Example 17</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="eclipse">
+        <Name>Example 18</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="simple-bsd">
+        <Name>Example 19</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="simple-bsd">
+        <Name>Example 20</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="simple-bsd">
+        <Name>Example 21</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="new-bsd">
+        <Name>Example 22</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="new-bsd">
+        <Name>Example 23</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="new-bsd">
+        <Name>Example 24</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="isc-license">
+        <Name>Example 25</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="isc-license">
+        <Name>Example 26</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="lgpl-v2.1">
+        <Name>Example 27</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="lgpl-v2.1">
+        <Name>Example 28</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="lgpl-v3">
+        <Name>Example 29</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="lgpl-v3">
+        <Name>Example 30</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="mozilla">
+        <Name>Example 31</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="mozilla">
+        <Name>Example 32</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="unlicense">
+        <Name>Example 33</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
+    <Library license="unlicense">
+        <Name>Example 34</Name>
+        <Author>Example, Inc.</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/52inc</Url>
+        <Description>This is an example library that does example stuff for an example cost</Description>
+    </Library>
+
 </Licenses>

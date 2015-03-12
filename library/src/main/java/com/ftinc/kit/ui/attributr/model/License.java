@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015 52inc
+ * Copyright © 2015 52inc
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,6 @@
 
 package com.ftinc.kit.ui.attributr.model;
 
-import java.util.IllegalFormatException;
-
 /**
  * Project: 52Kit
  * Package: com.ftinc.kit.ui.attributr.model
@@ -25,7 +23,7 @@ import java.util.IllegalFormatException;
  */
 public enum License {
     APACHE2("apache", "Apache License, Version 2.0",
-            "Copyright %s %s\n" +
+            "Copyright © %s %s\n" +
             "\n" +
             "Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
             "you may not use this file except in compliance with the License.\n" +
@@ -42,7 +40,7 @@ public enum License {
     MIT("mit", "MIT License",
         "The MIT License (MIT)\n" +
         "\n" +
-        "Copyright (c) %s %s\n" +
+        "Copyright © %s %s\n" +
         "\n" +
         "Permission is hereby granted, free of charge, to any person obtaining a copy\n" +
         "of this software and associated documentation files (the \"Software\"), to deal\n" +
@@ -65,7 +63,7 @@ public enum License {
     AFFERO_GPL_V3(
             "a-gpl-v3", "GNU Affero GPL",
             "%s\n" +
-            "Copyright (C) %s  %s\n" +
+            "Copyright © %s  %s\n" +
             "\n" +
             "This program is free software: you can redistribute it and/or modify\n" +
             "it under the terms of the GNU Affero General Public License as published\n" +
@@ -81,8 +79,8 @@ public enum License {
             "along with this program.  If not, see <http://www.gnu.org/licenses/>."),
 
     GPL_V2( "gpl-v2", "GNU GPL v2",
-            "%s}\n" +
-            "Copyright (C) %s  %s\n" +
+            "%s\n" +
+            "Copyright © %s  %s\n" +
             "\n" +
             "This program is free software; you can redistribute it and/or modify\n" +
             "it under the terms of the GNU General Public License as published by\n" +
@@ -100,7 +98,7 @@ public enum License {
 
     GPL_V3( "gpl-v3", "GNU GPL v3",
             "%s\n" +
-            "Copyright (C) %s  %s\n" +
+            "Copyright © %s  %s\n" +
             "\n" +
             "This program is free software: you can redistribute it and/or modify\n" +
             "it under the terms of the GNU General Public License as published by\n" +
@@ -119,7 +117,7 @@ public enum License {
     ARTISTIC("artistic", "Artistic",
             "               The Artistic License 2.0\n" +
             "\n" +
-            "           Copyright (c) %s %s\n" +
+            "           Copyright © %s %s\n" +
             "\n" +
             "     Everyone is permitted to copy and distribute verbatim copies\n" +
             "      of this license document, but changing it is not allowed.\n" +
@@ -224,7 +222,7 @@ public enum License {
             "    addition, the Modified Version must bear a name that is different\n" +
             "    from the name of the Standard Version.\n" +
             "\n" +
-            "    (c)  allow anyone who receives a copy of the Modified Version to\n" +
+            "    ©  allow anyone who receives a copy of the Modified Version to\n" +
             "    make the Source form of the Modified Version available to others\n" +
             "    under\n" +
             "\n" +
@@ -527,7 +525,7 @@ public enum License {
     ),
 
     SIMPLE_BSD("simple-bsd", "Simple BSD",
-        "Copyright (c) %s, %s\n" +
+        "Copyright © %s, %s\n" +
         "All rights reserved.\n" +
         "\n" +
         "Redistribution and use in url and binary forms, with or without\n" +
@@ -553,7 +551,7 @@ public enum License {
     ),
 
     NEW_BSD("new-bsd", "New BSD",
-        "Copyright (c) %s, %s\n" +
+        "Copyright © %s, %s\n" +
         "All rights reserved.\n" +
         "\n" +
         "Redistribution and use in url and binary forms, with or without\n" +
@@ -583,7 +581,7 @@ public enum License {
     ),
 
     ISC_LICENSE("isc-license", "ISC License",
-        "Copyright (c) %s, %s %s\n" +
+        "Copyright © %s, %s %s\n" +
         "\n" +
         "Permission to use, copy, modify, and/or distribute this software for any\n" +
         "purpose with or without fee is hereby granted, provided that the above\n" +
@@ -600,7 +598,7 @@ public enum License {
 
     LGPL_V2_1("lgpl-v2.1", "GNU LGPL v2.1",
         "%s\n" +
-        "Copyright (C) %s %s\n" +
+        "Copyright © %s %s\n" +
         "\n" +
         "This library is free software; you can redistribute it and/or\n" +
         "modify it under the terms of the GNU Lesser General Public\n" +
@@ -622,7 +620,7 @@ public enum License {
         "                   GNU LESSER GENERAL PUBLIC LICENSE\n" +
         "                       Version 3, 29 June 2007\n" +
         "\n" +
-        " Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>\n" +
+        " Copyright © 2007 Free Software Foundation, Inc. <http://fsf.org/>\n" +
         " Everyone is permitted to copy and distribute verbatim copies\n" +
         " of this license document, but changing it is not allowed.\n" +
         "\n" +
@@ -851,23 +849,26 @@ public enum License {
      *
      * @param description       a one line description of the project, if applicable
      * @param year              the year of hte license/project, if applicable
-     * @param name              the author of the code/project, if applicable
+     * @param author            the author of the code/project, if applicable
      * @param email             the email of the code/project, if applicable
      * @return                  the formated license text string
      */
-    public String getLicense(String description, String year, String name, String email){
-        try {
-            return String.format(mLicenseText, description, year, name, email);
-        }catch (IllegalFormatException e){
-            try{
-                return String.format(mLicenseText, year, name, email);
-            }catch (IllegalFormatException e1){
-                try{
-                    return String.format(mLicenseText, year, name);
-                }catch (IllegalFormatException e2){
-                    return mLicenseText;
-                }
-            }
+    public String getLicense(String description, String year, String author, String email){
+        if(this == APACHE2 ||
+                this == MIT ||
+                this == SIMPLE_BSD ||
+                this == NEW_BSD ||
+                this == ARTISTIC){
+            return String.format(mLicenseText, year, author);
+        }else if(this == AFFERO_GPL_V3 ||
+                 this == GPL_V2 ||
+                 this == GPL_V3 ||
+                 this == LGPL_V2_1){
+            return String.format(mLicenseText, description, year, author);
+        }else if(this == ISC_LICENSE){
+            return String.format(mLicenseText, year, author, email);
+        }else{
+            return mLicenseText;
         }
     }
 

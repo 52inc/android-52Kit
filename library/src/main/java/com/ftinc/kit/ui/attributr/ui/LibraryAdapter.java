@@ -27,6 +27,7 @@ import com.ftinc.kit.adapter.BetterRecyclerAdapter;
 import com.ftinc.kit.font.Face;
 import com.ftinc.kit.font.FontLoader;
 import com.ftinc.kit.ui.attributr.model.Library;
+import com.ftinc.kit.util.UIUtils;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersAdapter;
 
 import java.util.ArrayList;
