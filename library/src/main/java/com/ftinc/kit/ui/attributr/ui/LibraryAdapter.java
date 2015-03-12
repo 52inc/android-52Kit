@@ -24,6 +24,8 @@ import android.widget.TextView;
 
 import com.ftinc.kit.R;
 import com.ftinc.kit.adapter.BetterRecyclerAdapter;
+import com.ftinc.kit.font.Face;
+import com.ftinc.kit.font.FontLoader;
 import com.ftinc.kit.ui.attributr.model.Library;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersAdapter;
 
@@ -90,11 +92,6 @@ public class LibraryAdapter extends BetterRecyclerAdapter<Library, LibraryAdapte
     }
 
     @Override
-    public void onSort(List<Library> items) {
-        Collections.sort(items, new Library.LibraryComparator());
-    }
-
-    @Override
     protected void onFiltered() {
         buildSectionHeaders();
     }
@@ -144,6 +141,7 @@ public class LibraryAdapter extends BetterRecyclerAdapter<Library, LibraryAdapte
         public HeaderViewHolder(View itemView) {
             super(itemView);
             title = ButterKnife.findById(itemView, R.id.title);
+            FontLoader.apply(title, Face.ROBOTO_MEDIUM);
         }
     }
 

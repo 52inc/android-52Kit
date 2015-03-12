@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright (c) 2015 52inc
   ~
@@ -18,17 +17,13 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="Theme.Kit.Base" parent="Theme.AppCompat">
+    <style name="Theme.Kit.Example" parent="Theme.Kit.Base.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
 
-    </style>
-
-    <style name="Theme.Kit.Base.Light" parent="Theme.AppCompat.Light">
-
-    </style>
-
-    <style name="Theme.Kit.Base.Light.DarkActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="toolbarTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
-        <item name="toolbarPopupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <!-- Color Palette -->
+        <item name="colorPrimary">@color/blue_500</item>
+        <item name="colorPrimaryDark">@color/blue_700</item>
     </style>
 
 </resources>

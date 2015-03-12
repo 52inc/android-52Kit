@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright (c) 2015 52inc
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~     http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
-
 <Licenses>
+
+    <Library license="apache">
+        <Name>support-v4, appcompat-v7, cardview-v7</Name>
+        <Author>The Android Open Source Project</Author>
+        <Year>2014</Year>
+        <Url>http://developer.android.com/tools/support-library/index.html</Url>
+    </Library>
 
     <Library license="apache">
         <Name>52Kit</Name>
@@ -26,5 +17,48 @@
         <Email>support@52inc.com</Email>
     </Library>
 
+    <Library license="apache">
+        <Name>Dagger</Name>
+        <Author>Square, Inc.</Author>
+        <Year>2012</Year>
+        <Url>https://github.com/square/dagger</Url>
+    </Library>
+
+    <Library license="apache">
+        <Name>Timber</Name>
+        <Author>Jake Wharton</Author>
+        <Year>2013</Year>
+        <Url>https://github.com/JakeWharton/timber</Url>
+        <Email>jakewharton@gmail.com</Email>
+    </Library>
+
+    <Library license="apache">
+        <Name>Butterknife</Name>
+        <Author>Jake Wharton</Author>
+        <Year>2013</Year>
+        <Url>https://github.com/JakeWharton/butterknife</Url>
+        <Email>jakewharton@gmail.com</Email>
+    </Library>
+
+    <Library license="mit">
+        <Name>FloatingActionButton</Name>
+        <Author>Oleksandr Melnykov</Author>
+        <Year>2014</Year>
+        <Url>https://github.com/makovkastar/FloatingActionButton/</Url>
+    </Library>
+
+    <Library license="mit">
+        <Name>Snackbar</Name>
+        <Author>William Mora</Author>
+        <Year>2015</Year>
+        <Url>https://github.com/nispok/snackbar</Url>
+    </Library>
+
+    <Library license="apache">
+        <Name>StickHeadersRecyclerView</Name>
+        <Author>Jacob Tabak - Timehop</Author>
+        <Year>2014</Year>
+        <Url>https://github.com/timehop/sticky-headers-recyclerview/</Url>
+    </Library>
 
 </Licenses>

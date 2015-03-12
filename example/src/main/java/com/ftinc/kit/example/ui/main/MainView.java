@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package com.ftinc.kit.mvp.modules;
+package com.ftinc.kit.example.ui.main;
 
-import android.app.Application;
+import com.ftinc.kit.mvp.IBaseView;
 
 /**
- * Created by r0adkll on 3/9/15.
+ * Created by r0adkll on 3/12/15.
  */
-public interface Mods {
+public interface MainView extends IBaseView{
 
-    Object[] getModules(Application app);
+
 
 }

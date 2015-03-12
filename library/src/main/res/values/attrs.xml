@@ -17,6 +17,11 @@
 
 <resources>
 
+    <declare-styleable name="BaseTheme">
+        <attr name="toolbarTheme" format="reference" />
+        <attr name="toolbarPopupTheme" format="reference" />
+    </declare-styleable>
+
     <declare-styleable name="ScrimInsetsView">
         <attr name="insetForeground" format="reference|color" />
     </declare-styleable>

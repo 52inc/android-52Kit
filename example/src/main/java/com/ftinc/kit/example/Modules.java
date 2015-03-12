@@ -14,15 +14,20 @@
  * limitations under the License.
  */
 
-package com.ftinc.kit.mvp.modules;
+package com.ftinc.kit.example;
 
 import android.app.Application;
 
+import com.ftinc.kit.mvp.modules.Mods;
+
 /**
- * Created by r0adkll on 3/9/15.
+ * Created by r0adkll on 3/12/15.
  */
-public interface Mods {
-
-    Object[] getModules(Application app);
-
+public class Modules implements Mods {
+    @Override
+    public Object[] getModules(Application app) {
+        return new Object[]{
+            new AppModule(app)
+        };
+    }
 }

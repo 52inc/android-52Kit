@@ -1,8 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ftinc.kit">
 
-    <application
-        android:theme="@style/Theme.Kit.Base.Light">
+    <application>
 
         <!-- Activity definition for Attributr -->
         <activity android:name=".ui.attributr.ui.LicenseActivity"

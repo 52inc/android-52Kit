@@ -14,15 +14,28 @@
  * limitations under the License.
  */
 
-package com.ftinc.kit.mvp.modules;
+package com.ftinc.kit.example.ui;
 
-import android.app.Application;
+import android.content.Context;
+import android.view.inputmethod.InputMethodManager;
+
+import javax.inject.Singleton;
+
+import dagger.Module;
+import dagger.Provides;
 
 /**
- * Created by r0adkll on 3/9/15.
+ * Created by r0adkll on 3/12/15.
  */
-public interface Mods {
+@Module(
+    complete = false,
+    library = true
+)
+public class UiModule {
 
-    Object[] getModules(Application app);
+    @Provides @Singleton
+    InputMethodManager provideInputMethodManager(Context ctx){
+        return (InputMethodManager) ctx.getSystemService(Context.INPUT_METHOD_SERVICE);
+    }
 
 }

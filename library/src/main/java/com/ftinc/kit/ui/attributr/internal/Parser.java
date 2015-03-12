@@ -65,6 +65,9 @@ public final class Parser {
 
         // Begin parsing
         try {
+            parser.next();
+            parser.require(XmlPullParser.START_DOCUMENT, null, null);
+            parser.nextTag();
             parser.require(XmlPullParser.START_TAG, null, DOCUMENT_TAG);
             while(parser.next() != XmlPullParser.END_TAG){
                 if (parser.getEventType() != XmlPullParser.START_TAG) {

@@ -31,13 +31,13 @@ public interface IBaseActivityPresenter {
      *
      * @param icicle        the saved instance state bundle
      */
-    public void parseExtras(Bundle icicle);
+    void parseExtras(Bundle icicle);
 
     /**
      * Save the instance state for a given activity
      *
      * @param outState      the out state bundle to store in
      */
-    public void saveInstanceState(Bundle outState);
+    void saveInstanceState(Bundle outState);
 
 }

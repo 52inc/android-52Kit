@@ -30,6 +30,7 @@ import com.ftinc.kit.R;
 import com.ftinc.kit.adapter.BetterRecyclerAdapter;
 import com.ftinc.kit.ui.attributr.internal.Parser;
 import com.ftinc.kit.ui.attributr.model.Library;
+import com.ftinc.kit.widget.StickyRecyclerHeadersElevationDecoration;
 
 import java.util.List;
 
@@ -73,7 +74,6 @@ public class LicenseActivity extends ActionBarActivity implements View.OnClickLi
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_license);
-        parseExtras(savedInstanceState);
 
         // Load UI
         mToolbar = ButterKnife.findById(this, R.id.appbar);
@@ -81,6 +81,7 @@ public class LicenseActivity extends ActionBarActivity implements View.OnClickLi
 
         // Set the toolbar as the support actionbar
         setSupportActionBar(mToolbar);
+        parseExtras(savedInstanceState);
 
         // Set listeners
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -89,6 +90,7 @@ public class LicenseActivity extends ActionBarActivity implements View.OnClickLi
         mRecyler.setAdapter(mAdapter);
         mRecyler.setLayoutManager(new LinearLayoutManager(this));
         mRecyler.setItemAnimator(new DefaultItemAnimator());
+        mRecyler.addItemDecoration(new StickyRecyclerHeadersElevationDecoration(mAdapter));
         mAdapter.setOnItemClickListener(this);
 
     }
@@ -148,8 +150,9 @@ public class LicenseActivity extends ActionBarActivity implements View.OnClickLi
 
         // Apply Configuration
         List<Library> libs = Parser.parse(this, mXmlConfigId);
-        mAdapter.clear();
+        mAdapter = new LibraryAdapter();
         mAdapter.addAll(libs);
+        mAdapter.sort(new Library.LibraryComparator());
         mAdapter.notifyDataSetChanged();
     }
 }

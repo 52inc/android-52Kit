@@ -14,15 +14,16 @@
  * limitations under the License.
  */
 
-package com.ftinc.kit.mvp.modules;
+package com.ftinc.kit.example;
 
 import android.app.Application;
+import android.test.ApplicationTestCase;
 
 /**
- * Created by r0adkll on 3/9/15.
+ * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
  */
-public interface Mods {
-
-    Object[] getModules(Application app);
-
+public class ApplicationTest extends ApplicationTestCase<Application> {
+    public ApplicationTest() {
+        super(Application.class);
+    }
 }

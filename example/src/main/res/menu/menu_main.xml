@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright (c) 2015 52inc
   ~
@@ -15,20 +14,9 @@
   ~ limitations under the License.
   -->
 
-<resources>
-
-    <!-- Base application theme. -->
-    <style name="Theme.Kit.Base" parent="Theme.AppCompat">
-
-    </style>
-
-    <style name="Theme.Kit.Base.Light" parent="Theme.AppCompat.Light">
-
-    </style>
-
-    <style name="Theme.Kit.Base.Light.DarkActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="toolbarTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
-        <item name="toolbarPopupTheme">@style/ThemeOverlay.AppCompat.Light</item>
-    </style>
-
-</resources>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+    <item android:id="@+id/action_settings" android:title="@string/action_settings"
+        android:orderInCategory="100" app:showAsAction="never" />
+</menu>

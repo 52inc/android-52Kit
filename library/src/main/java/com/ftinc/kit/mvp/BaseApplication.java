@@ -106,7 +106,7 @@ public abstract class BaseApplication extends Application {
      * Build and inject the object graph
      */
     private void buildObjectGraphAndInject(){
-        mObjectGraph = ObjectGraph.create(getMods().getModules());
+        mObjectGraph = ObjectGraph.create(getMods().getModules(this));
         mObjectGraph.inject(this);
     }
 
