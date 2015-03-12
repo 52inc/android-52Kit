@@ -31,15 +31,16 @@ Attributr, formaly found [here](https://github.com/52inc/Attributr), is a librar
 
 *	**Configuration File**
 
-
-		<Library license="apache">
-		    <Name>52Kit</Name>
-		    <Author>52inc</Author>
-		    <Year>2015</Year>
-		    <Description>A library with common tools for building Android applications</Description>
-		    <Url>https://github.com/52inc/android-52Kit</Url>
-		    <Email>support@52inc.com</Email>
-		</Library>
+```xml
+	<Library license="apache">
+	    <Name>52Kit</Name>
+	    <Author>52inc</Author>
+	    <Year>2015</Year>
+	    <Description>A library with common tools for building Android applications</Description>
+	    <Url>https://github.com/52inc/android-52Kit</Url>
+	    <Email>support@52inc.com</Email>
+	</Library>
+```
 		
 *	**Implementation**
 
