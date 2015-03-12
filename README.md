@@ -21,6 +21,38 @@ This library also includes a handful of utility classes that contain convienence
 *	`UIUtils.java` - A utility class for helper functions that deal with the UI and views
 *	`FormatUtils.java` - A utility class for formatting text and generating hash strings
 
+---
+
+### Attributr
+
+Attributr, formaly found [here](https://github.com/52inc/Attributr), is a library for easily displaying a list of license attributions for the 3rd party libraries in your application.
+
+#### Usages
+
+*	**Configuration File**
+
+
+		<Library license="apache">
+		    <Name>52Kit</Name>
+		    <Author>52inc</Author>
+		    <Year>2015</Year>
+		    <Description>A library with common tools for building Android applications</Description>
+		    <Url>https://github.com/52inc/android-52Kit</Url>
+		    <Email>support@52inc.com</Email>
+		</Library>
+		
+*	**Implementation**
+
+	```java
+	Attributr.openLicenses(context, R.xml.config);
+	```
+	
+* 	**Screenshot**
+
+![Attributr Screenshot](art/attributr_screen.png)
+
+---
+
 ### Widgets
 
 See [here](https://github.com/52inc/android-52Kit/tree/master/library/src/main/java/com/ftinc/kit/widget) for a list of pre-built widgets and views. 
