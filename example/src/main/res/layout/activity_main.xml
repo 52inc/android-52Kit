@@ -68,8 +68,6 @@
                 android:layout_height="wrap_content"
 
                 android:text="Attributr Demo"
-                android:backgroundTint="@color/blue_300"
-                android:backgroundTintMode="src_atop"
                 />
 
             <Button
@@ -78,8 +76,6 @@
                 android:layout_height="wrap_content"
 
                 android:text="Winds Demo"
-                android:backgroundTint="@color/blue_300"
-                android:backgroundTintMode="src_atop"
                 />
 
         </LinearLayout>
