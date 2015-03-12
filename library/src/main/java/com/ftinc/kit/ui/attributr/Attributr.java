@@ -33,6 +33,13 @@ import com.ftinc.kit.ui.attributr.ui.LicenseActivity;
  */
 public class Attributr {
 
+    /**
+     * Open the third party licenses activity with the supplied configuration file
+     *
+     * @param ctx               the context reference to launch the activity with
+     * @param configResId       the XML configuration resource id
+     * @param title             the Activity/Screen title you want to use
+     */
     public static void openLicenses(Context ctx, @XmlRes int configResId, String title){
         Intent intent = new Intent(ctx, LicenseActivity.class);
         intent.putExtra(LicenseActivity.EXTRA_CONFIG, configResId);
@@ -40,6 +47,12 @@ public class Attributr {
         ctx.startActivity(intent);
     }
 
+    /**
+     * Open the third party licenses activity with the supplied configuration file
+     *
+     * @param ctx               the context reference to launch the activity with
+     * @param configResId       the XML configuration resource id
+     */
     public static void openLicenses(Context ctx, @XmlRes int configResId){
         openLicenses(ctx, configResId, ctx.getString(R.string.activity_license_label));
     }
