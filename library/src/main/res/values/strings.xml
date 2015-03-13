@@ -9,4 +9,5 @@
     <string name="action_link_title">Follow link</string>
     <string name="app_for_intent_not_found">There was no application found that can open this link</string>
     <string name="changelog_activity_title">Changelog</string>
+    <string name="middot">•</string>
 </resources>

@@ -14,9 +14,12 @@ import com.ftinc.kit.ui.attributr.model.Library;
 import com.ftinc.kit.ui.winds.model.Change;
 import com.ftinc.kit.ui.winds.model.ChangeLog;
 import com.ftinc.kit.ui.winds.model.Version;
+import com.ftinc.kit.util.Utils;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -36,8 +39,6 @@ public class ChangeLogAdapter extends BetterRecyclerAdapter<Change, ChangeLogAda
      *
      */
 
-    private List<List<Change>> mHeaders = new ArrayList<>();
-    private List<String> mTitles = new ArrayList<>();
     private ChangeLog mChangeLog;
 
     /**
@@ -46,6 +47,25 @@ public class ChangeLogAdapter extends BetterRecyclerAdapter<Change, ChangeLogAda
      */
     public void setChangeLog(ChangeLog log){
         mChangeLog = log;
+
+        // Clear out any existing entries
+        clear();
+
+        //sort all the changes
+        Collections.sort(mChangeLog.versions, new Comparator<Version>() {
+            @Override
+            public int compare(Version lhs, Version rhs) {
+                return Utils.compare(lhs.code, rhs.code);
+            }
+        });
+
+        // Iterate and add all the 'Change' objects in the adapter
+        for(Version version : mChangeLog.versions){
+            addAll(version.changes);
+        }
+
+        // Notify content has changed
+        notifyDataSetChanged();
     }
 
     /***********************************************************************************************
@@ -56,12 +76,15 @@ public class ChangeLogAdapter extends BetterRecyclerAdapter<Change, ChangeLogAda
 
     @Override
     public VersionViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.layout_change_item, parent, false);
+        return new VersionViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(VersionViewHolder versionViewHolder, int i) {
-
+    public void onBindViewHolder(VersionViewHolder holder, int i) {
+        Change data = getItem(i);
+        holder.text.setText(data.getDisplayText(holder.itemView.getContext()));
     }
 
     /***********************************************************************************************
@@ -72,14 +95,13 @@ public class ChangeLogAdapter extends BetterRecyclerAdapter<Change, ChangeLogAda
 
 
     @Override
-    public long getHeaderId(int i) {
-        if(i < getItemCount()) {
-
-            Change data = getItem(i);
-
-            for (List<Change> items : mHeaders) {
-                if (items.contains(data)) {
-                    return mHeaders.indexOf(items);
+    public long getHeaderId(int position) {
+        if(position < getItemCount()) {
+            Change data = getItem(position);
+            for (int i=0; i<mChangeLog.versions.size(); i++) {
+                Version version = mChangeLog.versions.get(i);
+                if (version.changes.contains(data)) {
+                    return i;
                 }
             }
         }
@@ -96,9 +118,18 @@ public class ChangeLogAdapter extends BetterRecyclerAdapter<Change, ChangeLogAda
 
     @Override
     public void onBindHeaderViewHolder(HeaderViewHolder holder, int i) {
-        long id = getHeaderId(i);
-        String artist = mTitles.get((int)id);
-        holder.title.setText(artist);
+        int headerPosition = (int) getHeaderId(i);
+        if(headerPosition != -1) {
+            Version header = mChangeLog.versions.get(headerPosition);
+            holder.title.setText(header.getDisplayString());
+
+//            if(headerPosition != 0){
+//                holder.itemView.setPadding(0, (int)Utils.dpToPx(holder.itemView.getContext(), 16f), 0, 0);
+//            }else{
+//                holder.itemView.setPadding(0, 0, 0, 0);
+//            }
+
+        }
     }
 
     /***********************************************************************************************
@@ -107,41 +138,6 @@ public class ChangeLogAdapter extends BetterRecyclerAdapter<Change, ChangeLogAda
      *
      */
 
-    @Override
-    protected void onFiltered() {
-        buildSectionHeaders();
-    }
-
-    /**
-     * Build the section headers for use in creating the headers
-     */
-    private void buildSectionHeaders(){
-        // Update Artist maps
-        HashMap<String, List<Change>> currMap = new HashMap<>();
-
-//        // Loop through tuneRefs
-//        for(int i=0; i<getItemCount(); i++){
-//            Change version = getItem(i);
-//
-//            String license = version.type;
-//
-//            List<Version> libraries = currMap.get(license);
-//            if(libraries != null){
-//                libraries.add(version);
-//                currMap.put(license, libraries);
-//            }else{
-//                libraries = new ArrayList<>();
-//                libraries.add(version);
-//                currMap.put(license, libraries);
-//            }
-//        }
-
-        // Update maps
-        mHeaders.clear();
-        mHeaders.addAll(currMap.values());
-        mTitles.clear();
-        mTitles.addAll(currMap.keySet());
-    }
 
 
     /***********************************************************************************************
@@ -151,18 +147,16 @@ public class ChangeLogAdapter extends BetterRecyclerAdapter<Change, ChangeLogAda
      */
 
     public static class VersionViewHolder extends RecyclerView.ViewHolder{
-
-
-
+        TextView text;
         public VersionViewHolder(View itemView) {
             super(itemView);
+            text = ButterKnife.findById(itemView, R.id.text);
+            text.setSingleLine(false);
         }
     }
 
     public static class HeaderViewHolder extends RecyclerView.ViewHolder{
-
         TextView title;
-
         public HeaderViewHolder(View itemView) {
             super(itemView);
             title = ButterKnife.findById(itemView, R.id.title);

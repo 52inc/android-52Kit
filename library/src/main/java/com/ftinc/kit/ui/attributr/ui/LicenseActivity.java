@@ -18,6 +18,7 @@ package com.ftinc.kit.ui.attributr.ui;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -25,8 +26,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.transition.ChangeBounds;
+import android.transition.Explode;
+import android.transition.Fade;
+import android.transition.TransitionSet;
 import android.util.Pair;
 import android.view.View;
+import android.view.Window;
 
 import com.ftinc.kit.R;
 import com.ftinc.kit.adapter.BetterRecyclerAdapter;
@@ -75,8 +81,22 @@ public class LicenseActivity extends ActionBarActivity implements View.OnClickLi
      *
      */
 
-    @Override
+    @Override @SuppressLint("NewApi")
     public void onCreate(Bundle savedInstanceState) {
+        // Set window transition elements
+        if(BuildUtils.isLollipop()) {
+            getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+
+            TransitionSet transitions = new TransitionSet()
+                    .addTransition(new ChangeBounds())
+                    .addTransition(new Fade());
+
+            getWindow().setEnterTransition(new Explode());
+            getWindow().setExitTransition(new Explode());
+            getWindow().setSharedElementEnterTransition(transitions);
+            getWindow().setSharedElementExitTransition(transitions);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_license);
 
@@ -129,9 +149,10 @@ public class LicenseActivity extends ActionBarActivity implements View.OnClickLi
         View author = ButterKnife.findById(v, R.id.line_2);
 
         Pair<View, String>[] transitions = new Pair[]{
-                new Pair<>(v, "app_bar"),
+                new Pair<>(v, "display_content"),
                 new Pair<>(name, "library_name"),
-                new Pair<>(author, "library_author")
+                new Pair<>(author, "library_author"),
+                new Pair<>(mToolbar, "app_bar")
         };
 
         Intent details = new Intent(this, DetailActivity.class);

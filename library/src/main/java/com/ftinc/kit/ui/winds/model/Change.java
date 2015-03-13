@@ -1,9 +1,17 @@
 package com.ftinc.kit.ui.winds.model;
 
+import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.Html;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+
+import com.ftinc.kit.R;
+import com.ftinc.kit.font.Face;
+import com.ftinc.kit.font.TypefaceSpan;
 
 /**
  * Project: android-52Kit
@@ -56,7 +64,7 @@ public class Change implements Parcelable{
      */
 
     public Type type;
-    public CharSequence text;
+    public String text;
 
     /**
      * Default Constructor
@@ -70,7 +78,7 @@ public class Change implements Parcelable{
      */
     private Change(Parcel in){
         type = Type.from(in.readInt());
-        text = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+        text = in.readString();
     }
 
     /**
@@ -80,9 +88,40 @@ public class Change implements Parcelable{
      * @param rawText   the raw text from xml
      */
     public void setText(String rawText){
+        text = rawText.trim();
+    }
+
+    public CharSequence getDisplayText(Context ctx){
         // Format the text into html
-        String htmlText = rawText.replaceAll("\\[", "<").replaceAll("\\]", ">");
-        text = Html.fromHtml(htmlText);
+        String htmlText = text.replaceAll("\\[", "<").replaceAll("\\]", ">");
+
+        SpannableString tag;
+        switch (type){
+            case NEW:
+                tag = new SpannableString("NEW: ");
+                tag.setSpan(new ForegroundColorSpan(ctx.getResources().getColor(R.color.green_300)), 0, tag.length(), 0);
+                tag.setSpan(new TypefaceSpan(ctx, Face.ROBOTO_BOLD), 0, tag.length(), 0);
+                break;
+            case FIX:
+                tag = new SpannableString("FIX: ");
+                tag.setSpan(new ForegroundColorSpan(ctx.getResources().getColor(R.color.red_300)), 0, tag.length(), 0);
+                tag.setSpan(new TypefaceSpan(ctx, Face.ROBOTO_BOLD), 0, tag.length(), 0);
+                break;
+            case UPDATE:
+                tag = new SpannableString("UPDATE: ");
+                tag.setSpan(new ForegroundColorSpan(ctx.getResources().getColor(R.color.blue_300)), 0, tag.length(), 0);
+                tag.setSpan(new TypefaceSpan(ctx, Face.ROBOTO_BOLD), 0, tag.length(), 0);
+                break;
+            case MYTHICAL:
+                tag = new SpannableString("MYTH: ");
+                tag.setSpan(new ForegroundColorSpan(ctx.getResources().getColor(R.color.purple_300)), 0, tag.length(), 0);
+                tag.setSpan(new TypefaceSpan(ctx, Face.ROBOTO_BOLD), 0, tag.length(), 0);
+                break;
+            default:
+                tag = new SpannableString("");
+        }
+
+        return TextUtils.concat(tag, Html.fromHtml(htmlText));
     }
 
     @Override
@@ -93,7 +132,7 @@ public class Change implements Parcelable{
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(type.ordinal());
-        TextUtils.writeToParcel(text, dest, 0);
+        dest.writeString(text);
     }
 
     public static final Creator<Change> CREATOR = new Creator<Change>() {

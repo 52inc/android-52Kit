@@ -50,6 +50,10 @@ public class Version implements Parcelable{
         changes.add(change);
     }
 
+    public String getDisplayString(){
+        return String.format("Version %s %s", name, date);
+    }
+
     @Override
     public int describeContents() {
         return 0;

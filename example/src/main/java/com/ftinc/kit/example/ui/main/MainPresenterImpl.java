@@ -20,6 +20,7 @@ import android.os.Bundle;
 
 import com.ftinc.kit.example.R;
 import com.ftinc.kit.ui.attributr.Attributr;
+import com.ftinc.kit.ui.winds.Winds;
 
 /**
  * Created by r0adkll on 3/12/15.
@@ -46,10 +47,10 @@ public class MainPresenterImpl implements MainPresenter {
     public void onActionClicked(int id) {
         switch (id){
             case R.id.action_licenses:
-                Attributr.openLicenses(mView.getActivity(), R.xml.example_config);
+                Attributr.openLicenses(mView.getActivity(), R.xml.example_licenses);
                 break;
             case R.id.action_winds:
-
+                Winds.gust(mView.getActivity());
                 break;
         }
     }
