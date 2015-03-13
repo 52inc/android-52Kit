@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Changelog>
 
-    <Version name="1.0.0" date="Mar 13, 2015">
+    <Version code="1" name="1.0.0" date="Mar 13, 2015">
         <Change type="new">Added 'Winds' changelog library</Change>
         <Change type="update">Added 'Attributr' third party license attribution library</Change>
         <Change type="fix">Bug Fixes</Change>
+        <Change type="mythical">To admit defeat is to blaspheme against the Emperor</Change>
+        <Change>Refactored the [b]Enhance{/b] mechanism to include more [i]Awesome[/i]</Change>
     </Version>
 
 </Changelog>
