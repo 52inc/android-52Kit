@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Space;
 import android.widget.TextView;
 
 import com.ftinc.kit.R;
@@ -85,6 +86,16 @@ public class ChangeLogAdapter extends BetterRecyclerAdapter<Change, ChangeLogAda
     public void onBindViewHolder(VersionViewHolder holder, int i) {
         Change data = getItem(i);
         holder.text.setText(data.getDisplayText(holder.itemView.getContext()));
+
+        long hId = getHeaderId(i);
+        long nextHID = getHeaderId(i+1);
+
+        if(hId != nextHID){
+            holder.itemView.setPadding(0, 0, 0, (int)Utils.dpToPx(holder.itemView.getContext(), 16f));
+        }else{
+            holder.itemView.setPadding(0, 0, 0, 0);
+        }
+
     }
 
     /***********************************************************************************************
@@ -122,13 +133,6 @@ public class ChangeLogAdapter extends BetterRecyclerAdapter<Change, ChangeLogAda
         if(headerPosition != -1) {
             Version header = mChangeLog.versions.get(headerPosition);
             holder.title.setText(header.getDisplayString());
-
-//            if(headerPosition != 0){
-//                holder.itemView.setPadding(0, (int)Utils.dpToPx(holder.itemView.getContext(), 16f), 0, 0);
-//            }else{
-//                holder.itemView.setPadding(0, 0, 0, 0);
-//            }
-
         }
     }
 

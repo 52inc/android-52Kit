@@ -38,5 +38,6 @@
     <dimen name="appbar_elevation">4dp</dimen>
     <dimen name="avatar_dimen">40dp</dimen>
     <dimen name="extended_appbar_size">128dp</dimen>
+    <dimen name="changelog_item_padding">4dp</dimen>
 
 </resources>

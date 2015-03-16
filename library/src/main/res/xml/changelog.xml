@@ -14,7 +14,7 @@
         <Change type="update">Changed the cheese on the burg`er</Change>
         <Change type="fix">Fixed the beef to pork ratio bug</Change>
         <Change type="mythical">Even in death I still serve fries</Change>
-        <Change>Refactored the [h1]Bun[/h1] mechanism to include more [h2]Sesame[/h2]</Change>
+        <Change>Refactored the [b]Bun[/b] mechanism to include more [i]Sesame[/i]</Change>
     </Version>
 
 </Changelog>

@@ -119,7 +119,6 @@ public class Winds {
             throw new NullPointerException("Unable to find a 'Winds' configuration @ " + configId);
         }
 
-
     }
 
     /**
