@@ -16,6 +16,7 @@
 
 package com.ftinc.kit.ui.winds;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -32,6 +33,7 @@ import com.ftinc.kit.ui.winds.model.ChangeLog;
 import com.ftinc.kit.ui.winds.model.Version;
 import com.ftinc.kit.ui.winds.ui.ChangeLogActivity;
 import com.ftinc.kit.ui.winds.ui.ChangeLogAdapter;
+import com.ftinc.kit.ui.winds.ui.ChangeLogDialog;
 import com.ftinc.kit.widget.StickyRecyclerHeadersElevationDecoration;
 
 import timber.log.Timber;
@@ -81,7 +83,7 @@ public class Winds {
      * @param ctx           the context to launch the activity with
      * @param configId      the changelog xml configuration
      */
-    public static void gust(Context ctx, @XmlRes int configId){
+    public static void openChangelogActivity(Context ctx, @XmlRes int configId){
         Intent intent = new Intent(ctx, ChangeLogActivity.class);
         intent.putExtra(ChangeLogActivity.EXTRA_CONFIG, configId);
         ctx.startActivity(intent);
@@ -91,8 +93,28 @@ public class Winds {
      * Open the changelog activity with the default configuration file {@link R.xml#changelog}
      * @param ctx       the context to open with
      */
-    public static void gust(Context ctx){
-        gust(ctx, R.xml.changelog);
+    public static void openChangelogActivity(Context ctx){
+        openChangelogActivity(ctx, R.xml.changelog);
+    }
+
+    /**
+     * Open the changelog dialog
+     *
+     * @param ctx           the activity to launch the dialog fragment with
+     * @param configId      the changelog configuration resource id
+     */
+    public static void openChangelogDialog(Activity ctx, @XmlRes int configId){
+        ChangeLogDialog dialog = ChangeLogDialog.createInstance(configId);
+        dialog.show(ctx.getFragmentManager(), null);
+    }
+
+    /**
+     * Open the changelog dialog
+     *
+     * @param ctx
+     */
+    public static void openChangelogDialog(Activity ctx){
+        openChangelogDialog(ctx, R.xml.changelog);
     }
 
     /**
@@ -110,7 +132,7 @@ public class Winds {
 
             // Validate that there is a new version code
             if(validateVersion(ctx, changeLog)) {
-                gust(ctx, configId);
+                openChangelogActivity(ctx, configId);
             }else{
                 Timber.i("No new changelog available.");
             }
@@ -130,6 +152,44 @@ public class Winds {
     public static void checkChangelogActivity(Context ctx){
         checkChangelogActivity(ctx, R.xml.changelog);
     }
+
+    /**
+     * Check to see if we should show the changelog activity if there are any new changes
+     * to the configuration file.
+     *
+     * @param ctx           the context to launch the activity with
+     * @param configId      the changelog configuration xml resource id
+     */
+    public static void checkChangelogDialog(Activity ctx, @XmlRes int configId){
+
+        // Parse configuration
+        ChangeLog changeLog = Parser.parse(ctx, configId);
+        if(changeLog != null){
+
+            // Validate that there is a new version code
+            if(validateVersion(ctx, changeLog)) {
+                openChangelogDialog(ctx, configId);
+            }else{
+                Timber.i("No new changelog available.");
+            }
+
+        }else{
+            throw new NullPointerException("Unable to find a 'Winds' configuration @ " + configId);
+        }
+
+    }
+
+    /**
+     * Check to open the changelog activity with the default configuration file
+     * {@link R.xml#changelog}
+     *
+     * @param ctx       the context to launch with
+     */
+    public static void checkChangelogDialog(Activity ctx){
+        checkChangelogDialog(ctx, R.xml.changelog);
+    }
+
+
 
     /**
      * Validate the last seen stored verion code against the current changelog configuration
@@ -156,7 +216,7 @@ public class Winds {
 
         // Get applications current version
         if(latest > lastSeen){
-            prefs.edit().putInt(PREF_CHANGELOG_LAST_SEEN, latest).apply();
+            if(!BuildConfig.DEBUG) prefs.edit().putInt(PREF_CHANGELOG_LAST_SEEN, latest).apply();
             return true;
         }
 

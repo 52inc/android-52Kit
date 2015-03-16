@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/seperator"
+        android:minWidth="300dp"/>
+
+    <View
+        android:id="@+id/seperator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black12"
+        android:layout_above="@+id/button_layout"/>
+
+    <RelativeLayout
+        android:id="@+id/button_layout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="end|center_vertical"
+        android:paddingRight="@dimen/activity_padding"
+        android:paddingLeft="@dimen/activity_padding"
+        android:layout_alignParentBottom="true"
+        >
+
+        <TextView
+            android:id="@+id/button_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:gravity="center"
+
+            android:minWidth="@dimen/min_button_width"
+            android:paddingLeft="@dimen/half_padding"
+            android:paddingRight="@dimen/half_padding"
+            android:layout_marginRight="@dimen/quarter_padding"
+            android:layout_marginLeft="@dimen/quarter_padding"
+
+            android:text="@android:string/ok"
+            android:textSize="@dimen/button"
+            android:textColor="?attr/colorAccent"
+            android:textAllCaps="true"
+            android:alpha="0.87"
+
+            android:background="?attr/selectableItemBackground"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>

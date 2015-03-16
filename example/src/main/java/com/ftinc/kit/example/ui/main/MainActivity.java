@@ -25,6 +25,7 @@ import android.view.inputmethod.InputMethodManager;
 import com.ftinc.kit.example.R;
 import com.ftinc.kit.mvp.BaseActivity;
 import com.ftinc.kit.ui.attributr.Attributr;
+import com.ftinc.kit.ui.winds.Winds;
 import com.nispok.snackbar.Snackbar;
 import com.nispok.snackbar.enums.SnackbarType;
 
@@ -65,7 +66,12 @@ public class MainActivity extends BaseActivity implements MainView{
         ButterKnife.inject(this);
         setSupportActionBar(mToolbar);
 
+        // Parse the extras here
         mPresenter.parseExtras(savedInstanceState);
+
+        // Check the changelog
+        Winds.checkChangelogDialog(this);
+
     }
 
     @Override

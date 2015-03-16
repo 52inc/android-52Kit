@@ -50,7 +50,7 @@ public class MainPresenterImpl implements MainPresenter {
                 Attributr.openLicenses(mView.getActivity(), R.xml.example_licenses);
                 break;
             case R.id.action_winds:
-                Winds.gust(mView.getActivity());
+                Winds.openChangelogActivity(mView.getActivity());
                 break;
         }
     }

@@ -114,7 +114,7 @@ You can show the changelog as easily as calling:
  	Winds.checkChangelogActivity(context, R.xml.other_changelog);
  	```
  	
- *	**Screenshot**
+*	**Screenshot**
 
 ![Winds Screenshot](art/winds_screen.png)
 

@@ -19,6 +19,7 @@
 
     <dimen name="activity_padding">16dp</dimen>
     <dimen name="half_padding">8dp</dimen>
+    <dimen name="quarter_padding">4dp</dimen>
 
     <dimen name="keyline_1">24dp</dimen>
 
@@ -39,5 +40,6 @@
     <dimen name="avatar_dimen">40dp</dimen>
     <dimen name="extended_appbar_size">128dp</dimen>
     <dimen name="changelog_item_padding">4dp</dimen>
+    <dimen name="min_button_width">64dp</dimen>
 
 </resources>
