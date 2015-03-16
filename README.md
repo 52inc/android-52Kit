@@ -54,6 +54,45 @@ Attributr, formaly found [here](https://github.com/52inc/Attributr), is a librar
 
 ---
 
+### Winds - ChangeLog component
+
+Winds, as in _Winds of Change_, is a utility for displaying a changelog to the user.
+
+#### Usages
+
+*	**Configuration File**
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<Changelog>
+
+    <Version code="1" name="1.0.0" date="Mar 13, 2015">
+        <Change type="new">Added 'Winds' changelog library</Change>
+        <Change type="update">Added 'Attributr' third party license attribution library</Change>
+        <Change type="fix">Bug Fixes</Change>
+        <Change type="mythical">To admit defeat is to blaspheme against the Emperor</Change>
+        <Change>Refactored the [b]Enhance[/b] mechanism to include more [i]Awesome[/i]</Change>
+    </Version>
+
+    <Version code="2" name="1.0.1" date="Mar 14, 2015">
+        <Change type="new">Added Bacon for xtreme flavor</Change>
+        <Change type="update">Changed the cheese on the burg`er</Change>
+        <Change type="fix">Fixed the beef to pork ratio bug</Change>
+        <Change type="mythical">Even in death I still serve fries</Change>
+        <Change>Refactored the [h1]Bun[/h1] mechanism to include more [h2]Sesame[/h2]</Change>
+    </Version>
+
+</Changelog>
+	
+```
+
+* **Implementation**
+
+
+
+
+---
+
 ### Widgets
 
 See [here](https://github.com/52inc/android-52Kit/tree/master/library/src/main/java/com/ftinc/kit/widget) for a list of pre-built widgets and views. 
