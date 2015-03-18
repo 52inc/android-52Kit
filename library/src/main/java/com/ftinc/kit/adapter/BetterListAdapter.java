@@ -57,7 +57,7 @@ public abstract class BetterListAdapter<T, VH extends BetterListAdapter.ViewHold
 	 * 
 	 * @author drew.heavner
 	 */
-	public abstract static class ViewHolder{
+	public static abstract class ViewHolder{
         protected View itemView;
         public ViewHolder(View view){
             this.itemView = view;

@@ -20,6 +20,14 @@
     <declare-styleable name="BaseTheme">
         <attr name="toolbarTheme" format="reference" />
         <attr name="toolbarPopupTheme" format="reference" />
+
+        <attr name="colorTextPrimary" format="reference|color" />
+        <attr name="colorTextPrimaryInverse" format="reference|color" />
+        <attr name="colorTextSecondary" format="reference|color" />
+        <attr name="colorTextSecondaryInverse" format="reference|color" />
+
+        <!-- TODO: Add more theme attributes -->
+
     </declare-styleable>
 
     <declare-styleable name="ScrimInsetsView">
