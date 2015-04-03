@@ -33,4 +33,14 @@
         <item name="toolbarPopupTheme">@style/ThemeOverlay.AppCompat.Light</item>
     </style>
 
+    <style name="Theme.Kit.Base.NoActionBar" parent="Theme.AppCompat.NoActionBar">
+        <item name="toolbarTheme">@style/ThemeOverlay.AppCompat.Dark</item>
+        <item name="toolbarPopupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
+    </style>
+
+    <style name="Theme.Kit.Base.Light.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="toolbarTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="toolbarPopupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+
 </resources>
