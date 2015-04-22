@@ -17,7 +17,7 @@
 package com.ftinc.kit.mvp;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.ftinc.kit.R;
@@ -33,7 +33,7 @@ import dagger.ObjectGraph;
  * Package: com.r0adkll.chipper.ui
  * Created by drew.heavner on 11/12/14.
  */
-public abstract class BaseActivity extends ActionBarActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     protected Toolbar actionBarToolbar;
     private ObjectGraph activityGraph;

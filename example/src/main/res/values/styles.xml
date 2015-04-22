@@ -17,14 +17,16 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="Theme.Kit.Example" parent="Theme.Kit.Base.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="windowActionBar">false</item>
+    <style name="Theme.Kit.Example" parent="Theme.Kit.Base.Light.NoActionBar">
 
         <!-- Color Palette -->
         <item name="colorPrimary">@color/blue_500</item>
         <item name="colorPrimaryDark">@color/blue_700</item>
         <item name="colorAccent">@color/red_a400</item>
+
+        <item name="toolbarTheme">@style/ThemeOverlay.AppCompat.Dark</item>
+        <item name="toolbarPopupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
+
     </style>
 
 </resources>
