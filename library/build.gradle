@@ -33,7 +33,7 @@ dependencies {
     compile 'com.jakewharton:butterknife:6.1.0'
 
     // UI Libraries
-    compile 'com.getbase:floatingactionbutton:1.9.0'
+    compile 'com.github.clans:fab:1.4.0'
     compile 'com.nispok:snackbar:2.10.7'
     compile 'com.timehop.stickyheadersrecyclerview:library:0.4.0@aar'
 

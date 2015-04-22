@@ -16,18 +16,18 @@
 
 package com.ftinc.kit.util;
 
+import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 
-import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.nispok.snackbar.Snackbar;
 import com.nispok.snackbar.listeners.EventListenerAdapter;
 
 public class FabEventListener extends EventListenerAdapter {
 
-        private FloatingActionButton mFab;
+        private View mFab;
 
-        public FabEventListener(FloatingActionButton fab){
+        public FabEventListener(View fab){
             mFab = fab;
         }
 
