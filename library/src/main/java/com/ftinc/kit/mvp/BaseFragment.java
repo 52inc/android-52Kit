@@ -18,8 +18,10 @@ package com.ftinc.kit.mvp;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.View;
 
 
+import butterknife.ButterKnife;
 import dagger.ObjectGraph;
 
 /**
@@ -34,6 +36,18 @@ public abstract class BaseFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         fragmentGraph = BaseApplication.get(getActivity()).createScopedGraph(getModules());
         fragmentGraph.inject(this);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        ButterKnife.inject(this, view);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.reset(this);
     }
 
     @Override

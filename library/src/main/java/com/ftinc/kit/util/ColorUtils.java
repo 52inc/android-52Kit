@@ -16,10 +16,7 @@
 
 package com.ftinc.kit.util;
 
-import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.support.annotation.ColorRes;
 
 public class ColorUtils {
     private static final int BRIGHTNESS_THRESHOLD = 130;

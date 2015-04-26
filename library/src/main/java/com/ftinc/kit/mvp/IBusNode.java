@@ -20,6 +20,6 @@ package com.ftinc.kit.mvp;
  * Created by r0adkll on 1/9/15.
  */
 public interface IBusNode {
-    public void register();
-    public void unregister();
+    void register();
+    void unregister();
 }

@@ -388,6 +388,8 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
 
     @Override
     public long getItemId(int position) {
+        M item = getItem(position);
+        if(item != null) return item.hashCode();
         return position;
     }
 
@@ -402,7 +404,7 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      * is triggered by {@link #onItemClick(android.view.View, int)}
      */
     public interface OnItemClickListener<T>{
-        public void onItemClick(View v, T item, int position);
+        void onItemClick(View v, T item, int position);
     }
 
 }

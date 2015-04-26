@@ -32,28 +32,28 @@ public interface IBaseView {
      * Get the Activity reference for the view this is attached to
      * @return      the activity
      */
-    public Activity getActivity();
+    Activity getActivity();
 
     /**
      * Show a basic message snackbar
      *
      * @param text      the text to display
      */
-    public void showSnackBar(String text);
+    void showSnackBar(String text);
 
     /**
      * Show the Loading indicator for the UI
      */
-    public void showLoading();
+    void showLoading();
 
     /**
      * Hide the loading indicator for the UI
      */
-    public void hideLoading();
+    void hideLoading();
 
     /**
      * Close the Keyboard for the activity
      */
-    public void closeKeyboard();
+    void closeKeyboard();
 
 }

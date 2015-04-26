@@ -32,13 +32,13 @@ public interface IBaseFragmentPresenter {
      * @param args          the arguments bundle from a Fragment
      * @param icicle        the saved instance state bundle
      */
-    public void parseExtras(Bundle args, Bundle icicle);
+    void parseExtras(Bundle args, Bundle icicle);
 
     /**
      * Save the instance state for a given activity
      *
      * @param outState      the out state bundle to store in
      */
-    public void saveInstanceState(Bundle outState);
+    void saveInstanceState(Bundle outState);
 
 }

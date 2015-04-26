@@ -21,7 +21,6 @@ import android.app.Fragment;
 import android.app.Service;
 import android.content.Context;
 
-import com.ftinc.kit.BuildConfig;
 import com.ftinc.kit.mvp.modules.Mods;
 
 import dagger.ObjectGraph;
@@ -51,7 +50,7 @@ public abstract class BaseApplication extends Application {
         super.onCreate();
 
         // Initialize Logging Trees
-        if(BuildConfig.DEBUG){
+        if(isDebug()){
             for(Timber.Tree tree: getDebugTrees()){
                 Timber.plant(tree);
             }
@@ -87,6 +86,15 @@ public abstract class BaseApplication extends Application {
      * @return      the array of release build logging trees
      */
     public abstract Timber.Tree[] getReleaseTrees();
+
+    /**
+     * Return whether or not the application build is a debug. Since I cannot read the project
+     * implementing this' BuildConfig.DEBUG flag I have to implement this method to correctly
+     * plant the Timber Trees
+     *
+     * @return      true if subclassing app is in debug, false otherwise
+     */
+    public abstract Boolean isDebug();
 
     /**
      * Get the module manager, {@link com.ftinc.kit.mvp.modules.Mods}, to get the list of modules
