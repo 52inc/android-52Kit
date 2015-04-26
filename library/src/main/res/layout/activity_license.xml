@@ -31,8 +31,8 @@
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
 
-        app:theme="?attr/toolbarTheme"
-        app:popupTheme="?attr/toolbarPopupTheme"
+        android:theme="?attr/toolbarTheme"
+        android:popupTheme="?attr/toolbarPopupTheme"
         />
 
     <android.support.v7.widget.RecyclerView

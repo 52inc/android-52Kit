@@ -36,8 +36,8 @@
             android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
 
-            app:theme="?attr/toolbarTheme"
-            app:popupTheme="?attr/toolbarPopupTheme"
+            android:theme="?attr/toolbarTheme"
+            android:popupTheme="?attr/toolbarPopupTheme"
             />
 
         <LinearLayout

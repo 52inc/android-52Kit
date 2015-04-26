@@ -51,6 +51,11 @@ public class MainApplication extends BaseApplication {
     }
 
     @Override
+    public Boolean isDebug() {
+        return BuildConfig.DEBUG;
+    }
+
+    @Override
     public Mods getMods() {
         return new Modules();
     }
