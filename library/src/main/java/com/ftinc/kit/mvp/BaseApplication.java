@@ -49,6 +49,9 @@ public abstract class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        // Build and inject the object graph
+        buildObjectGraphAndInject();
+
         // Initialize Logging Trees
         if(isDebug()){
             for(Timber.Tree tree: getDebugTrees()){
@@ -59,9 +62,6 @@ public abstract class BaseApplication extends Application {
                 Timber.plant(tree);
             }
         }
-
-        // Build and inject the object graph
-        buildObjectGraphAndInject();
 
     }
 
