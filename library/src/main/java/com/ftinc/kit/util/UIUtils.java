@@ -115,6 +115,18 @@ public class UIUtils {
     }
 
     /**
+     * Get the selectableItemBackground attribute drawable
+     * @return
+     */
+    public static Drawable getSelectableItemBackgroundBorderless(Context ctx){
+        int[] attrs = new int[] { R.attr.selectableItemBackgroundBorderless /* index 0 */};
+        TypedArray ta = ctx.obtainStyledAttributes(attrs);
+        Drawable drawableFromTheme = ta.getDrawable(0 /* index */);
+        ta.recycle();
+        return drawableFromTheme;
+    }
+
+    /**
      * Get the color value for give attribute
      * @param ctx
      * @param colorAttrId
