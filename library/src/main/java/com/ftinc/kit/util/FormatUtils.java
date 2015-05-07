@@ -35,7 +35,7 @@ public class FormatUtils {
     /**
      * Precision ENUM for condensing a file size
      */
-    public static enum Precision {
+    public enum Precision {
         ONE_DIGIT("%.1f"),
         TWO_DIGIT("%.2f"),
         THREE_DIGIT("%.3f"),

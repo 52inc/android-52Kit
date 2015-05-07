@@ -164,6 +164,7 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
 
         // Force an application of the query
         notifyDataSetChanged();
+
     }
 
     /**

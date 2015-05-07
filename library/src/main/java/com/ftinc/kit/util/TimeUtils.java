@@ -21,9 +21,15 @@ import android.text.format.DateUtils;
 
 import com.ftinc.kit.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Formatter;
 import java.util.TimeZone;
+
+import static java.util.Calendar.DAY_OF_MONTH;
+import static java.util.Calendar.MONTH;
+import static java.util.Calendar.YEAR;
 
 /**
  * Created by r0adkll on 3/8/15.
@@ -34,7 +40,16 @@ public class TimeUtils {
     private static final int HOUR = 60 * MINUTE;
     private static final int DAY = 24 * HOUR;
 
-    public static String getTimeAgo(long time, Context ctx) {
+    /**
+     * <p>
+     *  Get a timestamp in a an *ago format <br/>
+     *  e.g.; "just now", "a minute ago", "5 minutes ago", "10 hours ago", "2 days ago", etc...
+     * </p>
+     *
+     * @param time      the time to format
+     * @return          the formated time
+     */
+    public static String getTimeAgo(long time) {
         // TODO: use DateUtils methods instead
         if (time < 1000000000000L) {
             // if timestamp given in seconds, convert to millis
@@ -64,7 +79,60 @@ public class TimeUtils {
         }
     }
 
+    /**
+     * Generate a fancy timestamp based on unix epoch time that is more user friendly than just
+     * a raw output by collapsing the time into manageable formats based on how much time has
+     * elapsed since epoch
+     *
+     * @param epoch     the time in unix epoch
+     * @return          the fancy timestamp
+     */
+    public static String fancyTimestamp(long epoch){
 
+        // First, check to see if it's within 1 minute of the current date
+        if(System.currentTimeMillis() - epoch < 60000){
+            return "Just now";
+        }
+
+        // Get calendar for just now
+        Calendar now = Calendar.getInstance();
+
+        // Generate Calendar for this time
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(epoch);
+
+        // Based on the date, determine what to print out
+        // 1) Determine if time is the same day
+        if(cal.get(YEAR) == now.get(YEAR)){
+
+            if(cal.get(MONTH) == now.get(MONTH)){
+
+                if(cal.get(DAY_OF_MONTH) == now.get(DAY_OF_MONTH)){
+
+                    // Return just the time
+                    SimpleDateFormat format = new SimpleDateFormat("h:mm a");
+                    return format.format(cal.getTime());
+                } else {
+
+                    // Return the day and time
+                    SimpleDateFormat format = new SimpleDateFormat("EEE, h:mm a");
+                    return format.format(cal.getTime());
+                }
+
+            }else{
+
+                SimpleDateFormat format = new SimpleDateFormat("EEE, MMM d, h:mm a");
+                return format.format(cal.getTime());
+            }
+
+        }else{
+
+            SimpleDateFormat format = new SimpleDateFormat("M/d/yy");
+            return format.format(cal.getTime());
+
+        }
+
+    }
 
     /**
      * Returns "Today", "Tomorrow", "Yesterday", or a short date format.

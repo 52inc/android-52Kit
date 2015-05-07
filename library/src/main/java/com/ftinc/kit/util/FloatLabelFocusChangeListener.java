@@ -24,6 +24,10 @@ import android.widget.TextView;
 import butterknife.ButterKnife;
 import timber.log.Timber;
 
+/**
+ * @deprecated Found a better Float Label library to use: "https://github.com/rengwuxian/MaterialEditText"
+ */
+@Deprecated
 public class FloatLabelFocusChangeListener implements View.OnFocusChangeListener{
 
     private Context ctx;
