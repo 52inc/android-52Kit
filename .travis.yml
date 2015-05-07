@@ -1,6 +1,10 @@
 language: android
 jdk: oraclejdk7
 
+branches:
+  only:
+    - master
+
 android:
     components:
         - platform-tools
