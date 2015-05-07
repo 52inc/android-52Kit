@@ -1,5 +1,5 @@
 # 52Kit
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.52inc/52Kit/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.52inc/52Kit)  
+[![Build Status](https://travis-ci.org/52inc/android-52Kit.svg?branch=master)](https://travis-ci.org/52inc/android-52Kit) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.52inc/52Kit/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.52inc/52Kit)  
 Library that acts as the foundation to building our android applications.
 
 ## Sections
