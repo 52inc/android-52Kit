@@ -22,21 +22,11 @@ import android.view.View;
 
 
 import butterknife.ButterKnife;
-import dagger.ObjectGraph;
 
 /**
  * Created by r0adkll on 12/1/14.
  */
 public abstract class BaseFragment extends Fragment {
-
-    private ObjectGraph fragmentGraph;
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        fragmentGraph = BaseApplication.get(getActivity()).createScopedGraph(getModules());
-        fragmentGraph.inject(this);
-    }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -49,13 +39,5 @@ public abstract class BaseFragment extends Fragment {
         super.onDestroyView();
         ButterKnife.reset(this);
     }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        fragmentGraph = null;
-    }
-
-    protected abstract Object[] getModules();
 
 }

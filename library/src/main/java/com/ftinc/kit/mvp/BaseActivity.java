@@ -23,7 +23,6 @@ import android.support.v7.widget.Toolbar;
 import com.ftinc.kit.R;
 
 import butterknife.ButterKnife;
-import dagger.ObjectGraph;
 
 /**
  * This is a base UI activity that assists in creating a scoped
@@ -36,13 +35,12 @@ import dagger.ObjectGraph;
 public abstract class BaseActivity extends AppCompatActivity {
 
     protected Toolbar actionBarToolbar;
-    private ObjectGraph activityGraph;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activityGraph = BaseApplication.get(this).createScopedGraph(getModules());
-        activityGraph.inject(this);
+
+
     }
 
     @Override
@@ -55,7 +53,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        activityGraph = null;
+
     }
 
     /**
