@@ -1,0 +1,18 @@
+language: android
+jdk: oraclejdk7
+
+android:
+    components:
+        - platform-tools
+        - tools
+
+        - build-tools-22.0.1
+        - android-22
+
+        - extra
+
+    licenses:
+        - 'android-sdk-license-.+'
+        - 'google-gdk-license-.+'
+
+script: ./gradlew clean build
