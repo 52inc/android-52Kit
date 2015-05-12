@@ -1,0 +1,18 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 22
+    }
+}
+
+dependencies {
+    compile project(':library')
+    compile 'com.timehop.stickyheadersrecyclerview:library:0.4.0@aar'
+}
+
+apply from: '../gradle-mvn-push.gradle'

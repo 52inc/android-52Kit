@@ -11,6 +11,8 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/example" />
             <option value="$PROJECT_DIR$/library" />
+            <option value="$PROJECT_DIR$/library-attributr" />
+            <option value="$PROJECT_DIR$/library-winds" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -4,10 +4,6 @@
     <string name="day_title_today">Today</string>
     <string name="day_title_yesterday">Yesterday</string>
     <string name="day_title_tomorrow">Tomorrow</string>
-    <string name="activity_license_label">Third Party Licenses</string>
     <string name="placeholder_lorem_ipsum_long">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a interdum nulla. Integer tincidunt vehicula orci, id lobortis enim elementum vitae. Sed et mi varius, fermentum risus id, laoreet elit. Praesent vitae auctor enim. In sed molestie diam, ut congue arcu. Mauris et massa ut nibh pretium faucibus ac ut arcu. Donec condimentum magna eu odio facilisis, vitae mollis urna cursus. Ut vitae dapibus dolor. Quisque feugiat sagittis lobortis. Proin purus augue, pharetra in lorem et, tempus luctus augue. Aliquam erat volutpat. Fusce eu hendrerit purus. Aenean a felis lectus. Fusce mattis vehicula velit ut porta. Curabitur non rutrum tellus. Quisque sodales egestas pellentesque.</string>
-    <string name="action_link_title">Follow link</string>
-    <string name="app_for_intent_not_found">There was no application found that can open this link</string>
-    <string name="changelog_activity_title">Changelog</string>
-    <string name="middot">•</string>
+
 </resources>

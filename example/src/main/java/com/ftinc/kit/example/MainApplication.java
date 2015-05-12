@@ -17,7 +17,6 @@
 package com.ftinc.kit.example;
 
 import com.ftinc.kit.mvp.BaseApplication;
-import com.ftinc.kit.mvp.modules.Mods;
 
 import timber.log.Timber;
 
@@ -55,8 +54,4 @@ public class MainApplication extends BaseApplication {
         return BuildConfig.DEBUG;
     }
 
-    @Override
-    public Mods getMods() {
-        return new Modules();
-    }
 }

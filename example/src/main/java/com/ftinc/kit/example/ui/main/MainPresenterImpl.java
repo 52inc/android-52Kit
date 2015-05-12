@@ -18,9 +18,9 @@ package com.ftinc.kit.example.ui.main;
 
 import android.os.Bundle;
 
+import com.ftinc.kit.attributr.Attributr;
 import com.ftinc.kit.example.R;
-import com.ftinc.kit.ui.attributr.Attributr;
-import com.ftinc.kit.ui.winds.Winds;
+import com.ftinc.kit.winds.Winds;
 
 /**
  * Created by r0adkll on 3/12/15.

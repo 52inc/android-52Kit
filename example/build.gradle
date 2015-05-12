@@ -38,6 +38,8 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':library')
+    compile project(':library-winds')
+    compile project(':library-attributr')
 
     // This is required for Dagger to work
     provided 'com.squareup.dagger:dagger-compiler:1.2.2'

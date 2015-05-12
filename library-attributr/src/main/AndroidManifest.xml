@@ -1,0 +1,15 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ftinc.kit.attributr">
+
+    <application>
+
+        <!-- Activity definition for Attributr -->
+        <activity android:name=".ui.LicenseActivity"
+            android:label="@string/activity_license_label" />
+
+        <!-- The detail activity for Attributr -->
+        <activity android:name=".ui.DetailActivity" />
+
+    </application>
+
+</manifest>
