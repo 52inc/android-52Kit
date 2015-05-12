@@ -19,14 +19,14 @@
     package="com.ftinc.kit.example" >
 
     <application
-        android:name=".MainApplication"
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.Kit.Example">
 
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name=".ui.screens.drawer.DrawerActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

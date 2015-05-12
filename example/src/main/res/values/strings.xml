@@ -19,4 +19,9 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+  <string name="empty_message_drawer">These are not the droids you are looking for</string>
+  <string name="drawer_books">Books</string>
+  <string name="drawer_bookmarks">Bookmarks</string>
+  <string name="drawer_favs">Favorites</string>
+  <string name="action_help_feedback"><![CDATA[Help & feedback]]></string>
 </resources>

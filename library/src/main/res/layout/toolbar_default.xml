@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright © 52inc 2015.
+  ~ All rights reserved.
+  -->
+
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/appbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?attr/actionBarSize"
+
+    android:elevation="@dimen/appbar_elevation"
+    android:background="?attr/colorPrimary"
+
+    android:theme="?attr/toolbarTheme"
+    app:popupTheme="?attr/toolbarPopupTheme"
+    />

@@ -24,8 +24,8 @@
         <item name="colorPrimaryDark">@color/blue_700</item>
         <item name="colorAccent">@color/red_a400</item>
 
-        <item name="toolbarTheme">@style/ThemeOverlay.AppCompat.Dark</item>
-        <item name="toolbarPopupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
+        <item name="toolbarTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="toolbarPopupTheme">@style/ThemeOverlay.AppCompat.Light</item>
 
     </style>
 

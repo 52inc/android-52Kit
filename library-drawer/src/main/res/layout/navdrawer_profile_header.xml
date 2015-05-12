@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright © 52inc 2015.
+  ~ All rights reserved.
+  -->
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/chosen_account_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:foreground="?android:selectableItemBackground">
+
+    <ImageView android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/default_cover"
+        android:tint="@color/session_photo_scrim"
+        android:id="@+id/profile_cover_image" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/keyline_1"
+        android:paddingRight="@dimen/keyline_1"
+        android:paddingTop="@dimen/keyline_1"
+        android:id="@+id/chosen_account_content_view">
+
+        <com.ftinc.kit.widget.BezelImageView
+            android:id="@+id/profile_image"
+            android:layout_width="@dimen/navdrawer_profile_image_size"
+            android:layout_height="@dimen/navdrawer_profile_image_size"
+            android:src="@drawable/person_image_empty"
+            android:scaleType="centerCrop"
+            app:maskDrawable="@drawable/circle_mask" />
+
+        <TextView
+            android:id="@+id/profile_email_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/profile_image"
+            android:layout_alignParentBottom="true"
+            android:paddingBottom="16dp"
+            android:textSize="@dimen/body_1"
+            android:textColor="@color/body_text_2_inverse"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:ellipsize="end"
+
+            tools:text="veedubusc@gmail.com"
+            />
+
+        <TextView
+            android:id="@+id/profile_name_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/profile_email_text"
+            android:layout_alignLeft="@id/profile_image"
+            android:textSize="@dimen/text_size_large"
+            android:textColor="@color/body_text_1_inverse"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:ellipsize="end"
+
+            tools:text="Drew Heavner"
+            />
+
+    </RelativeLayout>
+
+</FrameLayout>

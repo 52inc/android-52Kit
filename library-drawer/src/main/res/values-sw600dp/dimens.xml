@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright © 52inc 2015.
+  ~ All rights reserved.
+  -->
+
+<resources>
+    <dimen name="keyline_1">24dp</dimen>
+</resources>

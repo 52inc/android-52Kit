@@ -63,7 +63,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     protected Toolbar getActionBarToolbar() {
         if (actionBarToolbar == null) {
-            actionBarToolbar = ButterKnife.findById(this, R.id.toolbar_actionbar);
+            actionBarToolbar = ButterKnife.findById(this, R.id.appbar);
             if (actionBarToolbar != null) {
                 setSupportActionBar(actionBarToolbar);
             }
@@ -71,5 +71,4 @@ public abstract class BaseActivity extends AppCompatActivity {
         return actionBarToolbar;
     }
 
-    protected abstract Object[] getModules();
 }
