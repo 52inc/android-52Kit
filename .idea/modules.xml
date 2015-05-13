@@ -5,6 +5,9 @@
       <module fileurl="file://$PROJECT_DIR$/android-52Kit.iml" filepath="$PROJECT_DIR$/android-52Kit.iml" />
       <module fileurl="file://$PROJECT_DIR$/example/example.iml" filepath="$PROJECT_DIR$/example/example.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library-attributr/library-attributr.iml" filepath="$PROJECT_DIR$/library-attributr/library-attributr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library-drawer/library-drawer.iml" filepath="$PROJECT_DIR$/library-drawer/library-drawer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library-winds/library-winds.iml" filepath="$PROJECT_DIR$/library-winds/library-winds.iml" />
     </modules>
   </component>
 </project>

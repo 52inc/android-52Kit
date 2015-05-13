@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Drawer Colors -->
+    <color name="session_photo_scrim">#6000</color>
+    <color name="navdrawer_text_color">#de000000</color>
+    <color name="navdrawer_text_color_selected">?attr/colorPrimary</color>
+    <color name="navdrawer_icon_tint">#888</color>
+    <color name="navdrawer_icon_tint_selected">?attr/colorPrimary</color>
+    <color name="navdrawer_background">#ffffffff</color>
+
+    <color name="body_text_1_inverse">#deffffff</color>
+    <color name="body_text_2_inverse">#8affffff</color>
+
+</resources>

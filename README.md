@@ -25,99 +25,20 @@ This library also includes a handful of utility classes that contain convienence
 
 ### Attributr
 
-Attributr, formaly found [here](https://github.com/52inc/Attributr), is a library for easily displaying a list of license attributions for the 3rd party libraries in your application.
+Read more here: [https://github.com/52inc/android-52Kit/library-attributr](https://github.com/52inc/android-52Kit/library-attributr)
 
-#### Usages
-
-*	**Configuration File**
-
-```xml
-	<Library license="apache">
-	    <Name>52Kit</Name>
-	    <Author>52inc</Author>
-	    <Year>2015</Year>
-	    <Description>A library with common tools for building Android applications</Description>
-	    <Url>https://github.com/52inc/android-52Kit</Url>
-	    <Email>support@52inc.com</Email>
-	</Library>
-```
-		
-*	**Implementation**
-
-	```java
-	Attributr.openLicenses(context, R.xml.config);
-	```
-	
-* 	**Screenshot**
-
-![Attributr Screenshot](art/attributr_screen.png)
 
 ---
 
-### Winds - ChangeLog component
+### Winds
 
-Winds, as in _Winds of Change_, is a utility for displaying a changelog to the user.
+Read more here: [https://github.com/52inc/android-52Kit/library-winds](https://github.com/52inc/android-52Kit/library-winds)
 
-#### Usages
+---
 
-*	**Configuration File**  
-Default: `R.xml.changelog`
+### Drawer
 
-
-
-	```xml
-	<?xml version="1.0" encoding="utf-8"?>
-	<Changelog>
-	
-	    <Version code="1" name="1.0.0" date="Mar 13, 2015">
-	        <Change type="new">Added 'Winds' changelog library</Change>
-	        <Change type="update">Added 'Attributr' third party license attribution library</Change>
-	        <Change type="fix">Bug Fixes</Change>
-	        <Change type="mythical">To admit defeat is to blaspheme against the Emperor</Change>
-	        <Change>Refactored the [b]Enhance[/b] mechanism to include more [i]Awesome[/i]</Change>
-	    </Version>
-	
-	    <Version code="2" name="1.0.1" date="Mar 14, 2015">
-	        <Change type="new">Added Bacon for xtreme flavor</Change>
-	        <Change type="update">Changed the cheese on the burg`er</Change>
-	        <Change type="fix">Fixed the beef to pork ratio bug</Change>
-	        <Change type="mythical">Even in death I still serve fries</Change>
-	        <Change>Refactored the [h1]Bun[/h1] mechanism to include more [h2]Sesame[/h2]</Change>
-	    </Version>
-	
-	</Changelog>
-		
-	```
-
-* **Implementation**  
-You can show the changelog as easily as calling:
-
-	```java
-	Winds.gust(context);
-	```  
-	
-	This will use the default changelog configuration located at `R.xml.changelog` which you can override or create your own an d implement by calling:
-	
-	```java
-	Winds.gust(context, R.xml.someother_changelog);
-	```
-	
- 	If you want to show a changelog on app startup for new versions/updates all you have to do is call this one line:
- 	
- 	```java
- 	Winds.checkChangelogActivity(context); 
- 	```
- 	
- 	Which will check the default `R.xml.changelog` resource. If you want to specify a different name just call the following
- 	
- 	```java
- 	Winds.checkChangelogActivity(context, R.xml.other_changelog);
- 	```
- 	
-*	**Screenshot**
-
-![Winds Screenshot](art/winds_screen.png)
-
+Read more here: [https://github.com/52inc/android-52Kit/library-drawer](https://github.com/52inc/android-52Kit/library-drawer)
 
 ---
 
@@ -141,5 +62,8 @@ Pre-built layouts for common list item configurations includeing, one line, two 
 Include this line in your gradle build file:
 
 ```groovy
-compile 'com.52inc:kit:{current_version}'
+compile 'com.52inc:kit:0.2.1'
 ```
+
+**Snapshot:**  
+`0.3.0-SNAPSHOT`

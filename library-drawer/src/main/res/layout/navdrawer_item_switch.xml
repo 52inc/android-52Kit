@@ -1,0 +1,32 @@
+<!--
+  ~ Copyright © 52inc 2015.
+  ~ All rights reserved.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="?android:selectableItemBackground"
+    android:paddingLeft="@dimen/keyline_1"
+    android:layout_width="match_parent"
+    android:layout_height="48dp">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:gravity="start|center_vertical"
+        android:textSize="14sp"
+        android:textColor="@color/navdrawer_text_color"
+        android:text="@string/placeholder_lorem_ipsum" />
+
+    <android.support.v7.widget.SwitchCompat
+        android:id="@+id/item_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:paddingRight="@dimen/keyline_1"
+        android:paddingLeft="@dimen/keyline_1"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ftinc.kit.winds">
+
+    <application>
+
+        <activity android:name=".ui.ChangeLogActivity" />
+
+    </application>
+
+</manifest>

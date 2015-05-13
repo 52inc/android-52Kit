@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright © 52inc 2015.
+  ~ All rights reserved.
+  -->
+
+<resources>
+    <dimen name="navigation_drawer_width">304dp</dimen>
+    <dimen name="navdrawer_chosen_account_height">164dp</dimen>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Navigation Drawer Dimensions -->
+    <dimen name="navigation_drawer_width">260dp</dimen>
+    <dimen name="main_drawer_item_text_size">20sp</dimen>
+    <dimen name="sub_drawer_item_text_size">14sp</dimen>
+    <dimen name="main_drawer_item_padding">16dp</dimen>
+    <dimen name="sub_drawer_item_padding">4dp</dimen>
+    <dimen name="navdrawer_chosen_account_height">140dp</dimen>
+    <dimen name="navdrawer_profile_image_size">56dp</dimen>
+
+    <dimen name="keyline_1">16dp</dimen>
+    <dimen name="text_size_large">18sp</dimen>
+
+</resources>

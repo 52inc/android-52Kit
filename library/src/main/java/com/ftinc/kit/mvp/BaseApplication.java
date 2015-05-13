@@ -17,16 +17,13 @@
 package com.ftinc.kit.mvp;
 
 import android.app.Application;
-import android.app.Fragment;
-import android.app.Service;
-import android.content.Context;
 
-import com.ftinc.kit.mvp.modules.Mods;
-
-import dagger.ObjectGraph;
 import timber.log.Timber;
 
 /**
+ * Base application that takes care of planting timber trees and
+ * soon will incorporate other shortcuts for features added down the road
+ *
  * Created by r0adkll on 3/9/15.
  */
 public abstract class BaseApplication extends Application {
@@ -37,8 +34,6 @@ public abstract class BaseApplication extends Application {
      *
      */
 
-    private ObjectGraph mObjectGraph;
-
     /***********************************************************************************************
      *
      * Lifecycle Methods
@@ -48,9 +43,6 @@ public abstract class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
-        // Build and inject the object graph
-        buildObjectGraphAndInject();
 
         // Initialize Logging Trees
         if(isDebug()){
@@ -95,92 +87,5 @@ public abstract class BaseApplication extends Application {
      * @return      true if subclassing app is in debug, false otherwise
      */
     public abstract Boolean isDebug();
-
-    /**
-     * Get the module manager, {@link com.ftinc.kit.mvp.modules.Mods}, to get the list of modules
-     * for dependency Injection
-     *
-     * @return      the module manager
-     */
-    public abstract Mods getMods();
-
-    /***********************************************************************************************
-     *
-     * Dagger Injection Methods
-     *
-     */
-
-    /**
-     * Build and inject the object graph
-     */
-    private void buildObjectGraphAndInject(){
-        mObjectGraph = ObjectGraph.create(getMods().getModules(this));
-        mObjectGraph.inject(this);
-    }
-
-    /**
-     * Create a scoped object graph
-     *
-     * @param modules       the list of modules to add to the scope
-     * @return              the scoped graph
-     */
-    public ObjectGraph createScopedGraph(Object... modules){
-        return mObjectGraph.plus(modules);
-    }
-
-    /**
-     * Inject an object with the object graph
-     */
-    public void inject(Object o){
-        mObjectGraph.inject(o);
-    }
-
-    /***********************************************************************************************
-     *
-     * Static Methods
-     *
-     */
-
-    /**
-     * Get a reference to the Application
-     *
-     * @param ctx       the context
-     * @return          the ChipperApp reference
-     */
-    public static BaseApplication get(Context ctx){
-        return (BaseApplication) ctx.getApplicationContext();
-    }
-
-    /**
-     * Get a reference to this application with a service
-     * object
-     *
-     * @param ctx       the service object
-     * @return          the Application reference for injection
-     */
-    public static BaseApplication get(Service ctx){
-        return (BaseApplication) ctx.getApplication();
-    }
-
-    /**
-     * Get the reference to this application with a Fragment object
-     *
-     * @param fragment      the fragment object
-     * @return              the Application reference for injection
-     */
-    public static BaseApplication get(Fragment fragment){
-        return (BaseApplication) fragment.getActivity().getApplication();
-    }
-
-    /**
-     * Get the reference to this application with a Fragment object
-     *
-     * @param fragment      the fragment object
-     * @return              the Application reference for injection
-     */
-    public static BaseApplication get(android.support.v4.app.Fragment fragment){
-        return (BaseApplication) fragment.getActivity().getApplication();
-    }
-
 
 }

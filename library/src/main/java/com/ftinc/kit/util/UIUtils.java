@@ -140,6 +140,21 @@ public class UIUtils {
         return colorFromTheme;
     }
 
+    /**
+     * Get a Drawable attribute value
+     *
+     * @param ctx
+     * @param drawableAttrId
+     * @return
+     */
+    public static Drawable getDrawableAttr(Context ctx, @AttrRes int drawableAttrId){
+        int[] attrs = new int[] { drawableAttrId /* index 0 */};
+        TypedArray ta = ctx.obtainStyledAttributes(attrs);
+        Drawable drawable = ta.getDrawable(0);
+        ta.recycle();
+        return drawable;
+    }
+
     public static String makeFragmentName(View view, int index) {
         return "android:switcher:" + view.getId() + ":" + index;
     }

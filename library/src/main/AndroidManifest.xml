@@ -3,15 +3,6 @@
 
     <application>
 
-        <!-- Activity definition for Attributr -->
-        <activity android:name=".ui.attributr.ui.LicenseActivity"
-            android:label="@string/activity_license_label" />
-
-        <!-- The detail activity for Attributr -->
-        <activity android:name=".ui.attributr.ui.DetailActivity" />
-
-        <activity android:name=".ui.winds.ui.ChangeLogActivity" />
-
     </application>
 
 </manifest>
