@@ -1,22 +1,23 @@
 language: android
 jdk: oraclejdk7
 
+notifications:
+  slack:
+    secure: Ry2mr/ngyB2ZV3mSDA8ZRYI0jWXllHSyVxGLrhCpsaM/ACzAolaA+SHdD7am/0cW3U3bNHcN653wc2SEx5EXlQwNY/WCdb+AvfunXYUn2xPad+aHph7hFvEP/vjC7oCUjRSue46ncrEQFRhkCaXRSuVNsjGauHwFq+6HI2DI6mJRuLER42grQ7N7blgFA0HYeFnCsTJHmYn/+kCFxvVagd8TdtVBZWHqidiAU+gvTnkQpvtt6Y/bMEt21i5jDq1WdRtOwKHdZGKABugIVkFyBcQbGJIEuhd/+fLT3QLU6ATzdPLeGjuvmOTCw7zLKot7gW0uLCtO1IU2nw4oZ6+tHoiluTBAsArroPW05mAuoOqDvqFmXsT+JFR1SNKWRcM/8w5pIkZQSgHGuPwUjoh7qSssJ4B17exZfLFs6ugipcTDYGlqhDQBZvmHxziG+QyrDDiP+QP2Cy9iEIdxULVn+E2Kj9DRsqYuCqwxAcYpsmxsczn8/E/CSC8O5EW8bQjgkx7hCcDoPLf/BxmHYOyC8pcGDH5xiikqzMwqNqH3y5Ubjp0yAeFb62avm8NE3GFAUiIspZDu3Sf4j48zBCq6QBmBzCa4rVM5gABbpe1/jMXHx9lWrlhTAA3JbsedzHUkRQ4CVNdh6Ma7ykSuDWFuf56ZtBBEj7xnRj9BHEYAtvk=
+
 branches:
   only:
-    - master
+  - master
 
 android:
-    components:
-        - platform-tools
-        - tools
-
-        - build-tools-22.0.1
-        - android-22
-
-        - extra
-
-    licenses:
-        - 'android-sdk-license-.+'
-        - 'google-gdk-license-.+'
+  components:
+  - platform-tools
+  - tools
+  - build-tools-22.0.1
+  - android-22
+  - extra
+  licenses:
+  - android-sdk-license-.+
+  - google-gdk-license-.+
 
 script: ./gradlew clean build
