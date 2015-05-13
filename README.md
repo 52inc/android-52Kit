@@ -62,5 +62,8 @@ Pre-built layouts for common list item configurations includeing, one line, two 
 Include this line in your gradle build file:
 
 ```groovy
-compile 'com.52inc:kit:{current_version}'
+compile 'com.52inc:kit:0.2.1'
 ```
+
+**Snapshot:**  
+`0.3.0-SNAPSHOT`
