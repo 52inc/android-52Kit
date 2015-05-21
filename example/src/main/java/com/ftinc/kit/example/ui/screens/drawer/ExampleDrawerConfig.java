@@ -17,6 +17,8 @@ import com.ftinc.kit.drawer.items.DrawerItem;
 import com.ftinc.kit.drawer.items.IconDrawerItem;
 import com.ftinc.kit.drawer.items.SeperatorDrawerItem;
 import com.ftinc.kit.example.R;
+import com.ftinc.kit.font.Face;
+import com.ftinc.kit.font.FontLoader;
 import com.ftinc.kit.widget.BezelImageView;
 import com.squareup.picasso.Picasso;
 
@@ -92,7 +94,8 @@ public class ExampleDrawerConfig extends Config {
 
     @Override
     protected View inflateHeader(LayoutInflater inflater, ViewGroup parent) {
-        return inflater.inflate(R.layout.navdrawer_profile_header, parent, false);
+        return null;
+        //return inflater.inflate(R.layout.navdrawer_profile_header, parent, false);
     }
 
     @Override
@@ -115,6 +118,28 @@ public class ExampleDrawerConfig extends Config {
         email.setText("veedubusc@gmail.com");
         name.setText("Drew Heavner");
 
+    }
+
+    @Override
+    protected View inflateFooter(LayoutInflater inflater, ViewGroup parent) {
+        View footer = inflater.inflate(R.layout.navdrawer_item, parent, false);
+        TextView title = ButterKnife.findById(footer, R.id.title);
+        ImageView icon = ButterKnife.findById(footer, R.id.icon);
+        icon.setVisibility(View.GONE);
+        title.setText("Logout");
+        title.setTextColor(parent.getResources().getColor(R.color.red_400));
+        FontLoader.apply(title, Face.ROBOTO_MEDIUM);
+        return footer;
+    }
+
+    @Override
+    protected void bindFooter(View footerView) {
+        footerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), "Logout!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

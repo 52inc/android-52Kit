@@ -59,6 +59,22 @@ public abstract class Config {
     protected void bindHeader(View headerView){}
 
     /**
+     * Inflate the footer for the drawer, return null for no footer
+     *
+     * @param inflater      the layout inflater
+     * @param parent        the parent layout that the footer will be placed in
+     * @return              the footer view, or null for none
+     */
+    protected abstract View inflateFooter(LayoutInflater inflater, ViewGroup parent);
+
+    /**
+     * Override this to bind data to the footer view
+     *
+     * @param footerView        the footer view to bind data to
+     */
+    protected void bindFooter(View footerView){}
+
+    /**
      * Override to get notified when the the nav drawer's system bar insets callback
      * is called so we can manipulate the drawer header into drawing behind the status
      * bar

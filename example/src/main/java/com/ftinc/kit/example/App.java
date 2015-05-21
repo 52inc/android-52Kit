@@ -66,7 +66,7 @@ public class App extends BaseApplication {
     @Override
     public Timber.Tree[] getDebugTrees() {
         return new Timber.Tree[]{
-                new Timber.DebugTree()
+            new Timber.DebugTree()
         };
     }
 

@@ -31,7 +31,8 @@ import com.ftinc.kit.drawer.items.SeperatorDrawerItem;
 import com.ftinc.kit.drawer.items.SwitchDrawerItem;
 import com.ftinc.kit.util.BuildUtils;
 import com.ftinc.kit.util.UIUtils;
-import com.ftinc.kit.widget.ScrimInsetsScrollView;
+import com.ftinc.kit.widget.ScrimInsetsRelativeLayout;
+import com.ftinc.kit.widget.ScrimInsetsRelativeLayout.OnInsetsCallback;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -69,8 +70,9 @@ public class Drawer {
 
     private View mMainContent;
     private DrawerLayout mDrawerLayout;
-    private ScrimInsetsScrollView mDrawerPane;
+    private ScrimInsetsRelativeLayout mDrawerPane;
     private FrameLayout mDrawerContentFrame;
+    private FrameLayout mDrawerFooterFrame;
 
     private Map<Integer, View> mNavDrawerItemViews = new HashMap<>();
     private Map<Integer, DrawerItem> mNavDrawerItems = new HashMap<>();
@@ -78,6 +80,7 @@ public class Drawer {
     private int mSelectedItem;
 
     private View mHeaderView;
+    private View mFooterView;
     private LinearLayout mDrawerItemsListContainer;
 
     /**
@@ -265,21 +268,39 @@ public class Drawer {
             });
         }
 
+        // Inflate footer view
+        mFooterView = mConfig.inflateFooter(mActivity.getLayoutInflater(), mDrawerFooterFrame);
+        if(mFooterView != null){
+            mDrawerFooterFrame.addView(mFooterView);
+            mFooterView.post(new Runnable() {
+                @Override
+                public void run() {
+                    mConfig.bindFooter(mFooterView);
+                }
+            });
+        }
+
         // Configure the scrim inset pane view
         final int headerHeight = mActivity.getResources().getDimensionPixelSize(
                 R.dimen.navdrawer_chosen_account_height);
-        mDrawerPane.setOnInsetsCallback(new ScrimInsetsScrollView.OnInsetsCallback() {
+        mDrawerPane.setOnInsetsCallback(new OnInsetsCallback() {
             @Override
             public void onInsetsChanged(Rect insets) {
                 Timber.i("Drawer Pane insets changed: %s", insets);
 
                 if (mHeaderView != null) {
                     mConfig.onInsetsChanged(mHeaderView, insets);
-                }
 
-                ViewGroup.LayoutParams lp2 = headerContainer.getLayoutParams();
-                lp2.height = headerHeight + insets.top;
-                headerContainer.setLayoutParams(lp2);
+                    ViewGroup.LayoutParams lp2 = headerContainer.getLayoutParams();
+                    lp2.height = headerHeight + insets.top;
+                    headerContainer.setLayoutParams(lp2);
+                }else{
+
+                    ViewGroup.LayoutParams lp2 = headerContainer.getLayoutParams();
+                    lp2.height = insets.top;
+                    headerContainer.setLayoutParams(lp2);
+
+                }
             }
         });
 
@@ -485,6 +506,7 @@ public class Drawer {
         // Find the associated views
         mDrawerPane = ButterKnife.findById(drawer, R.id.navdrawer);
         mDrawerContentFrame = ButterKnife.findById(drawer, R.id.drawer_content_frame);
+        mDrawerFooterFrame = ButterKnife.findById(mDrawerPane, R.id.footer);
         mDrawerItemsListContainer = ButterKnife.findById(mDrawerPane, R.id.navdrawer_items_list);
 
         // Return the drawer

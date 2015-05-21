@@ -1,17 +1,21 @@
 package com.ftinc.kit.example.ui.screens.drawer;
 
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.ftinc.kit.drawer.Callbacks;
 import com.ftinc.kit.drawer.Drawer;
 import com.ftinc.kit.example.R;
 import com.ftinc.kit.mvp.BaseActivity;
 import com.ftinc.kit.widget.EmptyView;
+import com.ftinc.kit.widget.ScrimInsetsRelativeLayout;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import timber.log.Timber;
 
 import static com.ftinc.kit.example.ui.screens.drawer.ExampleDrawerConfig.Item.*;
 
@@ -23,8 +27,10 @@ import static com.ftinc.kit.example.ui.screens.drawer.ExampleDrawerConfig.Item.*
 public class DrawerActivity extends BaseActivity implements Callbacks {
 
     public static final String EXTRA_PAGE = "extra_page";
-
     private int mCurrentPage = BOOKMARKS.ordinal();
+
+    @InjectView(R.id.screen_content)
+    ScrimInsetsRelativeLayout mScreenContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +58,29 @@ public class DrawerActivity extends BaseActivity implements Callbacks {
                 .item(mCurrentPage)
                 .attach(this);
 
+        // Modify the window content to not fit systems window
+        ViewGroup content = (ViewGroup) findViewById(android.R.id.content);
+        content.getChildAt(0).setFitsSystemWindows(false);
+
+        int statusBarHeight = getStatusBarHeight();
+        ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) getActionBarToolbar().getLayoutParams();
+        params.topMargin = statusBarHeight;
+        getActionBarToolbar().setLayoutParams(params);
+
+        // Do the same for the drawer window
+        View drawer = findViewById(R.id.navdrawer);
+        drawer.setPadding(0, statusBarHeight, 0, 0);
+
+
+    }
+
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
     }
 
     @Override
