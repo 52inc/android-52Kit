@@ -250,8 +250,8 @@ public class Drawer {
     private void setupDrawer(){
 
         // Set the drawer layout statusbar color
-        int primaryDark = UIUtils.getColorAttr(mActivity, R.attr.colorPrimaryDark);
-        mDrawerLayout.setStatusBarBackgroundColor(primaryDark);
+        int statusBarColor = mConfig.getStatusBarColor(mActivity);
+        if(statusBarColor != -1) mDrawerLayout.setStatusBarBackgroundColor(statusBarColor);
 
         // Build the header view
         final FrameLayout headerContainer = ButterKnife.findById(mDrawerPane, R.id.header_container);
@@ -326,19 +326,19 @@ public class Drawer {
 
                 @Override
                 public void onDrawerSlide(View drawerView, float slideOffset) {
-                    super.onDrawerSlide(drawerView, slideOffset);
+                    super.onDrawerSlide(drawerView, mConfig.shouldAnimateIndicator() ? slideOffset : 0);
                     if(mCallbacks != null) mCallbacks.onDrawerSlide(drawerView, slideOffset);
                 }
             };
 
             // Defer code dependent on restoration of previous instance state.
+
             mDrawerLayout.post(new Runnable() {
                 @Override
                 public void run() {
                     mDrawerToggle.syncState();
                 }
             });
-
             mDrawerLayout.setDrawerListener(mDrawerToggle);
         }
 

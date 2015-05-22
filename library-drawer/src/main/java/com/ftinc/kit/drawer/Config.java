@@ -5,12 +5,14 @@
 
 package com.ftinc.kit.drawer;
 
+import android.content.Context;
 import android.graphics.Rect;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.ftinc.kit.drawer.items.DrawerItem;
+import com.ftinc.kit.util.UIUtils;
 
 import java.util.List;
 
@@ -67,6 +69,12 @@ public abstract class Config {
      */
     protected abstract View inflateFooter(LayoutInflater inflater, ViewGroup parent);
 
+    /***********************************************************************************************
+     *
+     * Optional Configurations
+     *
+     */
+
     /**
      * Override this to bind data to the footer view
      *
@@ -115,6 +123,27 @@ public abstract class Config {
      */
     protected long getFadeInDuration(){
         return MAIN_CONTENT_FADEIN_DURATION;
+    }
+
+    /**
+     * Set the status bar color background that the DrawerLayout should render, or return -1
+     * to not render at all
+     *
+     * @param ctx       the context reference to load color resources with
+     * @return          the color, or -1 for none
+     */
+    protected int getStatusBarColor(Context ctx){
+        return UIUtils.getColorAttr(ctx, R.attr.colorPrimaryDark);
+    }
+
+    /**
+     * Return whether or not we should animate the Hamburger Icon when the drawer
+     * is being dragged
+     *
+     * @return      true for animating, false otherwise
+     */
+    protected boolean shouldAnimateIndicator(){
+        return true;
     }
 
 }

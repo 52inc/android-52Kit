@@ -148,4 +148,14 @@ public class ExampleDrawerConfig extends Config {
         RelativeLayout chosenAccountContentView = ButterKnife.findById(headerView, R.id.chosen_account_content_view);
         chosenAccountContentView.setPadding(padding, insets.top + padding, padding, 0);
     }
+
+    @Override
+    protected int getStatusBarColor(Context ctx) {
+        return ctx.getResources().getColor(R.color.red_400);
+    }
+
+    @Override
+    protected boolean shouldAnimateIndicator() {
+        return false;
+    }
 }

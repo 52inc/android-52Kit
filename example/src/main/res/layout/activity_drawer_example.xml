@@ -1,32 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.ftinc.kit.widget.ScrimInsetsRelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/screen_content"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/ft_logo"
-        android:background="@color/red_300"
-        android:layout_marginTop="-50dp"
-        />
-
-    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/appbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
-
-        android:elevation="@dimen/appbar_elevation"
-        android:background="@color/black20"
-
-        android:theme="?attr/toolbarTheme"
-        app:popupTheme="?attr/toolbarPopupTheme"
-        />
+    <include layout="@layout/toolbar_default" />
 
     <com.ftinc.kit.widget.EmptyView
         android:id="@+id/empty_layout"
@@ -34,11 +13,10 @@
         android:layout_height="match_parent"
         android:paddingLeft="64dp"
         android:paddingRight="64dp"
-        android:layout_below="@+id/appbar"
 
         app:emptyIcon="@mipmap/ic_launcher"
         app:emptyMessage="@string/empty_message_drawer"
         app:emptyIconSize="100dp"
         />
 
-</com.ftinc.kit.widget.ScrimInsetsRelativeLayout>
+</LinearLayout>
