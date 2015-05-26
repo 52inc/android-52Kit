@@ -115,6 +115,8 @@ public class EmptyView extends RelativeLayout {
         mAccentColor = a.getColor(R.styleable.EmptyView_emptyAccentColor, context.getResources().getColor(R.color.black26));
         mEmptyIcon = a.getResourceId(R.styleable.EmptyView_emptyIcon, -1);
         mEmptyIconSize = a.getDimensionPixelSize(R.styleable.EmptyView_emptyIconSize, -1);
+
+        a.recycle();
     }
 
     /**
