@@ -1,5 +1,5 @@
 # 52Kit
-[![Build Status](https://travis-ci.org/52inc/android-52Kit.svg?branch=master)](https://travis-ci.org/52inc/android-52Kit) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.52inc/52Kit/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.52inc/52Kit)  
+[![Build Status](https://travis-ci.org/52inc/android-52Kit.svg?branch=master)](https://travis-ci.org/52inc/android-52Kit) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.52inc/52Kit-core/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.52inc/52Kit)  
 Library that acts as the foundation to building our android applications.
 
 ## Sections
@@ -25,20 +25,20 @@ This library also includes a handful of utility classes that contain convienence
 
 ### Attributr
 
-Read more here: [https://github.com/52inc/android-52Kit/library-attributr](https://github.com/52inc/android-52Kit/library-attributr)
+Read more here: [https://github.com/52inc/android-52Kit/tree/master/library-attributr](https://github.com/52inc/android-52Kit/tree/master/library-attributr)
 
 
 ---
 
 ### Winds
 
-Read more here: [https://github.com/52inc/android-52Kit/library-winds](https://github.com/52inc/android-52Kit/library-winds)
+Read more here: [https://github.com/52inc/android-52Kit/tree/master/library-winds](https://github.com/52inc/android-52Kit/tree/master/library-winds)
 
 ---
 
 ### Drawer
 
-Read more here: [https://github.com/52inc/android-52Kit/library-drawer](https://github.com/52inc/android-52Kit/library-drawer)
+Read more here: [https://github.com/52inc/android-52Kit/tree/master/library-drawer](https://github.com/52inc/android-52Kit/tree/master/library-drawer)
 
 ---
 
@@ -62,8 +62,8 @@ Pre-built layouts for common list item configurations includeing, one line, two 
 Include this line in your gradle build file:
 
 ```groovy
-compile 'com.52inc:kit:0.2.1'
+compile 'com.52inc:52Kit-core:0.3.0'
 ```
 
 **Snapshot:**  
-`0.3.0-SNAPSHOT`
+`0.3.1-SNAPSHOT`

@@ -61,3 +61,9 @@ You can show the changelog as easily as calling:
 *	**Screenshot**
 
 ![Winds Screenshot](../art/winds_screen.png)
+
+## Include
+
+```groovy
+compile 'com.52inc:52Kit-winds:0.3.0'
+```

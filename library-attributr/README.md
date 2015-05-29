@@ -26,3 +26,9 @@ Attributr, formaly found [here](https://github.com/52inc/Attributr), is a librar
 * 	**Screenshot**
 
 ![Attributr Screenshot](../art/attributr_screen.png)
+
+## Include
+
+```groovy
+compile 'com.52inc:52Kit-attributr:0.3.0'
+```
