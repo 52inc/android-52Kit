@@ -20,6 +20,7 @@ import android.content.Context;
 import android.graphics.PointF;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.util.TypedValue;
 import android.webkit.MimeTypeMap;
 
@@ -63,6 +64,17 @@ public class Utils {
      */
     public static long time(){
         return System.currentTimeMillis()/1000;
+    }
+
+    /**
+     * Return whether or not a given string is a valid email address according to
+     * the {@link Patterns#EMAIL_ADDRESS}
+     *
+     * @param email     the string to validate
+     * @return          true if string is a valid email
+     */
+    public static boolean isValidEmail(CharSequence email){
+        return Patterns.EMAIL_ADDRESS.matcher(email).find();
     }
 
     /**

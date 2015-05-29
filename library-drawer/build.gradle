@@ -12,7 +12,7 @@ android {
 }
 
 dependencies {
-    compile group: 'com.52inc', name: '52Kit-core', version: VERSION_NAME
+    compile group: 'com.52inc', name: '52Kit-core', version: MODULE_VERSION_NAME
 }
 
 apply from: '../gradle-mvn-push.gradle'
