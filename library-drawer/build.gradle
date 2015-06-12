@@ -16,7 +16,8 @@ configurations.all {
 }
 
 dependencies {
-    compile group: 'com.52inc', name: '52Kit-core', version: MODULE_VERSION_NAME, changing: true
+    compile project(':library')
+//    compile group: 'com.52inc', name: '52Kit-core', version: MODULE_VERSION_NAME, changing: true
 }
 
 apply from: '../gradle-mvn-push.gradle'

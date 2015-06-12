@@ -36,10 +36,31 @@
     </declare-styleable>
 
     <declare-styleable name="EmptyView">
+        <!-- deprecated! -->
         <attr name="emptyAccentColor" format="reference|color" />
+
+        <!-- Message Attributes-->
         <attr name="emptyMessage" format="reference|string" />
+        <attr name="emptyMessageColor" format="reference|color" />
+        <attr name="emptyMessageTextSize" format="reference|dimension" />
+        <attr name="emptyMessageTypeface" format="enum">
+            <enum name="regular" value="0" />
+            <enum name="medium" value="1" />
+            <enum name="bold" value="2" />
+            <enum name="thin" value="3" />
+            <enum name="light" value="4" />
+        </attr>
+
+        <!-- Icon Attributes-->
         <attr name="emptyIcon" format="reference" />
         <attr name="emptyIconSize" format="reference|dimension" />
+        <attr name="emptyIconColor" format="reference|color" />
+
+        <!-- Action Attributes-->
+        <attr name="emptyActionText" format="reference|string" />
+        <attr name="emptyActionColor" format="reference|color" />
+        <attr name="emptyActionTextSize" format="reference|dimension" />
+
     </declare-styleable>
 
     <declare-styleable name="ProgressIndicator">
