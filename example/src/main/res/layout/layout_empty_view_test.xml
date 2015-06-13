@@ -8,10 +8,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
-        app:emptyIcon="@drawable/ic_book_black_24dp"
+        app:emptyIcon="@mipmap/ic_launcher"
         app:emptyIconSize="100dp"
+
         app:emptyMessage="Welcome to the Thunderdome!"
-        app:emptyAccentColor="@color/black12"
+        app:emptyMessageColor="@color/black"
+        app:emptyActionText="Lets Go"
 
         />
 

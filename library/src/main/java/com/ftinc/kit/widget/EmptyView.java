@@ -36,12 +36,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ftinc.kit.R;
-import com.ftinc.kit.font.FontLoader;
 import com.ftinc.kit.font.Face;
+import com.ftinc.kit.font.FontLoader;
 import com.ftinc.kit.util.UIUtils;
 import com.ftinc.kit.util.Utils;
+
+import timber.log.Timber;
 
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
@@ -104,16 +107,9 @@ public class EmptyView extends RelativeLayout {
      *
      */
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public EmptyView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        parseAttributes(context, attrs, defStyleAttr);
-        init();
-    }
-
-    public EmptyView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        parseAttributes(context, attrs, defStyleAttr);
+    public EmptyView(Context context) {
+        this(context, null);
+        parseAttributes(context, null, 0);
         init();
     }
 
@@ -123,8 +119,16 @@ public class EmptyView extends RelativeLayout {
         init();
     }
 
-    public EmptyView(Context context) {
-        super(context);
+    public EmptyView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        parseAttributes(context, attrs, defStyleAttr);
+        init();
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public EmptyView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        parseAttributes(context, attrs, defStyleAttr);
         init();
     }
 
@@ -133,11 +137,6 @@ public class EmptyView extends RelativeLayout {
      * Helper Methods
      *
      */
-
-    @Override
-    public boolean isInEditMode() {
-        return true;
-    }
 
     /**
      * Parse XML attributes
@@ -154,6 +153,7 @@ public class EmptyView extends RelativeLayout {
             mEmptyActionColor = defaultColor;
             mEmptyMessageTextSize = (int) Utils.dpToPx(context, 18);
             mEmptyActionTextSize = (int) Utils.dpToPx(context, 14);
+            mEmptyMessageTypeface = Face.ROBOTO_REGULAR;
             return;
         }
 
@@ -173,6 +173,10 @@ public class EmptyView extends RelativeLayout {
         mEmptyActionText = a.getString(R.styleable.EmptyView_emptyActionText);
         mEmptyActionTextSize = a.getDimensionPixelSize(R.styleable.EmptyView_emptyActionTextSize,
                 (int)Utils.dpToPx(context, 14));
+
+        Timber.d("EmptyView - Icon[resource: %d, size: %d, color: %d]", mEmptyIcon, mEmptyIconSize, mEmptyIconColor);
+        Timber.d("EmptyView - Message[text: %s, color: %d, typeface: %s, size: %d]", mEmptyMessage, mEmptyMessageColor, mEmptyMessageTypeface.name(), mEmptyMessageTextSize);
+        Timber.d("EmptyView - Action[text: %s, color: %d, size: %d]", mEmptyActionText, mEmptyActionColor, mEmptyActionTextSize);
 
         a.recycle();
     }
@@ -211,8 +215,7 @@ public class EmptyView extends RelativeLayout {
         // Setup the message
         LinearLayout.LayoutParams msgParams = new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
         mMessage.setTextSize(mEmptyMessageTextSize, TypedValue.COMPLEX_UNIT_PX);
-        mMessage.setTextColor(mEmptyMessageColor);
-        mMessage.setGravity(Gravity.CENTER);
+        if(mEmptyMessageColor != -1) mMessage.setTextColor(mEmptyMessageColor);
         mMessage.setText(mEmptyMessage);
 
         // Add to the layout
@@ -221,7 +224,6 @@ public class EmptyView extends RelativeLayout {
         // Setup the Action Label
         LinearLayout.LayoutParams actionParams = new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
         actionParams.topMargin = getResources().getDimensionPixelSize(R.dimen.activity_padding);
-        actionParams.gravity = Gravity.CENTER_HORIZONTAL;
         int padding = (int) Utils.dpToPx(getContext(), 8);
         mAction.setText(mEmptyActionText);
         mAction.setTextColor(mEmptyActionColor);
@@ -248,14 +250,29 @@ public class EmptyView extends RelativeLayout {
      *
      */
 
+    /**
+     * Set the Icon by resource identifier
+     *
+     * @param resId     the icon resource identifier
+     */
     public void setIcon(@DrawableRes int resId){
         mIcon.setImageResource(resId);
     }
 
+    /**
+     * Set the icon for this empty view
+     *
+     * @param drawable      the drawable icon
+     */
     public void setIcon(Drawable drawable){
         mIcon.setImageDrawable(drawable);
     }
 
+    /**
+     * Set the size of the icon in the center of the view
+     *
+     * @param size      the pixel size of the icon in the center
+     */
     public void setIconSize(int size){
         mEmptyIconSize = size;
         int width = mEmptyIconSize == -1 ? WRAP_CONTENT : mEmptyIconSize;
@@ -264,69 +281,137 @@ public class EmptyView extends RelativeLayout {
         mIcon.setLayoutParams(iconParams);
     }
 
+    /**
+     * Set the color of the icon
+     *
+     * @param color     the icon color to tint with
+     */
     public void setIconColor(@ColorInt int color){
         mEmptyIconColor = color;
         mIcon.setColorFilter(mEmptyIconColor, PorterDuff.Mode.SRC_IN);
     }
 
+    /**
+     * Set the color of the icon
+     *
+     * @param resId     the color resource identifier for the icon
+     */
     public void setIconColorRes(@ColorRes int resId){
         setIconColor(getResources().getColor(resId));
     }
 
+    /**
+     * Get the icon for this empty view
+     *
+     * @return      the empty view icon
+     */
     public Drawable getIcon(){
         return mIcon.getDrawable();
     }
 
+    /**
+     * Set the message of the empty view
+     *
+     * @param message       the message text
+     */
     public void setEmptyMessage(CharSequence message){
         mEmptyMessage = message.toString();
         mMessage.setText(message);
     }
 
+    /**
+     * Set the message of the empty view
+     *
+     * @param resId         the message text resource identifier
+     */
     public void setEmptyMessage(@StringRes int resId){
         setEmptyMessage(getResources().getString(resId));
     }
 
+    /**
+     * Get the message of the empty view
+     *
+     * @return      the message text
+     */
     public CharSequence getEmptyMessage(){
         return mEmptyMessage;
     }
 
+    /**
+     * Set the typeface of the message text
+     *
+     * @param typeface      the message text typeface
+     */
     public void setMessageTypeface(Typeface typeface){
         mMessage.setTypeface(typeface);
     }
 
+    /**
+     * Set they message typeface with the {@link FontLoader} {@link Face} enums
+     *
+     * @param typeface      the typeface enum
+     */
     public void setMessageTypeface(Face typeface){
         FontLoader.apply(mMessage, typeface);
     }
 
+    /**
+     * Set the action button label, this in-turn enables it. Pass null to disable.
+     *
+     * @param label     set the action label, thus enabling it
+     */
     public void setActionLabel(CharSequence label){
         mEmptyActionText = label;
         mAction.setText(mEmptyActionText);
         mAction.setVisibility(TextUtils.isEmpty(mEmptyActionText) ? View.GONE : View.VISIBLE);
     }
 
+    /**
+     * Set the action button label
+     *
+     * @param resId     the label string resource id
+     */
     public void setActionLabelRes(@StringRes int resId){
         setActionLabel(getResources().getString(resId));
     }
 
+    /**
+     * Get the action button label
+     *
+     * @return      the action label
+     */
     public CharSequence getActionLabel(){
         return mEmptyActionText;
     }
 
+    /**
+     * Set the action button text color
+     *
+     * @param color     the color resource id
+     */
     public void setActionColor(@ColorInt int color){
         mEmptyActionColor = color;
         mAction.setTextColor(mEmptyActionColor);
     }
 
+    /**
+     * Set the action button text color
+     *
+     * @param color     the color integer
+     */
     public void setActionColorRes(@ColorRes int color){
         setActionColor(getResources().getColor(color));
     }
 
+    /**
+     * Get the action button text color
+     *
+     * @return      the label color
+     */
     @ColorInt
     public int getActionColor(){
         return mEmptyActionColor;
     }
-
-
 
 
 }

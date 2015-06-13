@@ -15,8 +15,17 @@
         android:paddingRight="64dp"
 
         app:emptyIcon="@mipmap/ic_launcher"
-        app:emptyMessage="@string/empty_message_drawer"
         app:emptyIconSize="100dp"
+        app:emptyIconColor="?attr/colorPrimary"
+
+        app:emptyMessageColor="@color/black26"
+        app:emptyMessage="@string/empty_message_drawer"
+        app:emptyMessageTypeface="medium"
+        app:emptyMessageTextSize="18sp"
+
+        app:emptyActionText="Lets Go"
+        app:emptyActionColor="@color/red_400"
+        app:emptyActionTextSize="16sp"
         />
 
 </LinearLayout>
