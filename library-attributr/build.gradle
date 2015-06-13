@@ -11,8 +11,8 @@ android {
 }
 
 dependencies {
-    compile project(':library')
-//    compile group: 'com.52inc', name: '52Kit-core', version: MODULE_VERSION_NAME
+//    compile project(':library')
+    compile group: 'com.52inc', name: '52Kit-core', version: MODULE_VERSION_NAME
     compile 'com.timehop.stickyheadersrecyclerview:library:0.4.0@aar'
 }
 
