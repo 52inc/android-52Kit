@@ -408,4 +408,6 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
         void onItemClick(View v, T item, int position);
     }
 
+
+
 }

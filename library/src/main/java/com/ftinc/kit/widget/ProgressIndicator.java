@@ -100,6 +100,7 @@ public class ProgressIndicator extends View {
         mProgressColor = a.getColor(R.styleable.ProgressIndicator_progressColor,
                 context.getResources().getColor(R.color.primary_dark_material_light));
 
+        a.recycle();
     }
 
     /***********************************************************************************************

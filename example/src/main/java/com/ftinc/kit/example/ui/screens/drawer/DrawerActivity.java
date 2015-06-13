@@ -3,8 +3,10 @@ package com.ftinc.kit.example.ui.screens.drawer;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.ftinc.kit.drawer.Callbacks;
 import com.ftinc.kit.drawer.Drawer;
@@ -15,6 +17,7 @@ import com.ftinc.kit.widget.ScrimInsetsRelativeLayout;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import hugo.weaving.DebugLog;
 import timber.log.Timber;
 
 import static com.ftinc.kit.example.ui.screens.drawer.ExampleDrawerConfig.Item.*;
@@ -28,6 +31,9 @@ public class DrawerActivity extends BaseActivity implements Callbacks {
 
     public static final String EXTRA_PAGE = "extra_page";
     private int mCurrentPage = BOOKMARKS.ordinal();
+
+    @InjectView(R.id.empty_layout)
+    EmptyView mEmptyView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +61,12 @@ public class DrawerActivity extends BaseActivity implements Callbacks {
                 .item(mCurrentPage)
                 .attach(this);
 
+        mEmptyView.setOnActionClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(DrawerActivity.this, "EmptyView Action Clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -66,7 +78,7 @@ public class DrawerActivity extends BaseActivity implements Callbacks {
 
 
 
-
+    @DebugLog
     @Override
     public void onDrawerOpened(View drawerView) {
 

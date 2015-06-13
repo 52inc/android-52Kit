@@ -20,7 +20,7 @@
 
         app:emptyMessageColor="@color/black26"
         app:emptyMessage="@string/empty_message_drawer"
-        app:emptyMessageTypeface="medium"
+        app:emptyMessageTypeface="regular"
         app:emptyMessageTextSize="18sp"
 
         app:emptyActionText="Lets Go"

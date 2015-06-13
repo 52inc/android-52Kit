@@ -101,6 +101,8 @@ public class EmptyView extends RelativeLayout {
     private int mEmptyActionColor = -1;
     private int mEmptyActionTextSize;
 
+    private OnClickListener mActionClickListener;
+
     /***********************************************************************************************
      *
      * Constructors
@@ -130,6 +132,15 @@ public class EmptyView extends RelativeLayout {
         super(context, attrs, defStyleAttr, defStyleRes);
         parseAttributes(context, attrs, defStyleAttr);
         init();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(String.format("EmptyView - Icon[resource: %d, size: %d, color: %d]", mEmptyIcon, mEmptyIconSize, mEmptyIconColor)).append("\n");
+        builder.append(String.format("EmptyView - Message[text: %s, color: %d, typeface: %s, size: %d]", mEmptyMessage, mEmptyMessageColor, mEmptyMessageTypeface.name(), mEmptyMessageTextSize)).append("\n");
+        builder.append(String.format("EmptyView - Action[text: %s, color: %d, size: %d]", mEmptyActionText, mEmptyActionColor, mEmptyActionTextSize)).append("\n");
+        return builder.toString();
     }
 
     /***********************************************************************************************
@@ -174,10 +185,6 @@ public class EmptyView extends RelativeLayout {
         mEmptyActionTextSize = a.getDimensionPixelSize(R.styleable.EmptyView_emptyActionTextSize,
                 (int)Utils.dpToPx(context, 14));
 
-        Timber.d("EmptyView - Icon[resource: %d, size: %d, color: %d]", mEmptyIcon, mEmptyIconSize, mEmptyIconColor);
-        Timber.d("EmptyView - Message[text: %s, color: %d, typeface: %s, size: %d]", mEmptyMessage, mEmptyMessageColor, mEmptyMessageTypeface.name(), mEmptyMessageTextSize);
-        Timber.d("EmptyView - Action[text: %s, color: %d, size: %d]", mEmptyActionText, mEmptyActionColor, mEmptyActionTextSize);
-
         a.recycle();
     }
 
@@ -214,7 +221,8 @@ public class EmptyView extends RelativeLayout {
 
         // Setup the message
         LinearLayout.LayoutParams msgParams = new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
-        mMessage.setTextSize(mEmptyMessageTextSize, TypedValue.COMPLEX_UNIT_PX);
+        mMessage.setGravity(Gravity.CENTER);
+        mMessage.setTextSize(TypedValue.COMPLEX_UNIT_PX, mEmptyMessageTextSize);
         if(mEmptyMessageColor != -1) mMessage.setTextColor(mEmptyMessageColor);
         mMessage.setText(mEmptyMessage);
 
@@ -227,11 +235,17 @@ public class EmptyView extends RelativeLayout {
         int padding = (int) Utils.dpToPx(getContext(), 8);
         mAction.setText(mEmptyActionText);
         mAction.setTextColor(mEmptyActionColor);
-        mAction.setTextSize(mEmptyActionTextSize, TypedValue.COMPLEX_UNIT_PX);
+        mAction.setTextSize(TypedValue.COMPLEX_UNIT_PX, mEmptyActionTextSize);
         mAction.setAllCaps(true);
         mAction.setPadding(padding, padding, padding, padding);
         mAction.setVisibility(TextUtils.isEmpty(mEmptyActionText) ? View.GONE : View.VISIBLE);
         UIUtils.setBackground(mAction, UIUtils.getSelectableItemBackground(getContext()));
+        mAction.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mActionClickListener != null) mActionClickListener.onClick(v);
+            }
+        });
 
         if(!isInEditMode()){
             FontLoader.apply(mMessage, mEmptyMessageTypeface);
@@ -413,5 +427,13 @@ public class EmptyView extends RelativeLayout {
         return mEmptyActionColor;
     }
 
+    /**
+     * Set the action click listener callback
+     *
+     * @param listener      the listener to be called when the user selects the EmptyView action
+     */
+    public void setOnActionClickListener(OnClickListener listener){
+        mActionClickListener = listener;
+    }
 
 }

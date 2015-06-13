@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/52Kit.iml" filepath="$PROJECT_DIR$/52Kit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-52Kit.iml" filepath="$PROJECT_DIR$/android-52Kit.iml" />
       <module fileurl="file://$PROJECT_DIR$/example/example.iml" filepath="$PROJECT_DIR$/example/example.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
       <module fileurl="file://$PROJECT_DIR$/library-attributr/library-attributr.iml" filepath="$PROJECT_DIR$/library-attributr/library-attributr.iml" />
