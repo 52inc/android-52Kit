@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.ftinc.kit.eula">
+
+    <application
+        android:theme="@style/Theme.AppCompat.Light">
+
+        <activity android:name=".EulaActivity" />
+
+    </application>
+
+</manifest>
