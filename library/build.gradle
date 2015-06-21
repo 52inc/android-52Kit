@@ -16,7 +16,6 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
 
     // The Support Libraries
     compile 'com.android.support:design:22.2.0'

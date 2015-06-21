@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Eula" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/blue_400</item>
+        <item name="colorPrimaryDark">@color/blue_600</item>
+        <item name="colorAccent">@color/pink_300</item>
+    </style>
+</resources>
