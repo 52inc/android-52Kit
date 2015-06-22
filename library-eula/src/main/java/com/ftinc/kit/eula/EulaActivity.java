@@ -75,6 +75,7 @@ public class EulaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_eula);
         ButterKnife.inject(this);
         initUI();
+        parseExtras(savedInstanceState);
     }
 
     @Override
@@ -100,7 +101,7 @@ public class EulaActivity extends AppCompatActivity {
                 .subscribe(new Action1<OnClickEvent>() {
                     @Override
                     public void call(OnClickEvent onClickEvent) {
-
+                        supportFinishAfterTransition();
                     }
                 });
 
@@ -108,7 +109,7 @@ public class EulaActivity extends AppCompatActivity {
                 .subscribe(new Action1<OnClickEvent>() {
                     @Override
                     public void call(OnClickEvent onClickEvent) {
-
+                        // Do Something
                     }
                 });
     }
