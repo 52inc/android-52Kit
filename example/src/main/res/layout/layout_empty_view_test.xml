@@ -12,7 +12,7 @@
         app:emptyIconSize="100dp"
 
         app:emptyMessage="Welcome to the Thunderdome!"
-        app:emptyMessageColor="@color/black"
+        app:emptyMessageColor="@color/white90"
         app:emptyActionText="Lets Go"
 
         />

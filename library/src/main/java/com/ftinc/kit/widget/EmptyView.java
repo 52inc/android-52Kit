@@ -223,7 +223,7 @@ public class EmptyView extends RelativeLayout {
         LinearLayout.LayoutParams msgParams = new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
         mMessage.setGravity(Gravity.CENTER);
         mMessage.setTextSize(TypedValue.COMPLEX_UNIT_PX, mEmptyMessageTextSize);
-        if(mEmptyMessageColor != -1) mMessage.setTextColor(mEmptyMessageColor);
+        mMessage.setTextColor(mEmptyMessageColor);
         mMessage.setText(mEmptyMessage);
 
         // Add to the layout
@@ -340,6 +340,24 @@ public class EmptyView extends RelativeLayout {
      */
     public void setEmptyMessage(@StringRes int resId){
         setEmptyMessage(getResources().getString(resId));
+    }
+
+    /**
+     * Set the text color of the message textview
+     *
+     * @param color     the color integer to set the text to
+     */
+    public void setEmptyMessageColor(@ColorInt int color){
+        mMessage.setTextColor(color);
+    }
+
+    /**
+     * Set the text color of the message textview
+     *
+     * @param resId     the resource id of the color you want to set the text to
+     */
+    public void setEmptyMessageColorResource(@ColorRes int resId){
+        setEmptyMessageColor(getResources().getColor(resId));
     }
 
     /**
