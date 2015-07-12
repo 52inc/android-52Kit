@@ -26,11 +26,11 @@ dependencies {
 
     // Wharton Libraries
     compile 'com.jakewharton.timber:timber:3.1.0'
-    compile 'com.jakewharton:butterknife:6.1.0'
+    compile 'com.jakewharton:butterknife:7.0.1'
 
     // Rx
-    compile 'io.reactivex:rxjava:1.0.10'
-    compile 'io.reactivex:rxandroid:0.24.0'
+    compile 'io.reactivex:rxjava:1.0.12'
+    compile 'io.reactivex:rxandroid:0.25.0'
 
 }
 

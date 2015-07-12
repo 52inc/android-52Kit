@@ -13,5 +13,3 @@ android {
 dependencies {
     compile project(':library')
 }
-
-apply from: '../gradle-mvn-push.gradle'

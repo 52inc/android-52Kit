@@ -10,6 +10,7 @@ import com.ftinc.kit.adapter.BetterRecyclerAdapter;
 import com.ftinc.kit.font.Face;
 import com.ftinc.kit.font.FontLoader;
 import com.ftinc.kit.winds.R;
+import com.ftinc.kit.winds.internal.VersionComparator;
 import com.ftinc.kit.winds.model.Change;
 import com.ftinc.kit.winds.model.ChangeLog;
 import com.ftinc.kit.winds.model.Version;
@@ -48,12 +49,7 @@ public class ChangeLogAdapter extends BetterRecyclerAdapter<Change, ChangeLogAda
         clear();
 
         //sort all the changes
-        Collections.sort(mChangeLog.versions, new Comparator<Version>() {
-            @Override
-            public int compare(Version lhs, Version rhs) {
-                return Utils.compare(lhs.code, rhs.code);
-            }
-        });
+        Collections.sort(mChangeLog.versions, new VersionComparator());
 
         // Iterate and add all the 'Change' objects in the adapter
         for(Version version : mChangeLog.versions){

@@ -14,9 +14,10 @@ import com.ftinc.kit.example.R;
 import com.ftinc.kit.mvp.BaseActivity;
 import com.ftinc.kit.widget.EmptyView;
 import com.ftinc.kit.widget.ScrimInsetsRelativeLayout;
+import com.ftinc.kit.winds.Winds;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import hugo.weaving.DebugLog;
 import timber.log.Timber;
 
@@ -32,14 +33,14 @@ public class DrawerActivity extends BaseActivity implements Callbacks {
     public static final String EXTRA_PAGE = "extra_page";
     private int mCurrentPage = BOOKMARKS.ordinal();
 
-    @InjectView(R.id.empty_layout)
+    @Bind(R.id.empty_layout)
     EmptyView mEmptyView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer_example);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         // Parse Extras
         Intent intent = getIntent();
@@ -67,6 +68,9 @@ public class DrawerActivity extends BaseActivity implements Callbacks {
                 Toast.makeText(DrawerActivity.this, "EmptyView Action Clicked", Toast.LENGTH_SHORT).show();
             }
         });
+
+        // SHOW THE WINDS DIALOG
+        Winds.openChangelogDialog(this);
 
     }
 
