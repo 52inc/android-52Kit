@@ -12,6 +12,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.os.Handler;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
@@ -73,6 +74,7 @@ public class Drawer {
     private ScrimInsetsRelativeLayout mDrawerPane;
     private FrameLayout mDrawerContentFrame;
     private FrameLayout mDrawerFooterFrame;
+    private FrameLayout mDrawerHeaderFrame;
 
     private Map<Integer, View> mNavDrawerItemViews = new HashMap<>();
     private Map<Integer, DrawerItem> mNavDrawerItems = new HashMap<>();
@@ -166,7 +168,7 @@ public class Drawer {
      * @return
      */
     public boolean isDrawerOpen() {
-        return mDrawerLayout != null && mDrawerLayout.isDrawerOpen(Gravity.START);
+        return mDrawerLayout != null && mDrawerLayout.isDrawerOpen(GravityCompat.START);
     }
 
     /**
@@ -174,7 +176,7 @@ public class Drawer {
      */
     public void closeDrawer() {
         if (mDrawerLayout != null) {
-            mDrawerLayout.closeDrawer(Gravity.START);
+            mDrawerLayout.closeDrawer(GravityCompat.START);
         }
     }
 
@@ -183,10 +185,19 @@ public class Drawer {
      */
     public void openDrawer(){
         if(mDrawerLayout != null){
-            mDrawerLayout.openDrawer(Gravity.START);
+            mDrawerLayout.openDrawer(GravityCompat.START);
         }
     }
 
+    /**
+     * Force a rebuild of the all the navigation drawer items
+     * and header/footer
+     */
+    public void invalidate(){
+        populateNavDrawer();
+        populateHeader();
+        populateFooter();
+    }
 
     /***********************************************************************************************
      *
@@ -253,32 +264,11 @@ public class Drawer {
         int statusBarColor = mConfig.getStatusBarColor(mActivity);
         if(statusBarColor != -1) mDrawerLayout.setStatusBarBackgroundColor(statusBarColor);
 
-        // Build the header view
-        final FrameLayout headerContainer = ButterKnife.findById(mDrawerPane, R.id.header_container);
-        mHeaderView = mConfig.inflateHeader(mActivity.getLayoutInflater(), headerContainer);
+        // Populate Header View
+        populateHeader();
 
-        // If hour header view is enabled, add to layout and bind the data from the config
-        if(mHeaderView != null){
-            headerContainer.addView(mHeaderView);
-            mHeaderView.post(new Runnable() {
-                @Override
-                public void run() {
-                    mConfig.bindHeader(mHeaderView);
-                }
-            });
-        }
-
-        // Inflate footer view
-        mFooterView = mConfig.inflateFooter(mActivity.getLayoutInflater(), mDrawerFooterFrame);
-        if(mFooterView != null){
-            mDrawerFooterFrame.addView(mFooterView);
-            mFooterView.post(new Runnable() {
-                @Override
-                public void run() {
-                    mConfig.bindFooter(mFooterView);
-                }
-            });
-        }
+        // Populate Footer View
+        populateFooter();
 
         // Configure the scrim inset pane view
         final int headerHeight = mActivity.getResources().getDimensionPixelSize(
@@ -291,14 +281,14 @@ public class Drawer {
                 if (mHeaderView != null) {
                     mConfig.onInsetsChanged(mHeaderView, insets);
 
-                    ViewGroup.LayoutParams lp2 = headerContainer.getLayoutParams();
+                    ViewGroup.LayoutParams lp2 = mDrawerHeaderFrame.getLayoutParams();
                     lp2.height = headerHeight + insets.top;
-                    headerContainer.setLayoutParams(lp2);
+                    mDrawerHeaderFrame.setLayoutParams(lp2);
                 }else{
 
-                    ViewGroup.LayoutParams lp2 = headerContainer.getLayoutParams();
+                    ViewGroup.LayoutParams lp2 = mDrawerHeaderFrame.getLayoutParams();
                     lp2.height = insets.top;
-                    headerContainer.setLayoutParams(lp2);
+                    mDrawerHeaderFrame.setLayoutParams(lp2);
 
                 }
             }
@@ -343,8 +333,38 @@ public class Drawer {
         }
 
         // Setup the drawer shadow
-        mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, Gravity.START);
+        mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 
+    }
+
+    private void populateHeader(){
+        // Build the header view
+        mHeaderView = mConfig.inflateHeader(mActivity.getLayoutInflater(), mDrawerHeaderFrame);
+        if(mHeaderView != null){
+            mDrawerHeaderFrame.removeAllViews();
+            mDrawerHeaderFrame.addView(mHeaderView);
+            mHeaderView.post(new Runnable() {
+                @Override
+                public void run() {
+                    mConfig.bindHeader(mHeaderView);
+                }
+            });
+        }
+    }
+
+    private void populateFooter(){
+        // Inflate footer view
+        mFooterView = mConfig.inflateFooter(mActivity.getLayoutInflater(), mDrawerFooterFrame);
+        if(mFooterView != null){
+            mDrawerFooterFrame.removeAllViews();
+            mDrawerFooterFrame.addView(mFooterView);
+            mFooterView.post(new Runnable() {
+                @Override
+                public void run() {
+                    mConfig.bindFooter(mFooterView);
+                }
+            });
+        }
     }
 
     /**
@@ -414,7 +434,7 @@ public class Drawer {
      */
     private void onNavDrawerItemClicked(final int itemId) {
         if (itemId == mSelectedItem) {
-            mDrawerLayout.closeDrawer(Gravity.START);
+            mDrawerLayout.closeDrawer(GravityCompat.START);
             return;
         }
 
@@ -438,7 +458,7 @@ public class Drawer {
 //            }
         }
 
-        mDrawerLayout.closeDrawer(Gravity.START);
+        mDrawerLayout.closeDrawer(GravityCompat.START);
     }
 
     /**
@@ -506,6 +526,7 @@ public class Drawer {
         // Find the associated views
         mDrawerPane = ButterKnife.findById(drawer, R.id.navdrawer);
         mDrawerContentFrame = ButterKnife.findById(drawer, R.id.drawer_content_frame);
+        mDrawerHeaderFrame = ButterKnife.findById(mDrawerPane, R.id.header_container);
         mDrawerFooterFrame = ButterKnife.findById(mDrawerPane, R.id.footer);
         mDrawerItemsListContainer = ButterKnife.findById(mDrawerPane, R.id.navdrawer_items_list);
 

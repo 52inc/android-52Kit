@@ -2,29 +2,60 @@
   ~ Copyright © 52inc 2015.
   ~ All rights reserved.
   -->
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:background="?android:selectableItemBackground"
-    android:gravity="start|center_vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
     android:paddingLeft="@dimen/keyline_1"
     android:paddingRight="@dimen/keyline_1"
-    android:layout_width="match_parent"
-    android:layout_height="48dp">
+    android:background="?android:selectableItemBackground">
+
 
     <ImageView
         android:id="@+id/icon"
         android:layout_height="24dp"
         android:layout_width="24dp"
-        android:layout_marginRight="32dp" />
+        android:layout_marginRight="32dp"
+        android:layout_centerVertical="true"
+
+        tools:src="@drawable/abc_ic_menu_paste_mtrl_am_alpha"
+        tools:tint="@color/black54"
+        />
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="start|center_vertical"
-        android:gravity="start|center_vertical"
-        android:textSize="14sp"
-        android:text="@string/placeholder_lorem_ipsum" />
+        android:layout_marginRight="16dp"
+        android:layout_centerVertical="true"
 
-</LinearLayout>
+        android:textSize="14sp"
+        android:text="@string/placeholder_lorem_ipsum"
+
+        android:layout_toRightOf="@+id/icon"
+        android:layout_toLeftOf="@+id/badge"
+        />
+
+    <TextView
+        android:id="@+id/badge"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:visibility="gone"
+        tools:visibility="visible"
+
+        tools:text="2"
+        tools:textColor="@color/white"
+        tools:fontFamily="sans-serif-medium"
+        tools:backgroundTint="@color/teal_a700"
+
+        android:textSize="14sp"
+        android:background="@drawable/badge"
+
+        />
+
+</RelativeLayout>

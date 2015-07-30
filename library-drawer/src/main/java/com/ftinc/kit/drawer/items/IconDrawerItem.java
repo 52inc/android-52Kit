@@ -6,6 +6,11 @@
 package com.ftinc.kit.drawer.items;
 
 import android.content.Context;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.StringRes;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ftinc.kit.drawer.R;
+import com.ftinc.kit.drawer.model.Badge;
 import com.ftinc.kit.font.Face;
 import com.ftinc.kit.font.FontLoader;
 import com.ftinc.kit.util.UIUtils;
@@ -24,19 +30,21 @@ import butterknife.ButterKnife;
  */
 public class IconDrawerItem extends DrawerItem {
 
-    private int text;
-    private int icon;
+    /***********************************************************************************************
+     *
+     * Variables
+     *
+     */
+
+    private int textResId;
+    private int iconResId;
+    private Badge badge;
 
     /**
      * Constructor
-     *
-     * @param textResId     the text of the drawer item
-     * @param iconResId     the icon resource id to display
      */
-    public IconDrawerItem(int id, int textResId, int iconResId){
+    private IconDrawerItem(int id){
         super(id);
-        this.text = textResId;
-        this.icon = iconResId;
     }
 
     /**
@@ -53,15 +61,16 @@ public class IconDrawerItem extends DrawerItem {
 
         ImageView iconView = ButterKnife.findById(view, R.id.icon);
         TextView titleView = ButterKnife.findById(view, R.id.title);
+        TextView badgeView = ButterKnife.findById(view, R.id.badge);
 
-        // Set the text
+        // Set the textResId
         FontLoader.apply(titleView, Face.ROBOTO_MEDIUM);
-        titleView.setText(text);
+        titleView.setText(textResId);
 
-        // Set the icon, if provided
-        iconView.setVisibility(icon > 0 ? View.VISIBLE : View.GONE);
-        if(icon > 0)
-            iconView.setImageResource(icon);
+        // Set the iconResId, if provided
+        iconView.setVisibility(iconResId > 0 ? View.VISIBLE : View.GONE);
+        if(iconResId > 0)
+            iconView.setImageResource(iconResId);
 
         // configure its appearance according to whether or not it's selected
         titleView.setTextColor(selected ?
@@ -71,7 +80,53 @@ public class IconDrawerItem extends DrawerItem {
                 UIUtils.getColorAttr(ctx, R.attr.colorPrimary) :
                 ctx.getResources().getColor(R.color.navdrawer_icon_tint));
 
+        // Setup the badge view
+        if(badge != null) {
+            Drawable badgeBackground = DrawableCompat
+                    .wrap(ctx.getResources().getDrawable(R.drawable.badge));
+            DrawableCompat.setTint(badgeBackground, badge.getColor());
+            badgeView.setBackground(badgeBackground);
+            badgeView.setTextColor(badge.getTextColor());
+            badgeView.setText(badge.getText());
+            badgeView.setVisibility(View.VISIBLE);
+        }
+
         return view;
+    }
+
+    /***********************************************************************************************
+     *
+     * Builder
+     *
+     */
+
+    public static class Builder{
+
+        private IconDrawerItem item;
+
+        public Builder(int itemId){
+            item = new IconDrawerItem(itemId);
+        }
+
+        public Builder text(@StringRes int resId){
+            item.textResId = resId;
+            return this;
+        }
+
+        public Builder icon(@DrawableRes int resId){
+            item.iconResId = resId;
+            return this;
+        }
+
+        public Builder badge(Badge badge){
+            item.badge = badge;
+            return this;
+        }
+
+        public IconDrawerItem build(){
+            return item;
+        }
+
     }
 
 }
