@@ -45,6 +45,7 @@ public class ExampleDrawerConfig extends Config {
         SETTINGS,
         HELP_FEEDBACK;
 
+        public int id(){ return ordinal(); }
         public static Item from(int ordinal){
             return Item.values()[ordinal];
         }
@@ -69,9 +70,20 @@ public class ExampleDrawerConfig extends Config {
     @Override
     protected void inflateItems(List<DrawerItem> items) {
 
-        items.add(new IconDrawerItem(BOOKS.ordinal(), R.string.drawer_books, R.drawable.ic_book_black_24dp));
-        items.add(new IconDrawerItem(BOOKMARKS.ordinal(), R.string.drawer_bookmarks, R.drawable.ic_bookmark_black_24dp));
-        items.add(new IconDrawerItem(FAVORITES.ordinal(), R.string.drawer_favs, R.drawable.ic_loyalty_black_24dp));
+        items.add(new IconDrawerItem.Builder(BOOKS.id())
+                .text(R.string.drawer_books)
+                .icon(R.drawable.ic_book_black_24dp)
+                .build());
+
+        items.add(new IconDrawerItem.Builder(BOOKMARKS.id())
+                .text(R.string.drawer_bookmarks)
+                .icon(R.drawable.ic_bookmark_black_24dp)
+                .build());
+
+        items.add(new IconDrawerItem.Builder(FAVORITES.id())
+                .text(R.string.drawer_favs)
+                .icon(R.drawable.ic_loyalty_black_24dp)
+                .build());
 
         items.add(new SeperatorDrawerItem());
 
@@ -151,7 +163,7 @@ public class ExampleDrawerConfig extends Config {
 
     @Override
     protected int getStatusBarColor(Context ctx) {
-        return ctx.getResources().getColor(R.color.red_400);
+        return ctx.getResources().getColor(R.color.redd);
     }
 
     @Override

@@ -8,7 +8,7 @@
     android:layout_gravity="start"
     android:background="@color/navdrawer_background"
     android:fitsSystemWindows="true"
-    app:insetForeground="#4000">
+    app:siv_insetForeground="#4000">
 
     <ScrollView
         android:layout_width="match_parent"
