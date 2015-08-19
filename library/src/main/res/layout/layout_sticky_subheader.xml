@@ -28,11 +28,14 @@
         android:layout_height="48dp"
         android:gravity="center_vertical"
 
-        android:textSize="14sp"
-        android:textColor="?attr/colorPrimary"
         tools:text="@string/placeholder_lorem_ipsum"
+
+        android:textSize="14sp"
+        android:textColor="@color/black54"
         android:paddingLeft="@dimen/activity_padding"
-        android:background="@color/background_material_light"
+        android:background="?android:attr/colorBackground"
+
+        android:fontFamily="sans-serif-medium"
         />
 
     <View
