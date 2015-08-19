@@ -30,6 +30,22 @@ import android.util.DisplayMetrics;
 public class BuildUtils {
 
     /**
+     * Return whether or not the device is running Marshmellow 6.0
+     * @see android.os.Build.VERSION_CODES#M
+     */
+    public static boolean isMarshmellow(){
+        return (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M);
+    }
+
+    /**
+     * Return whether or not the device is running Lollipop MR1 5.1
+     * @see android.os.Build.VERSION_CODES#LOLLIPOP
+     */
+    public static boolean isLollipopMR1(){
+        return (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1);
+    }
+
+    /**
      * Return whether or not the device is running Lollipop 5.0
      * @see android.os.Build.VERSION_CODES#LOLLIPOP
      */

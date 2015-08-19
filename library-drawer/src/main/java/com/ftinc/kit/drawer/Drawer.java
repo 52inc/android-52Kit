@@ -53,7 +53,7 @@ import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
  * Package: com.ftinc.tradeversity.ui.widget.drawer
  * Created by drew.heavner on 5/11/15.
  */
-public class Drawer {
+public class Drawer implements DrawerInteractor{
 
     /***********************************************************************************************
      *
@@ -92,6 +92,7 @@ public class Drawer {
      */
     private Drawer(Config config){
         mConfig = config;
+        mConfig.setDrawerInteractor(this);
     }
 
     /***********************************************************************************************
@@ -276,7 +277,6 @@ public class Drawer {
         mDrawerPane.setOnInsetsCallback(new OnInsetsCallback() {
             @Override
             public void onInsetsChanged(Rect insets) {
-                Timber.i("Drawer Pane insets changed: %s", insets);
 
                 if (mHeaderView != null) {
                     mConfig.onInsetsChanged(mHeaderView, insets);

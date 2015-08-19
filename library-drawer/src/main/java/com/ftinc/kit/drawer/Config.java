@@ -30,6 +30,16 @@ public abstract class Config {
     private static final long MAIN_CONTENT_FADEOUT_DURATION = 150;
     private static final long MAIN_CONTENT_FADEIN_DURATION = 250;
 
+    protected DrawerInteractor drawerInteractor;
+
+    /**
+     * Set teh drawer interactor for this config to communicate back to the drawer
+     * @param interactor
+     */
+    public void setDrawerInteractor(DrawerInteractor interactor){
+        drawerInteractor = interactor;
+    }
+
     /**
      * Inflate the drawer items to construct the drawer with
      *

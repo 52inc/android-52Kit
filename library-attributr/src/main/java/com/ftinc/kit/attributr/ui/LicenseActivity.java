@@ -154,7 +154,8 @@ public class LicenseActivity extends ActionBarActivity implements View.OnClickLi
         Intent details = new Intent(this, com.ftinc.kit.attributr.ui.DetailActivity.class);
         details.putExtra(com.ftinc.kit.attributr.ui.DetailActivity.EXTRA_LIBRARY, item);
 
-        UIUtils.startActivityWithTransition(this, details, transitions);
+        startActivity(details);
+//        UIUtils.startActivityWithTransition(this, details, transitions);
     }
 
     /***********************************************************************************************
