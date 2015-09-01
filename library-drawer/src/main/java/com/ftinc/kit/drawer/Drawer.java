@@ -44,6 +44,8 @@ import butterknife.ButterKnife;
 import timber.log.Timber;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static android.view.WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS;
+import static android.view.WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
 
 /**
  * This is the helper class for building and interacting with a navigation drawer without having
@@ -218,7 +220,7 @@ public class Drawer implements DrawerInteractor{
         // Setup window flags if Lollipop
         if(BuildUtils.isLollipop()) {
             Window window = mActivity.getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.addFlags(FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.TRANSPARENT);
         }
 
