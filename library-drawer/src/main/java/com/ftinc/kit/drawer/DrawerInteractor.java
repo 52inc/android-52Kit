@@ -9,4 +9,6 @@ public interface DrawerInteractor {
 
     void closeDrawer();
 
+    void invalidate();
+
 }

@@ -196,6 +196,7 @@ public class Drawer implements DrawerInteractor{
      * Force a rebuild of the all the navigation drawer items
      * and header/footer
      */
+    @Override
     public void invalidate(){
         populateNavDrawer();
         populateHeader();
