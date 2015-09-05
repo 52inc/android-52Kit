@@ -23,7 +23,8 @@
             <FrameLayout
                 android:id="@+id/header_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="@dimen/navdrawer_chosen_account_height"
+                />
 
             <!-- Drawer items -->
             <LinearLayout
