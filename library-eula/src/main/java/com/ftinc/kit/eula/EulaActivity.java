@@ -4,13 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.ButterKnife;
-import rx.android.view.OnClickEvent;
-import rx.android.view.ViewObservable;
-import rx.functions.Action1;
 
 /**
  * Project: android-52Kit
@@ -73,7 +71,6 @@ public class EulaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eula);
-        ButterKnife.inject(this);
         initUI();
         parseExtras(savedInstanceState);
     }
@@ -97,21 +94,19 @@ public class EulaActivity extends AppCompatActivity {
         mActionCancel = ButterKnife.findById(this, R.id.action_cancel);
         mActionAccept = ButterKnife.findById(this, R.id.action_accept);
 
-        ViewObservable.clicks(mActionCancel)
-                .subscribe(new Action1<OnClickEvent>() {
-                    @Override
-                    public void call(OnClickEvent onClickEvent) {
-                        supportFinishAfterTransition();
-                    }
-                });
+        mActionCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                supportFinishAfterTransition();
+            }
+        });
 
-        ViewObservable.clicks(mActionAccept)
-                .subscribe(new Action1<OnClickEvent>() {
-                    @Override
-                    public void call(OnClickEvent onClickEvent) {
-                        // Do Something
-                    }
-                });
+        mActionAccept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // do something
+            }
+        });
     }
 
     void parseExtras(Bundle icicle){

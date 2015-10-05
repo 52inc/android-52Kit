@@ -43,6 +43,11 @@ public class LibraryAdapter extends BetterRecyclerAdapter<com.ftinc.kit.attribut
     private List<List<com.ftinc.kit.attributr.model.Library>> mHeaders = new ArrayList<>();
     private List<String> mTitles = new ArrayList<>();
 
+    public LibraryAdapter(){
+        super();
+        registerAdapterDataObserver(mDataObserver);
+    }
+
     @Override
     public LibraryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -88,10 +93,23 @@ public class LibraryAdapter extends BetterRecyclerAdapter<com.ftinc.kit.attribut
         holder.title.setText(artist);
     }
 
-    @Override
-    protected void onFiltered() {
-        buildSectionHeaders();
-    }
+//    @Override
+//    protected void onFiltered() {
+//        buildSectionHeaders();
+//    }
+
+
+
+    /**
+     * Data change observer
+     */
+    private RecyclerView.AdapterDataObserver mDataObserver = new RecyclerView.AdapterDataObserver() {
+        @Override
+        public void onChanged() {
+            buildSectionHeaders();
+        }
+    };
+
 
     /**
      * Build the section headers for use in creating the headers

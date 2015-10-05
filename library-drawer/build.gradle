@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.0"
+    buildToolsVersion "23.0.1"
 
     defaultConfig {
         minSdkVersion 16
@@ -12,8 +12,7 @@ android {
 }
 
 dependencies {
-//    compile project(':library')
-    compile group: 'com.52inc', name: '52Kit-core', version: MODULE_VERSION_NAME
+    compile project(':library')
 }
 
 apply from: '../gradle-mvn-push.gradle'

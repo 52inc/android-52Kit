@@ -19,7 +19,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1'
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.7'
     }
 }
 
@@ -29,7 +29,7 @@ apply plugin: 'com.jakewharton.hugo'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.0"
+    buildToolsVersion "23.0.1"
 
     defaultConfig {
         applicationId "com.ftinc.kit.example"

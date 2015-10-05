@@ -2,18 +2,17 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23"
+    buildToolsVersion "23.0.1"
 
     defaultConfig {
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 23
     }
 
 }
 
 dependencies {
-//    compile project(':library')
-    compile group: 'com.52inc', name: '52Kit-core', version: MODULE_VERSION_NAME
+    compile project(':library')
     compile 'com.timehop.stickyheadersrecyclerview:library:0.4.2@aar'
 }
 

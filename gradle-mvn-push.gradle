@@ -93,9 +93,14 @@ afterEvaluate { project ->
     }
 
     task androidJavadocs(type: Javadoc) {
-        failOnError false // add this line
-        source = android.sourceSets.main.java.srcDirs
+        if (!project.plugins.hasPlugin('kotlin-android')) {
+            source = android.sourceSets.main.java.srcDirs
+        }
         classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+
+        if (JavaVersion.current().isJava8Compatible()) {
+            options.addStringOption('Xdoclint:none', '-quiet')
+        }
     }
 
     task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {

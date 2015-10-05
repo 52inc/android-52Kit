@@ -16,11 +16,11 @@
 
 package com.ftinc.kit.example;
 
+import android.app.Application;
 import android.app.Service;
 import android.content.Context;
 
 import com.ftinc.kit.BuildConfig;
-import com.ftinc.kit.mvp.BaseApplication;
 
 import hugo.weaving.DebugLog;
 import timber.log.Timber;
@@ -28,7 +28,7 @@ import timber.log.Timber;
 /**
  * Created by r0adkll on 3/12/15.
  */
-public class App extends BaseApplication {
+public class App extends Application {
 
     /***********************************************************************************************
      *
@@ -63,22 +63,22 @@ public class App extends BaseApplication {
      *
      */
 
-    @Override
-    public Timber.Tree[] getDebugTrees() {
-        return new Timber.Tree[]{
-            new Timber.DebugTree()
-        };
-    }
-
-    @Override
-    public Timber.Tree[] getReleaseTrees() {
-        return new Timber.Tree[0];
-    }
-
-    @Override
-    public Boolean isDebug() {
-        return BuildConfig.DEBUG;
-    }
+//    @Override
+//    public Timber.Tree[] getDebugTrees() {
+//        return new Timber.Tree[]{
+//            new Timber.DebugTree()
+//        };
+//    }
+//
+//    @Override
+//    public Timber.Tree[] getReleaseTrees() {
+//        return new Timber.Tree[0];
+//    }
+//
+//    @Override
+//    public Boolean isDebug() {
+//        return BuildConfig.DEBUG;
+//    }
 
     /***********************************************************************************************
      *

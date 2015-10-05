@@ -42,12 +42,8 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      *
      */
 
-    private OnItemClickListener<M> itemClickListener;
-
     protected ArrayList<M> items = new ArrayList<>();
-    protected ArrayList<M> filteredItems = new ArrayList<>();
-    protected String filter = "";
-
+    private OnItemClickListener<M> itemClickListener;
     private View mEmptyView;
 
     /**
@@ -74,19 +70,6 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
     }
 
     /**
-     * Override this method to apply filtering to your content
-     * so you can supply queries to the adapter to filter your content out
-     * for search
-     *
-     * @param item      the item to filter check
-     * @param query     the query to check with
-     * @return          true if the item matches the query in any way
-     */
-    protected boolean onQuery(M item, String query){
-        return true;
-    }
-
-    /**
      * Override so you can sort the items in the array according
      * to your specification. Do nothing if you choose not to sort, or
      * plan to on your own accord.
@@ -94,11 +77,6 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      * @param items     the list of items needing sorting
      */
     protected void onSort(List<M> items){}
-
-    /**
-     * Override this method to be notified when the adapter is filtered
-     */
-    protected void onFiltered(){}
 
     /***********************************************************************************************
      *
@@ -147,60 +125,6 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
 
     /***********************************************************************************************
      *
-     * Query Methods
-     *
-     */
-
-    /**
-     * Apply a query to this adapter
-     *
-     * @param query     query
-     */
-    public void query(String query){
-        filter = query;
-
-        // Filter results
-        filter();
-
-        // Force an application of the query
-        notifyDataSetChanged();
-
-    }
-
-    /**
-     * Clear out the current query
-     */
-    public void clearQuery(){
-        filter = "";
-        filter();
-    }
-
-    /**
-     * Apply a filter to this adapters subset of content
-     */
-    private void filter(){
-        if((filter != null && !filter.isEmpty())){
-            if(filter == null) filter = "";
-
-            // Filter out the items
-            filteredItems.clear();
-            for(M item: items){
-                if(onQuery(item, filter)){
-                    filteredItems.add(item);
-                }
-            }
-
-        }else{
-            filteredItems.clear();
-            filteredItems.addAll(items);
-        }
-
-        // Notify of filtration
-        onFiltered();
-    }
-
-    /***********************************************************************************************
-     *
      * Array Methods
      *
      */
@@ -211,7 +135,6 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      */
     public void add(M object) {
         items.add(object);
-        filter();
     }
 
     /**
@@ -222,7 +145,6 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      */
     public void add(int index, M object) {
         items.add(index, object);
-        filter();
     }
 
     /**
@@ -233,7 +155,6 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
     public void addAll(Collection<? extends M> collection) {
         if (collection != null) {
             items.addAll(collection);
-            filter();
         }
     }
 
@@ -241,10 +162,7 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      * Clear this adapter of all items
      */
     public void clear() {
-        clearQuery();
         items.clear();
-        filteredItems.clear();
-        filter = null;
     }
 
     /**
@@ -254,7 +172,6 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      */
     public void remove(M object) {
         items.remove(object);
-        filter();
     }
 
     /**
@@ -264,9 +181,7 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      * @return          the removed item
      */
     public M remove(int index){
-        M item = items.remove(index);
-        filter();
-        return item;
+        return items.remove(index);
     }
 
     /**
@@ -283,10 +198,6 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
             items.add(max, item);
         }
 
-        // Assume no filtering when you are rearranging items in the adapter
-        filteredItems.clear();
-        filteredItems.addAll(items);
-
         notifyItemMoved(min, max);
     }
 
@@ -298,7 +209,6 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      */
     public void sort(Comparator<M> comparator){
         Collections.sort(items, comparator);
-        filter();
     }
 
     /**
@@ -308,7 +218,7 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      * @return              the item at that position, or null
      */
     public M getItem(int position) {
-        return filteredItems.get(position);
+        return items.get(position);
     }
 
     /**
@@ -317,25 +227,8 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      * @return      the all the 'filtered' items in the adapter
      */
     public List<M> getItems(){
-        return filteredItems;
-    }
-
-    /**
-     * Get all the unfiltered items in this adapter
-     *
-     * @return      the list of unfiltered items
-     */
-    public List<M> getUnfilteredItems(){
         return items;
     }
-
-    /***********************************************************************************************
-     *
-     * Header/Footer Methods
-     *
-     */
-
-
 
     /***********************************************************************************************
      *
@@ -351,7 +244,7 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      */
     @Override
     public int getItemCount() {
-        return filteredItems.size();
+        return items.size();
     }
 
     /**
@@ -377,16 +270,10 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
     }
 
     /**
-     * Called to get the view type of an item at a given position
-     *
-     * @param position      the position of the item to get the view type of
-     * @return              the view type identifier
+     * Get the item Id for a given position
+     * @param position
+     * @return
      */
-    @Override
-    public int getItemViewType(int position) {
-        return super.getItemViewType(position);
-    }
-
     @Override
     public long getItemId(int position) {
         M item = getItem(position);

@@ -26,14 +26,17 @@ import android.os.Build;
 import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
+import android.support.annotation.IntDef;
 import android.support.annotation.StringRes;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ActionMenuView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +46,9 @@ import com.ftinc.kit.font.Face;
 import com.ftinc.kit.font.FontLoader;
 import com.ftinc.kit.util.UIUtils;
 import com.ftinc.kit.util.Utils;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 import timber.log.Timber;
 
@@ -54,6 +60,12 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
  * Created by drew.heavner on 11/20/14.
  */
 public class EmptyView extends RelativeLayout {
+
+    /***********************************************************************************************
+     *
+     * Constants
+     *
+     */
 
     enum MessageTypeface{
         REGULAR(Face.ROBOTO_REGULAR),
@@ -78,6 +90,13 @@ public class EmptyView extends RelativeLayout {
 
     }
 
+    public static final int STATE_EMPTY = 0;
+    public static final int STATE_LOADING = 1;
+
+    @IntDef({STATE_EMPTY, STATE_LOADING})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface States{}
+
     /***********************************************************************************************
      *
      * Variables
@@ -87,6 +106,7 @@ public class EmptyView extends RelativeLayout {
     private ImageView mIcon;
     private TextView mMessage;
     private TextView mAction;
+    private ProgressBar mProgress;
 
     private int mEmptyIcon = -1;
     private int mEmptyIconSize = -1;
@@ -102,6 +122,8 @@ public class EmptyView extends RelativeLayout {
     private int mEmptyActionTextSize;
 
     private OnClickListener mActionClickListener;
+
+    private int mState = STATE_EMPTY;
 
     /***********************************************************************************************
      *
@@ -185,6 +207,8 @@ public class EmptyView extends RelativeLayout {
         mEmptyActionTextSize = a.getDimensionPixelSize(R.styleable.EmptyView_emptyActionTextSize,
                 (int)Utils.dpToPx(context, 14));
 
+        mState = a.getInt(R.styleable.EmptyView_emptyState, STATE_EMPTY);
+
         a.recycle();
     }
 
@@ -198,6 +222,7 @@ public class EmptyView extends RelativeLayout {
         mIcon = new ImageView(getContext());
         mMessage = new TextView(getContext());
         mAction = new TextView(getContext());
+        mProgress = new ProgressBar(getContext());
 
         // Setup the layout
         LayoutParams containerParams = new LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
@@ -243,7 +268,7 @@ public class EmptyView extends RelativeLayout {
         mAction.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mActionClickListener != null) mActionClickListener.onClick(v);
+                if (mActionClickListener != null) mActionClickListener.onClick(v);
             }
         });
 
@@ -254,8 +279,18 @@ public class EmptyView extends RelativeLayout {
 
         container.addView(mAction, actionParams);
 
+        LinearLayout.LayoutParams progressParams = new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
+        mProgress.setVisibility(View.GONE);
+
+        container.addView(mProgress, progressParams);
+
         // Add to view
         addView(container, containerParams);
+
+        // Switch the states
+        if(mState == STATE_LOADING){
+            setLoading();
+        }
     }
 
     /***********************************************************************************************
@@ -446,6 +481,29 @@ public class EmptyView extends RelativeLayout {
     }
 
     /**
+     * Set this view to loading state to show a loading indicator and hide the other parts
+     * of this view.
+     */
+    public void setLoading(){
+        mState = STATE_LOADING;
+        mProgress.setVisibility(View.VISIBLE);
+        mAction.setVisibility(View.GONE);
+        mMessage.setVisibility(View.GONE);
+        mIcon.setVisibility(View.GONE);
+    }
+
+    /**
+     * Set this view to it's empty state showing the icon, message, and action if configured
+     */
+    public void setEmpty(){
+        mState = STATE_EMPTY;
+        mProgress.setVisibility(View.GONE);
+        if(mEmptyIcon != -1) mIcon.setVisibility(View.VISIBLE);
+        if(!TextUtils.isEmpty(mEmptyMessage)) mMessage.setVisibility(View.VISIBLE);
+        if(!TextUtils.isEmpty(mEmptyActionText)) mAction.setVisibility(View.VISIBLE);
+    }
+
+    /**
      * Set the action click listener callback
      *
      * @param listener      the listener to be called when the user selects the EmptyView action
@@ -453,5 +511,6 @@ public class EmptyView extends RelativeLayout {
     public void setOnActionClickListener(OnClickListener listener){
         mActionClickListener = listener;
     }
+
 
 }

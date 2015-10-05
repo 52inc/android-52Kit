@@ -38,7 +38,7 @@ public class FontLoader {
     /**
      * The Lru typeface memory cache so as not to keep loading typefaces from the disk
      */
-    private static LruCache<Face, Typeface> mLoadedTypefaces = new LruCache<>(3 * 1024 * 1024); // 3 MiB cache
+    private static LruCache<String, Typeface> mLoadedTypefaces = new LruCache<>(3 * 1024 * 1024); // 3 MiB cache
 
     /*********************************************************************************
      *
@@ -60,6 +60,19 @@ public class FontLoader {
         Typeface typeface = getTypeface(textView.getContext(), type);
         if (typeface != null)
             textView.setTypeface(typeface);
+    }
+
+    /**
+     * Apply a typeface to one or many textviews
+     *
+     * @param type          the typeface to apply
+     * @param textViews     the one or many textviews to apply to
+     */
+    public static void apply(Face type, TextView... textViews){
+        if(textViews.length == 0) return;
+        for (int i = 0; i < textViews.length; i++) {
+            apply(textViews[i], type);
+        }
     }
 
     /**
@@ -96,11 +109,21 @@ public class FontLoader {
      * @return          the loaded typeface, or null
      */
     public static Typeface getTypeface(Context ctx, Face type){
-        // Check for existing typefaces
-        Typeface existing = mLoadedTypefaces.get(type);
-        if(existing == null) {
-            existing = Typeface.createFromAsset(ctx.getAssets(), "fonts/" + type.getFontFileName());
-            mLoadedTypefaces.put(type, existing);
+        return getTypeface(ctx, "fonts/" + type.getFontFileName());
+    }
+
+    /**
+     * Get a typeface for a given the font name/path
+     *
+     * @param ctx           the context to load the typeface from assets
+     * @param fontName      the name/path of of the typeface to load
+     * @return              the loaded typeface, or null
+     */
+    public static Typeface getTypeface(Context ctx, String fontName){
+        Typeface existing = mLoadedTypefaces.get(fontName);
+        if(existing == null){
+            existing = Typeface.createFromAsset(ctx.getAssets(), fontName);
+            mLoadedTypefaces.put(fontName, existing);
         }
         return existing;
     }

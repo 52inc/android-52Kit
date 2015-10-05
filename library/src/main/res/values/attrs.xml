@@ -61,6 +61,12 @@
         <attr name="emptyActionColor" format="reference|color" />
         <attr name="emptyActionTextSize" format="reference|dimension" />
 
+        <!-- Progress Attributes -->
+        <attr name="emptyState" format="enum">
+            <enum name="empty" value="0" />
+            <enum name="loading" value="1" />
+        </attr>
+
     </declare-styleable>
 
     <declare-styleable name="ProgressIndicator">

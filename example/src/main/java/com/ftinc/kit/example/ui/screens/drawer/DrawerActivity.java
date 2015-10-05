@@ -1,8 +1,11 @@
 package com.ftinc.kit.example.ui.screens.drawer;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +14,6 @@ import android.widget.Toast;
 import com.ftinc.kit.drawer.Callbacks;
 import com.ftinc.kit.drawer.Drawer;
 import com.ftinc.kit.example.R;
-import com.ftinc.kit.mvp.BaseActivity;
 import com.ftinc.kit.widget.EmptyView;
 import com.ftinc.kit.widget.ScrimInsetsRelativeLayout;
 import com.ftinc.kit.winds.Winds;
@@ -28,10 +30,13 @@ import static com.ftinc.kit.example.ui.screens.drawer.ExampleDrawerConfig.Item.*
  * Package: com.ftinc.kit.example.ui.screens.drawer
  * Created by drew.heavner on 5/12/15.
  */
-public class DrawerActivity extends BaseActivity implements Callbacks {
+public class DrawerActivity extends AppCompatActivity implements Callbacks {
 
     public static final String EXTRA_PAGE = "extra_page";
     private int mCurrentPage = BOOKMARKS.ordinal();
+
+    @Bind(R.id.appbar)
+    Toolbar mToolbar;
 
     @Bind(R.id.empty_layout)
     EmptyView mEmptyView;
@@ -41,6 +46,7 @@ public class DrawerActivity extends BaseActivity implements Callbacks {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer_example);
         ButterKnife.bind(this);
+        setSupportActionBar(mToolbar);
 
         // Parse Extras
         Intent intent = getIntent();
@@ -58,7 +64,7 @@ public class DrawerActivity extends BaseActivity implements Callbacks {
         // Configure the drawer
         Drawer.with(new ExampleDrawerConfig(this))
                 .callbacks(this)
-                .toolbar(getActionBarToolbar())
+                .toolbar(mToolbar)
                 .item(mCurrentPage)
                 .attach(this);
 

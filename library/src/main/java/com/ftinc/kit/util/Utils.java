@@ -183,6 +183,17 @@ public class Utils {
     }
 
     /**
+     * Convert Density-Independent Pixels to actual pixels
+     *
+     * @param ctx       the application context to convert the value with
+     * @param dpSize    the size in DP units
+     * @return          the size in Pixel units
+     */
+    public static int dipToPx(Context ctx, float dpSize){
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpSize, ctx.getResources().getDisplayMetrics());
+    }
+
+    /**
      * Convert Scale-Dependent Pixels to actual pixels
      *
      * @param ctx       the application context

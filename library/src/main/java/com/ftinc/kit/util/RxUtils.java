@@ -4,7 +4,11 @@ import android.os.Handler;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.android.schedulers.HandlerScheduler;
+import rx.functions.Action0;
+import rx.functions.Action1;
 import rx.schedulers.Schedulers;
+import timber.log.Timber;
 
 /**
  * Utility Helper class for RxJava additions
@@ -80,7 +84,7 @@ public class RxUtils {
         return new Observable.Transformer<T, T>() {
             @Override
             public Observable<T> call(Observable<T> observable) {
-                return observable.subscribeOn(AndroidSchedulers.handlerThread(subscribeHandler))
+                return observable.subscribeOn(HandlerScheduler.from(subscribeHandler))
                         .observeOn(AndroidSchedulers.mainThread());
             }
         };
@@ -104,8 +108,44 @@ public class RxUtils {
         return new Observable.Transformer<T, T>() {
             @Override
             public Observable<T> call(Observable<T> observable) {
-                return observable.subscribeOn(AndroidSchedulers.handlerThread(subscribeHandler))
-                        .observeOn(AndroidSchedulers.handlerThread(observeHandler));
+                return observable.subscribeOn(HandlerScheduler.from(subscribeHandler))
+                        .observeOn(HandlerScheduler.from(observeHandler));
+            }
+        };
+    }
+
+    /**
+     * <p>
+     *     Add a log statement to the onNext, onError, and onCompleted parts of an observable
+     * </p>
+     *
+     * @param name      the log tag name
+     * @param <T>       the transformation type
+     * @return          the transformer
+     */
+    public static <T> Observable.Transformer<T, T> applyLogging(final String name){
+        return new Observable.Transformer<T, T>() {
+            @Override
+            public Observable<T> call(Observable<T> observable) {
+                return observable
+                        .doOnNext(new Action1<T>() {
+                            @Override
+                            public void call(T t) {
+                                Timber.d("[%s] onNext(%s)", name, t);
+                            }
+                        })
+                        .doOnError(new Action1<Throwable>() {
+                            @Override
+                            public void call(Throwable throwable) {
+                                Timber.d(throwable, "[%s] onError()", name);
+                            }
+                        })
+                        .doOnCompleted(new Action0() {
+                            @Override
+                            public void call() {
+                                Timber.d("[%s] onCompleted()", name);
+                            }
+                        });
             }
         };
     }
