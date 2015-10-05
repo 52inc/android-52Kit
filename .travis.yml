@@ -21,4 +21,4 @@ android:
   - google-gdk-license-.+
 
 script:
-  - ./gradlew clean uploadArchives
+  - ./gradlew clean build
