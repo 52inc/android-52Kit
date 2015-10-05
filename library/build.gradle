@@ -12,6 +12,10 @@ android {
         abortOnError false
     }
 
+    dexOptions {
+        preDexLibraries = !rootProject.ext.ci
+    }
+
 }
 
 dependencies {

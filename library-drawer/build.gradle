@@ -9,6 +9,10 @@ android {
         targetSdkVersion 23
     }
 
+    dexOptions {
+        preDexLibraries = !rootProject.ext.ci
+    }
+
 }
 
 dependencies {

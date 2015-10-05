@@ -7,6 +7,10 @@ android {
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
     }
+
+    dexOptions {
+        preDexLibraries = !rootProject.ext.ci
+    }
 }
 
 dependencies {
