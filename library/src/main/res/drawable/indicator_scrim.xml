@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright © 52inc 2015
+  ~ All rights reserved.
+  -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <gradient android:startColor="@color/transparent"
+              android:endColor="@color/black20"
+              android:angle="-90"
+              />
+
+</shape>

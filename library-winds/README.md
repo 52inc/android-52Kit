@@ -65,5 +65,5 @@ You can show the changelog as easily as calling:
 ## Include
 
 ```groovy
-compile 'com.52inc:52Kit-winds:0.3.0'
+compile 'com.52inc:52Kit-winds:0.4.0'
 ```

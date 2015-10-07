@@ -1,0 +1,57 @@
+
+task buildColors << {
+
+    File output = new File("bw_colors.xml");
+    if(output.exists()){
+        output.delete()
+    }else{
+        output.createNewFile()
+    }
+
+    String resourceTemplate =
+            "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
+            "<resources>\n\n" +
+                    "\t<!-- Black Colors -->\n" +
+                    "%s" +
+                    "\n" +
+                    "\t<!-- White Colors -->\n" +
+                    "%s" +
+                    "\n" +
+            "</resources>";
+
+    // Generate Black colors
+    StringBuilder blackColors = new StringBuilder();
+    for (int i = 5; i < 100; i++) {
+        int alpha = ((float) i / 100f) * 255f;
+        String alphaHex = Integer.toHexString(alpha);
+        if(alphaHex.length() == 1) alphaHex = String.format("0%s", alphaHex);
+        String color = String.format("#%s%s", alphaHex, "000000");
+        String colorRes = String.format("\t<color name=\"black%d\">%s</color>", i, color);
+        blackColors.append(colorRes).append("\n");
+
+        println "Generating Black(" + i + ") -> " + color
+    }
+
+    // Generate White colors
+    StringBuilder whiteColors = new StringBuilder();
+    for (int i = 5; i < 100; i++) {
+        int alpha = ((float) i / 100f) * 255f;
+        String alphaHex = Integer.toHexString(alpha);
+        if(alphaHex.length() == 1) alphaHex = String.format("0%s", alphaHex);
+        String color = String.format("#%s%s", alphaHex, "FFFFFF");
+        String colorRes = String.format("\t<color name=\"white%d\">%s</color>", i, color);
+        whiteColors.append(colorRes).append("\n");
+
+        println "Generating White(" + i + ") -> " + color
+    }
+
+    // Build file
+    String colors = String.format(resourceTemplate, blackColors.toString(), whiteColors.toString());
+
+    FileWriter writer = new FileWriter(output);
+    writer.write(colors);
+    writer.close();
+
+    println "Colors Generated!"
+
+}

@@ -33,6 +33,7 @@
         android:textSize="14sp"
         android:textColor="@color/black54"
         android:paddingLeft="@dimen/activity_padding"
+        android:paddingRight="@dimen/activity_padding"
         android:background="?android:attr/colorBackground"
 
         android:fontFamily="sans-serif-medium"

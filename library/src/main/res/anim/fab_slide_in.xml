@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright © 52inc 2015
+  ~ All rights reserved.
+  -->
+
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <translate
+        android:fromYDelta="100%p"
+        android:toYDelta="0"/>
+
+</set>

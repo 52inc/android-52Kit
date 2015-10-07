@@ -21,6 +21,18 @@
         <item name="android:elevation" tools:ignore="NewApi">@dimen/appbar_elevation</item>
     </style>
 
-
+    <style name="Widget.Trade.Button.Flat" parent="">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:minWidth">64dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/teal_500</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
 
 </resources>
