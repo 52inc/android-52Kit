@@ -38,7 +38,7 @@ ext {
     rxJava = 'io.reactivex:rxjava:1.0.14'
     rxAndroid = 'io.reactivex:rxandroid:1.0.1'
 
-    timber = 'com.jakewharton.timber:timber:3.1.0'
+    timber = 'com.jakewharton.timber:timber:4.0.1'
     butterKnife = 'com.jakewharton:butterknife:7.0.1'
 
 }
