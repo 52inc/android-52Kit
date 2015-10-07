@@ -264,6 +264,12 @@ public class Drawer implements DrawerInteractor{
      */
     private void setupDrawer(){
 
+        // Setup drawer background color if set
+        int backgroundColor = UIUtils.getColorAttr(mActivity, R.attr.drawerBackground);
+        if(backgroundColor > 0){
+            mDrawerPane.setBackgroundColor(backgroundColor);
+        }
+
         // Set the drawer layout statusbar color
         int statusBarColor = mConfig.getStatusBarColor(mActivity);
         if(statusBarColor != -1) mDrawerLayout.setStatusBarBackgroundColor(statusBarColor);

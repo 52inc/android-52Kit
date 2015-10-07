@@ -10,35 +10,26 @@ This library includes several dependency injection ready Preference helper class
 
 ### Utilities
 
-This library also includes a handful of utility classes that contain convienence functions for a variety of tasks. You can view the source [here](https://github.com/52inc/android-52Kit/tree/master/library/src/main/java/com/ftinc/kit/util) which includes these utilities:
-
-*	`Utils.java` - A generic utility class that contains basic helper functions
-*	`BuildUtils.java` - A utility class with functions that focus around the build of the device, i.e. the OS.
-*	`ColorUtils.java` - A utility class that deals with colors
-*	`FileUtils.java` - A utility class that contains helper functions for dealing with file transactions
-*	`IntentUtils.java` - A utility class that provides a lot of `Intent` creating functions
-*	`TimeUtils.java` - A utility class for functions that deal with time and formatting time
-*	`UIUtils.java` - A utility class for helper functions that deal with the UI and views
-*	`FormatUtils.java` - A utility class for formatting text and generating hash strings
+This library also includes a handful of utility classes that contain convienence functions for a variety of tasks. You can view the source [here](https://github.com/52inc/android-52Kit/tree/master/library/src/main/java/com/ftinc/kit/util).
 
 ---
 
 ### Attributr
 
-Read more here: [https://github.com/52inc/android-52Kit/tree/master/library-attributr](https://github.com/52inc/android-52Kit/tree/master/library-attributr)
+Read more here: [Attributr](https://github.com/52inc/android-52Kit/tree/master/library-attributr)
 
 
 ---
 
 ### Winds
 
-Read more here: [https://github.com/52inc/android-52Kit/tree/master/library-winds](https://github.com/52inc/android-52Kit/tree/master/library-winds)
+Read more here: [Winds](https://github.com/52inc/android-52Kit/tree/master/library-winds)
 
 ---
 
 ### Drawer
 
-Read more here: [https://github.com/52inc/android-52Kit/tree/master/library-drawer](https://github.com/52inc/android-52Kit/tree/master/library-drawer)
+Read more here: [Drawer](https://github.com/52inc/android-52Kit/tree/master/library-drawer)
 
 ---
 
@@ -66,4 +57,4 @@ compile 'com.52inc:52Kit-core:0.3.0'
 ```
 
 **Snapshot:**  
-`0.3.1-SNAPSHOT`
+`0.4.0-SNAPSHOT`
