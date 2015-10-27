@@ -17,6 +17,7 @@
 package com.ftinc.kit.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -43,8 +44,12 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      */
 
     protected ArrayList<M> items = new ArrayList<>();
+    protected ArrayList<M> filteredItems = new ArrayList<>();
+
     private OnItemClickListener<M> itemClickListener;
-    private View mEmptyView;
+    private View emptyView;
+
+    private CharSequence query;
 
     /**
      * Default Constructor
@@ -78,6 +83,21 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      */
     protected void onSort(List<M> items){}
 
+    /**
+     * Override to listen to when the adapter finishes filtering the dataset
+     */
+    protected void onFiltered(){}
+
+    /**
+     * Override to return the applicable filter for this adapter to
+     * filter with given specified constraint
+     *
+     * @return      the adapter filter
+     */
+    protected Filter<M> getFilter(){
+        return null;
+    }
+
     /***********************************************************************************************
      *
      * Helper Methods
@@ -89,10 +109,10 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      * @param emptyView
      */
     public void setEmptyView(View emptyView){
-        if(mEmptyView != null){
+        if(this.emptyView != null){
             unregisterAdapterDataObserver(mEmptyObserver);
         }
-        mEmptyView = emptyView;
+        this.emptyView = emptyView;
         registerAdapterDataObserver(mEmptyObserver);
     }
 
@@ -100,8 +120,8 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      * Check if we should show the empty view
      */
     private void checkIfEmpty(){
-        if(mEmptyView != null){
-            mEmptyView.setVisibility(getItemCount() > 0 ? View.GONE : View.VISIBLE);
+        if(emptyView != null){
+            emptyView.setVisibility(getItemCount() > 0 ? View.GONE : View.VISIBLE);
         }
     }
 
@@ -135,6 +155,7 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      */
     public void add(M object) {
         items.add(object);
+        applyFilter();
     }
 
     /**
@@ -145,6 +166,7 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      */
     public void add(int index, M object) {
         items.add(index, object);
+        applyFilter();
     }
 
     /**
@@ -155,6 +177,7 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
     public void addAll(Collection<? extends M> collection) {
         if (collection != null) {
             items.addAll(collection);
+            applyFilter();
         }
     }
 
@@ -163,6 +186,8 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      */
     public void clear() {
         items.clear();
+        filteredItems.clear();
+        query = null;
     }
 
     /**
@@ -172,6 +197,7 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      */
     public void remove(M object) {
         items.remove(object);
+        applyFilter();
     }
 
     /**
@@ -181,7 +207,9 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      * @return          the removed item
      */
     public M remove(int index){
-        return items.remove(index);
+        M item = items.remove(index);
+        applyFilter();
+        return item;
     }
 
     /**
@@ -209,6 +237,7 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      */
     public void sort(Comparator<M> comparator){
         Collections.sort(items, comparator);
+        applyFilter();
     }
 
     /**
@@ -218,7 +247,7 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      * @return              the item at that position, or null
      */
     public M getItem(int position) {
-        return items.get(position);
+        return filteredItems.get(position);
     }
 
     /**
@@ -227,7 +256,58 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      * @return      the all the 'filtered' items in the adapter
      */
     public List<M> getItems(){
-        return items;
+        return filteredItems;
+    }
+
+    /***********************************************************************************************
+     *
+     * Filter Methods
+     *
+     */
+
+    /**
+     * Filter this adapter with the specified constraints
+     *
+     * This endpoints with notify the adapter of content change
+     *
+     * @param constraints       the constraints to filter with
+     */
+    public void filter(CharSequence constraints){
+        this.query = constraints;
+        applyFilter();
+        notifyDataSetChanged();
+    }
+
+    /**
+     * Clear this adapter's filter and re-apply
+     *
+     * This endpoints with notify the adapter of content change
+     */
+    public void clearFilter(){
+        query = null;
+        applyFilter();
+        notifyDataSetChanged();
+    }
+
+    /**
+     * Apply the filter, if possible, to the adapter to update content
+     */
+    private void applyFilter(){
+        filteredItems.clear();
+
+        Filter<M> filter = getFilter();
+        if(TextUtils.isEmpty(query) || filter == null){
+            filteredItems.addAll(items);
+        }else{
+            for (int i = 0; i < items.size(); i++) {
+                M item = items.get(i);
+                if(filter.filter(item, query)){
+                    filteredItems.add(item);
+                }
+            }
+        }
+
+        onFiltered();
     }
 
     /***********************************************************************************************
@@ -244,7 +324,7 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      */
     @Override
     public int getItemCount() {
-        return items.size();
+        return filteredItems.size();
     }
 
     /**
@@ -283,9 +363,13 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
 
     /***********************************************************************************************
      *
-     * Interfaces
+     * Inner Classes & Interfaces
      *
      */
+
+    public interface Filter<T>{
+        boolean filter(T item, CharSequence query);
+    }
 
     /**
      * The interface for detecting item click events from within the adapter, this listener
