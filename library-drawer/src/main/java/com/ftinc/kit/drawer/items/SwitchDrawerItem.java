@@ -13,6 +13,8 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.ftinc.kit.drawer.R;
+import com.ftinc.kit.drawer.model.BooleanPreferenceImpl;
+import com.ftinc.kit.drawer.model.IPreference;
 import com.ftinc.kit.font.Face;
 import com.ftinc.kit.font.FontLoader;
 import com.ftinc.kit.preferences.BooleanPreference;
@@ -26,7 +28,18 @@ public class SwitchDrawerItem extends DrawerItem implements CompoundButton.OnChe
 
     private int mText;
     private SwitchCompat mSwitch;
-    private BooleanPreference mPreference;
+    private IPreference<Boolean> mPreference;
+
+    /**
+     * Constructor
+     * @param id
+     * @param text
+     */
+    public SwitchDrawerItem(int id, int text, IPreference<Boolean> preference) {
+        super(id);
+        mText = text;
+        mPreference = preference;
+    }
 
     /**
      * Constructor
@@ -34,9 +47,7 @@ public class SwitchDrawerItem extends DrawerItem implements CompoundButton.OnChe
      * @param text
      */
     public SwitchDrawerItem(int id, int text, BooleanPreference preference) {
-        super(id);
-        mText = text;
-        mPreference = preference;
+        this(id, text, new BooleanPreferenceImpl(preference));
     }
 
     public SwitchCompat getSwitch(){
