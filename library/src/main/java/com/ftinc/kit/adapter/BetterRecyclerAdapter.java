@@ -16,6 +16,7 @@
 
 package com.ftinc.kit.adapter;
 
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
@@ -296,7 +297,7 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
         filteredItems.clear();
 
         Filter<M> filter = getFilter();
-        if(TextUtils.isEmpty(query) || filter == null){
+        if(filter == null){
             filteredItems.addAll(items);
         }else{
             for (int i = 0; i < items.size(); i++) {
@@ -368,7 +369,7 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      */
 
     public interface Filter<T>{
-        boolean filter(T item, CharSequence query);
+        boolean filter(T item, @Nullable CharSequence query);
     }
 
     /**
