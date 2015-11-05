@@ -66,7 +66,8 @@ public class ActionDrawerItem extends DrawerItem {
         // configure its appearance according to whether or not it's selected
         titleView.setTextColor(selected ?
                 UIUtils.getColorAttr(ctx, R.attr.colorPrimary) :
-                ctx.getResources().getColor(R.color.navdrawer_text_color));
+                UIUtils.getColorAttr(ctx, android.R.attr.textColorPrimary));
+
         iconView.setColorFilter(selected ?
                 UIUtils.getColorAttr(ctx, R.attr.colorPrimary) :
                 ctx.getResources().getColor(R.color.navdrawer_icon_tint));

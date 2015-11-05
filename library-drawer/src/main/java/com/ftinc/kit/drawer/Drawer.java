@@ -510,7 +510,7 @@ public class Drawer implements DrawerInteractor{
         // configure its appearance according to whether or not it's selected
         titleView.setTextColor(selected ?
                 UIUtils.getColorAttr(mActivity, R.attr.colorPrimary) :
-                getResources().getColor(R.color.navdrawer_text_color));
+                UIUtils.getColorAttr(mActivity, android.R.attr.textColorPrimary));
 
         iconView.setColorFilter(selected ?
                 UIUtils.getColorAttr(mActivity, R.attr.colorPrimary) :

@@ -6,7 +6,7 @@
     android:layout_width="@dimen/navigation_drawer_width"
     android:layout_height="match_parent"
     android:layout_gravity="start"
-    android:background="@color/navdrawer_background"
+    android:background="?android:attr/colorBackground"
     android:fitsSystemWindows="true"
     app:siv_insetForeground="#4000">
 
