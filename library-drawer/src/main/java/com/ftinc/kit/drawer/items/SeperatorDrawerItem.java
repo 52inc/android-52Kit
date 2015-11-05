@@ -31,6 +31,7 @@ public class SeperatorDrawerItem extends DrawerItem{
 
         int color = UIUtils.getColorAttr(container.getContext(), R.attr.drawerSeparatorColor);
         if(color != 0) view.setBackgroundColor(color);
+
         return view;
     }
 }

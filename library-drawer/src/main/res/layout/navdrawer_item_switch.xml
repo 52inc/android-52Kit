@@ -16,7 +16,7 @@
         android:layout_centerVertical="true"
         android:gravity="start|center_vertical"
         android:textSize="14sp"
-        android:textColor="@color/navdrawer_text_color"
+        android:textColor="?android:attr/textColorPrimary"
         android:text="@string/placeholder_lorem_ipsum" />
 
     <android.support.v7.widget.SwitchCompat
