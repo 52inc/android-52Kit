@@ -3,6 +3,7 @@
 
     <declare-styleable name="DrawerTheme">
         <attr name="drawerBackground" format="color|reference" />
+        <attr name="drawerSeparatorColor" format="color|reference" />
     </declare-styleable>
 
 </resources>

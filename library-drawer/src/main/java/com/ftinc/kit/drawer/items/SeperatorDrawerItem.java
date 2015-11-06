@@ -28,6 +28,10 @@ public class SeperatorDrawerItem extends DrawerItem{
     public View onCreateView(LayoutInflater inflater, ViewGroup container) {
         View view = inflater.inflate(R.layout.navdrawer_separator, container, false);
         UIUtils.setAccessibilityIgnore(view);
+
+        int color = UIUtils.getColorAttr(container.getContext(), R.attr.drawerSeparatorColor);
+        if(color != 0) view.setBackgroundColor(color);
+
         return view;
     }
 }
