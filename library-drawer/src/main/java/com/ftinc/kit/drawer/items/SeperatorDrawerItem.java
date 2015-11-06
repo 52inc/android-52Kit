@@ -25,7 +25,7 @@ public class SeperatorDrawerItem extends DrawerItem{
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, int highlightColor) {
         View view = inflater.inflate(R.layout.navdrawer_separator, container, false);
         UIUtils.setAccessibilityIgnore(view);
 

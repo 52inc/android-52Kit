@@ -147,6 +147,16 @@ public abstract class Config {
     }
 
     /**
+     * Get the highlight color for the navigation drawer items
+     *
+     * @param ctx       the context to get teh color with
+     * @return          the color to highlight with
+     */
+    protected int getItemHighlightColor(Context ctx){
+        return UIUtils.getColorAttr(ctx, R.attr.colorPrimary);
+    }
+
+    /**
      * Return whether or not we should animate the Hamburger Icon when the drawer
      * is being dragged
      *
