@@ -11,7 +11,7 @@ android:
   - tools
   - build-tools-23.0.2
   - android-23
-  - extra
+  - extra-android-m2repository
   licenses:
   - android-sdk-license-.+
   - google-gdk-license-.+
