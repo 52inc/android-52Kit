@@ -12,12 +12,12 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
+import com.f2prateek.rx.preferences.Preference;
 import com.ftinc.kit.drawer.R;
 import com.ftinc.kit.drawer.model.BooleanPreferenceImpl;
 import com.ftinc.kit.drawer.model.IPreference;
 import com.ftinc.kit.font.Face;
 import com.ftinc.kit.font.FontLoader;
-import com.ftinc.kit.preferences.BooleanPreference;
 
 import butterknife.ButterKnife;
 
@@ -46,7 +46,7 @@ public class SwitchDrawerItem extends DrawerItem implements CompoundButton.OnChe
      * @param id
      * @param text
      */
-    public SwitchDrawerItem(int id, int text, BooleanPreference preference) {
+    public SwitchDrawerItem(int id, int text, Preference<Boolean> preference) {
         this(id, text, new BooleanPreferenceImpl(preference));
     }
 

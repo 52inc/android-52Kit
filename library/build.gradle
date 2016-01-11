@@ -32,6 +32,7 @@ dependencies {
     // Rx
     compile rootProject.ext.rxJava
     compile rootProject.ext.rxAndroid
+    compile rootProject.ext.rxPrefs
 
 }
 

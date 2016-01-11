@@ -24,7 +24,7 @@ import android.util.Patterns;
 import android.util.TypedValue;
 import android.webkit.MimeTypeMap;
 
-import com.ftinc.kit.preferences.StringPreference;
+import com.f2prateek.rx.preferences.Preference;
 
 import java.net.URLConnection;
 import java.util.Calendar;
@@ -106,7 +106,7 @@ public class Utils {
      * @param uuidPref      the uuid preference
      * @return              the unique device id
      */
-    public static String generateUniqueDeviceId(StringPreference uuidPref){
+    public static String generateUniqueDeviceId(Preference<String> uuidPref){
         // Check if uuid is set
         if(uuidPref.isSet()){
             return uuidPref.get();

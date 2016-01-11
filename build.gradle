@@ -25,20 +25,21 @@ ext {
     androidPlugin = 'com.android.tools.build:gradle:1.3.1'
     minSdkVersion = 16
     compileSdkVersion = 23
-    buildToolsVersion = '23.0.1'
+    buildToolsVersion = '23.0.2'
 
     ci = 'true'.equals(System.getenv('CI'))
 
-    supportAnnotations = 'com.android.support:support-annotations:23.0.1'
-    supportV4 = 'com.android.support:support-v4:23.0.1'
-    supportRecyclerView = 'com.android.support:recyclerview-v7:23.0.1'
-    supportAppCompat = 'com.android.support:appcompat-v7:23.0.1'
-    supportDesign = 'com.android.support:design:23.0.1'
+    supportAnnotations = 'com.android.support:support-annotations:23.1.1'
+    supportV4 = 'com.android.support:support-v4:23.1.1'
+    supportRecyclerView = 'com.android.support:recyclerview-v7:23.1.1'
+    supportAppCompat = 'com.android.support:appcompat-v7:23.1.1'
+    supportDesign = 'com.android.support:design:23.1.1'
 
-    rxJava = 'io.reactivex:rxjava:1.0.14'
-    rxAndroid = 'io.reactivex:rxandroid:1.0.1'
+    rxJava = 'io.reactivex:rxjava:1.1.0'
+    rxAndroid = 'io.reactivex:rxandroid:1.1.0'
+    rxPrefs = 'com.f2prateek.rx.preferences:rx-preferences:1.0.1'
 
-    timber = 'com.jakewharton.timber:timber:4.0.1'
+    timber = 'com.jakewharton.timber:timber:4.1.0'
     butterKnife = 'com.jakewharton:butterknife:7.0.1'
 
 }

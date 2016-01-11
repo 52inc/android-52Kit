@@ -1,6 +1,6 @@
 package com.ftinc.kit.drawer.model;
 
-import com.ftinc.kit.preferences.BooleanPreference;
+import com.f2prateek.rx.preferences.Preference;
 
 /**
  * Project: android-52Kit
@@ -9,9 +9,9 @@ import com.ftinc.kit.preferences.BooleanPreference;
  */
 public class BooleanPreferenceImpl implements IPreference<Boolean> {
 
-    private BooleanPreference preference;
+    private Preference<Boolean> preference;
 
-    public BooleanPreferenceImpl(BooleanPreference preference){
+    public BooleanPreferenceImpl(Preference<Boolean> preference){
         this.preference = preference;
     }
 
