@@ -4,10 +4,6 @@ Library that acts as the foundation to building our android applications.
 
 ## Sections
 
-### Preferences
-
-This library includes several dependency injection ready Preference helper classes and an AES-256 Encryption wrapper for SharedPreferences. See [here](https://github.com/52inc/android-52Kit/tree/master/library/src/main/java/com/ftinc/kit/preferences) for further documentation.
-
 ### Utilities
 
 This library also includes a handful of utility classes that contain convienence functions for a variety of tasks. You can view the source [here](https://github.com/52inc/android-52Kit/tree/master/library/src/main/java/com/ftinc/kit/util).
@@ -53,8 +49,20 @@ Pre-built layouts for common list item configurations includeing, one line, two 
 Include this line in your gradle build file:
 
 ```groovy
-compile 'com.52inc:52Kit-core:0.4.1'
+compile 'com.52inc:52Kit-core:0.4.2'
 ```
 
 **Snapshot:**  
-`0.4.2-SNAPSHOT`
+`0.4.3-SNAPSHOT`
+
+
+### Transitive Dependencies
+
+*	`support-v4`:`23.1.1`
+*	`appcompat-v7`:`23.1.1`
+*	`recyclerview-v7`:`23.1.1`
+*	`timber`:`4.1.0`
+*	`butterknife`:`7.0.1`
+*	`rxJava`:`1.1.0`
+*	`rxAndroid`:`1.1.0`
+*	`rx-preferences`:`1.0.1`
