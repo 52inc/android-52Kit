@@ -55,7 +55,7 @@ public class SwitchDrawerItem extends DrawerItem implements CompoundButton.OnChe
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, int highlightColor) {
         View view = inflater.inflate(R.layout.navdrawer_item_switch, container, false);
 
         TextView titleView = ButterKnife.findById(view, R.id.title);

@@ -55,7 +55,7 @@ public class IconDrawerItem extends DrawerItem {
      * @return
      */
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, int highlightColor) {
         Context ctx = inflater.getContext();
         View view = inflater.inflate(R.layout.navdrawer_item, container, false);
 
@@ -74,11 +74,11 @@ public class IconDrawerItem extends DrawerItem {
 
         // configure its appearance according to whether or not it's selected
         titleView.setTextColor(selected ?
-                UIUtils.getColorAttr(ctx, R.attr.colorPrimary) :
+                highlightColor :
                 UIUtils.getColorAttr(ctx, android.R.attr.textColorPrimary));
 
         iconView.setColorFilter(selected ?
-                UIUtils.getColorAttr(ctx, R.attr.colorPrimary) :
+                highlightColor :
                 ctx.getResources().getColor(R.color.navdrawer_icon_tint));
 
         // Setup the badge view

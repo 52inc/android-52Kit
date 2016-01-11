@@ -45,7 +45,7 @@ public abstract class DrawerItem {
      * @param container     the container the layout is going to be placed in
      * @return              the view for this particular drawer item
      */
-    public abstract View onCreateView(LayoutInflater inflater, ViewGroup container);
+    public abstract View onCreateView(LayoutInflater inflater, ViewGroup container, int highlightColor);
 
     @Override
     public String toString() {

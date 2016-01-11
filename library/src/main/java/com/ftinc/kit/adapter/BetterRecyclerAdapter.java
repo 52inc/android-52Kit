@@ -90,6 +90,14 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
     protected void onFiltered(){}
 
     /**
+     * Override to observe reorder changes in the underlying true data set
+     *
+     * @param start     the real start index, non-filtered
+     * @param end       the real end index, non-filtered
+     */
+    protected void onItemMoved(M item, int start, int end){}
+
+    /**
      * Override to return the applicable filter for this adapter to
      * filter with given specified constraint
      *
@@ -220,14 +228,17 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      * @param end       the position to move to
      */
     public void moveItem(int start, int end){
-        int max = Math.max(start, end);
-        int min = Math.min(start, end);
-        if (min >= 0 && max < items.size()) {
-            M item = items.remove(min);
-            items.add(max, item);
-        }
+        M startItem = filteredItems.get(start);
+        M endItem = filteredItems.get(end);
 
-        notifyItemMoved(min, max);
+        int realStart = items.indexOf(startItem);
+        int realEnd = items.indexOf(endItem);
+
+        Collections.swap(items, realStart, realEnd);
+        applyFilter();
+
+        onItemMoved(startItem, realStart, realEnd);
+        notifyItemMoved(realStart, realEnd);
     }
 
     /**
@@ -260,11 +271,29 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
         return filteredItems;
     }
 
+    /**
+     * Get a list of the raw underlying dataset of items
+     *
+     * @return      the unflitered items in the adapter
+     */
+    public List<M> getUnfilteredItems(){
+        return items;
+    }
+
     /***********************************************************************************************
      *
      * Filter Methods
      *
      */
+
+    /**
+     * Return whether or not this adapter is filtered
+     *
+     * @return      true if there is a query inplace that constitutes filtering
+     */
+    protected boolean isFiltered(){
+        return !TextUtils.isEmpty(query);
+    }
 
     /**
      * Filter this adapter with the specified constraints
@@ -339,12 +368,13 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      * @param i         the position being bound
      */
     @Override
-    public void onBindViewHolder(VH vh, final int i) {
+    public void onBindViewHolder(final VH vh, final int i) {
         if(itemClickListener != null){
             vh.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    itemClickListener.onItemClick(v, getItem(i), i);
+                    int position = vh.getAdapterPosition();
+                    itemClickListener.onItemClick(v, getItem(position), position);
                 }
             });
         }

@@ -404,7 +404,8 @@ public class Drawer implements DrawerInteractor{
         mDrawerItemsListContainer.removeAllViews();
         for (DrawerItem item: mDrawerItems) {
             item.setSelected(item.getId() == mSelectedItem);
-            View view = item.onCreateView(mActivity.getLayoutInflater(), mDrawerItemsListContainer);
+            View view = item.onCreateView(mActivity.getLayoutInflater(),
+                    mDrawerItemsListContainer, mConfig.getItemHighlightColor(mActivity));
             if(!(item instanceof SeperatorDrawerItem)){
                 view.setId(item.getId());
                 mNavDrawerItemViews.put(item.getId(), view);
@@ -509,11 +510,11 @@ public class Drawer implements DrawerInteractor{
 
         // configure its appearance according to whether or not it's selected
         titleView.setTextColor(selected ?
-                UIUtils.getColorAttr(mActivity, R.attr.colorPrimary) :
+                mConfig.getItemHighlightColor(mActivity) :
                 UIUtils.getColorAttr(mActivity, android.R.attr.textColorPrimary));
 
         iconView.setColorFilter(selected ?
-                UIUtils.getColorAttr(mActivity, R.attr.colorPrimary) :
+                mConfig.getItemHighlightColor(mActivity) :
                 getResources().getColor(R.color.navdrawer_icon_tint), PorterDuff.Mode.SRC_ATOP);
     }
 
