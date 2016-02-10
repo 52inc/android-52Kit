@@ -1,8 +1,12 @@
 package com.ftinc.kit.util;
 
 import android.os.Handler;
+import android.support.annotation.Nullable;
+
+import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
+import rx.Scheduler;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.android.schedulers.HandlerScheduler;
 import rx.functions.Action0;
@@ -44,6 +48,29 @@ public class RxUtils {
 
     /**
      * <p>
+     * Apply the subscribeOn/observeOn transformation of newThread/mainThread
+     * to an observable via compose()
+     * </p>
+     *
+     * <p>
+     * Only apply this to observables that are handling work that requires it's own new thread
+     * </p>
+     *
+     * @param <T>       the transformation type
+     * @return          the observable post-transform
+     */
+    public static <T> Observable.Transformer<T, T> applyNewThreadSchedulers() {
+        return new Observable.Transformer<T, T>() {
+            @Override
+            public Observable<T> call(Observable<T> observable) {
+                return observable.subscribeOn(Schedulers.newThread())
+                        .observeOn(AndroidSchedulers.mainThread());
+            }
+        };
+    }
+
+    /**
+     * <p>
      * Apply the subscribeOn/observeOn transformation of computation/mainThread
      * to an observable via compose()
      * </p>
@@ -61,6 +88,25 @@ public class RxUtils {
             @Override
             public Observable<T> call(Observable<T> observable) {
                 return observable.subscribeOn(Schedulers.computation())
+                        .observeOn(AndroidSchedulers.mainThread());
+            }
+        };
+    }
+
+    /**
+     * <p>
+     * Apply the subscribeOn/observeOn transformation of custom/mainThread
+     * to an observable via compose()
+     * </p>
+     *
+     * @param <T>       the transformation type
+     * @return          the observable post-transform
+     */
+    public static <T> Observable.Transformer<T, T> applySchedulers(final Scheduler subscribeScheduler) {
+        return new Observable.Transformer<T, T>() {
+            @Override
+            public Observable<T> call(Observable<T> observable) {
+                return observable.subscribeOn(subscribeScheduler)
                         .observeOn(AndroidSchedulers.mainThread());
             }
         };
@@ -144,6 +190,39 @@ public class RxUtils {
                             @Override
                             public void call() {
                                 Timber.d("[%s] onCompleted()", name);
+                            }
+                        });
+            }
+        };
+    }
+
+    /**
+     * <p>
+     * Benchmark an observable from the point of subscription to the point of completion
+     * </p>
+     *
+     * @param name      the name of the observable to print in log statement
+     * @param <T>       The transformation type
+     * @return          The transformer
+     */
+    public static <T> Observable.Transformer<T, T> benchmark(final String name){
+        final long[] startTime = new long[1];
+        return new Observable.Transformer<T, T>() {
+            @Override
+            public Observable<T> call(Observable<T> tObservable) {
+                return tObservable
+                        .doOnSubscribe(new Action0() {
+                            @Override
+                            public void call() {
+                                startTime[0] = System.nanoTime();
+                            }
+                        })
+                        .doOnCompleted(new Action0() {
+                            @Override
+                            public void call() {
+                                long diff = System.nanoTime() - startTime[0];
+                                long timeMs = TimeUnit.NANOSECONDS.toMillis(diff);
+                                Timber.d("[%s] Observable Duration: %s", name, TimeUtils.getTimeAgo(timeMs));
                             }
                         });
             }
