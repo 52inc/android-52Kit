@@ -220,8 +220,7 @@ public class RxUtils {
                         .doOnCompleted(new Action0() {
                             @Override
                             public void call() {
-                                long diff = System.nanoTime() - startTime[0];
-                                long timeMs = TimeUnit.NANOSECONDS.toMillis(diff);
+                                long timeMs = TimeUnit.NANOSECONDS.toMillis(startTime[0]);
                                 Timber.d("[%s] Observable Duration: %s", name, TimeUtils.getTimeAgo(timeMs));
                             }
                         });

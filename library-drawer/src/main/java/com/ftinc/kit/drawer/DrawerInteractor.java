@@ -7,8 +7,11 @@ package com.ftinc.kit.drawer;
  */
 public interface DrawerInteractor {
 
+    void openDrawer();
     void closeDrawer();
 
     void invalidate();
+
+    void lockDrawer(@Drawer.LockMode int lockMode);
 
 }

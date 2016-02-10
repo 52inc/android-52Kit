@@ -12,6 +12,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.os.Handler;
+import android.support.annotation.IntDef;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -35,6 +36,8 @@ import com.ftinc.kit.util.UIUtils;
 import com.ftinc.kit.widget.ScrimInsetsRelativeLayout;
 import com.ftinc.kit.widget.ScrimInsetsRelativeLayout.OnInsetsCallback;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -56,6 +59,22 @@ import static android.view.WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
  * Created by drew.heavner on 5/11/15.
  */
 public class Drawer implements DrawerInteractor{
+
+    /***********************************************************************************************
+     *
+     * Constants
+     *
+     */
+
+    /*
+     * Mirror this int def for use in this class
+     */
+    @IntDef({
+            DrawerLayout.LOCK_MODE_UNLOCKED,
+            DrawerLayout.LOCK_MODE_LOCKED_CLOSED,
+            DrawerLayout.LOCK_MODE_LOCKED_OPEN})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface LockMode {}
 
     /***********************************************************************************************
      *
@@ -189,6 +208,13 @@ public class Drawer implements DrawerInteractor{
     public void openDrawer(){
         if(mDrawerLayout != null){
             mDrawerLayout.openDrawer(GravityCompat.START);
+        }
+    }
+
+    @Override
+    public void lockDrawer(@LockMode int lockMode){
+        if(mDrawerLayout != null){
+            mDrawerLayout.setDrawerLockMode(lockMode);
         }
     }
 
