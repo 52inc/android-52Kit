@@ -159,4 +159,29 @@ public class UIUtils {
         return "android:switcher:" + view.getId() + ":" + index;
     }
 
+    /**
+     * Get the status bar height
+     */
+    public static int getStatusBarHeight(Context ctx) {
+        int result = 0;
+        int resourceId = ctx.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = ctx.getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
+
+    /**
+     * Get the usuable status bar height with a translucent status bar
+     *
+     * @param ctx
+     * @return
+     */
+    public static int getUsableStatusBarHeight(Context ctx){
+        if(BuildUtils.isKitKat()){
+            return getStatusBarHeight(ctx);
+        }
+        return 0;
+    }
+
 }
