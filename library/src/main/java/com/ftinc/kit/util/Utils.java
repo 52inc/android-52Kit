@@ -18,6 +18,7 @@ package com.ftinc.kit.util;
 
 import android.content.Context;
 import android.graphics.PointF;
+import android.os.Build;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -75,6 +76,17 @@ public class Utils {
      */
     public static boolean isValidEmail(CharSequence email){
         return Patterns.EMAIL_ADDRESS.matcher(email).find();
+    }
+
+    /**
+     * Return whether or not the current device is an emulator
+     */
+    public static boolean isEmulator(){
+        return "google_sdk".equals(Build.PRODUCT) ||
+                Build.PRODUCT.contains("sdk_google_phone") ||
+                "sdk".equals(Build.PRODUCT) ||
+                "sdk_x86".equals(Build.PRODUCT) ||
+                "vbox86p".equals(Build.PRODUCT);
     }
 
     /**
