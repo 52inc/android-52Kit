@@ -17,17 +17,7 @@
             <option value="$PROJECT_DIR$/library-winds" />
           </set>
         </option>
-        <option name="myModules">
-          <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/example" />
-            <option value="$PROJECT_DIR$/library" />
-            <option value="$PROJECT_DIR$/library-attributr" />
-            <option value="$PROJECT_DIR$/library-drawer" />
-            <option value="$PROJECT_DIR$/library-eula" />
-            <option value="$PROJECT_DIR$/library-winds" />
-          </set>
-        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>
