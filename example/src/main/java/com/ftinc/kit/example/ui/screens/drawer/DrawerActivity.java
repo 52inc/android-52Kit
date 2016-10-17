@@ -18,7 +18,7 @@ import com.ftinc.kit.widget.EmptyView;
 import com.ftinc.kit.widget.ScrimInsetsRelativeLayout;
 import com.ftinc.kit.winds.Winds;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import hugo.weaving.DebugLog;
 import timber.log.Timber;
@@ -35,10 +35,10 @@ public class DrawerActivity extends AppCompatActivity implements Callbacks {
     public static final String EXTRA_PAGE = "extra_page";
     private int mCurrentPage = BOOKMARKS.ordinal();
 
-    @Bind(R.id.appbar)
+    @BindView(R.id.appbar)
     Toolbar mToolbar;
 
-    @Bind(R.id.empty_layout)
+    @BindView(R.id.empty_layout)
     EmptyView mEmptyView;
 
     @Override
