@@ -105,7 +105,7 @@ public class MediaUtils {
      * @param requestCode       the request code that launched the activity that caused the result
      * @param data              the data from the result
      */
-    public static Observable<File> handleActivityResult(Context context, int resultCode, int requestCode, Intent data){
+    public static Observable<File> handleActivityResult(final Context context, int resultCode, int requestCode, Intent data){
         if(resultCode == Activity.RESULT_OK){
             switch (requestCode){
                 case CAPTURE_PHOTO_REQUEST_CODE:
