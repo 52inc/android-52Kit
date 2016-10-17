@@ -207,6 +207,17 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
     }
 
     /**
+     * Update an item in the collection of objects with a new object
+     *
+     * @param index      the index of the object to update
+     * @param object     the new object to replace at index position
+     */
+    public void set(int index, M object){
+        items.set(index, object);
+        applyFilter();
+    }
+
+    /**
      * Clear this adapter of all items
      */
     public void clear() {

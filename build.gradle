@@ -29,13 +29,13 @@ ext {
 
     ci = 'true'.equals(System.getenv('CI'))
 
-    supportAnnotations = 'com.android.support:support-annotations:23.1.1'
-    supportV4 = 'com.android.support:support-v4:23.1.1'
-    supportRecyclerView = 'com.android.support:recyclerview-v7:23.1.1'
-    supportAppCompat = 'com.android.support:appcompat-v7:23.1.1'
-    supportDesign = 'com.android.support:design:23.1.1'
+    supportAnnotations = 'com.android.support:support-annotations:23.4.0'
+    supportV4 = 'com.android.support:support-v4:23.4.0'
+    supportRecyclerView = 'com.android.support:recyclerview-v7:23.4.0'
+    supportAppCompat = 'com.android.support:appcompat-v7:23.4.0'
+    supportDesign = 'com.android.support:design:23.4.0'
 
-    rxJava = 'io.reactivex:rxjava:1.1.0'
+    rxJava = 'io.reactivex:rxjava:1.1.3'
     rxAndroid = 'io.reactivex:rxandroid:1.1.0'
     rxPrefs = 'com.f2prateek.rx.preferences:rx-preferences:1.0.1'
 
