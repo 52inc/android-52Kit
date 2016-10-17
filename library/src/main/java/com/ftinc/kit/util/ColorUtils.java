@@ -16,7 +16,9 @@
 
 package com.ftinc.kit.util;
 
+import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.support.annotation.ColorInt;
 
 public class ColorUtils {
     private static final int BRIGHTNESS_THRESHOLD = 130;
@@ -77,6 +79,10 @@ public class ColorUtils {
 
     private static float ave(float src, float dst, float p) {
         return src + Math.round(p * (dst - src));
+    }
+
+    public static ColorStateList colorToStateList(@ColorInt int color){
+        return new ColorStateList(new int[][]{new int[]{}}, new int[]{color});
     }
 
     /**

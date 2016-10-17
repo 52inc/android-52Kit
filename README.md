@@ -49,11 +49,11 @@ Pre-built layouts for common list item configurations includeing, one line, two 
 Include this line in your gradle build file:
 
 ```groovy
-compile 'com.52inc:52Kit-core:0.4.2'
+compile 'com.52inc:52Kit-core:0.4.3'
 ```
 
 **Snapshot:**  
-`0.4.3-SNAPSHOT`
+`N/A`
 
 
 ### Transitive Dependencies

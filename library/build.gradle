@@ -16,6 +16,10 @@ android {
         preDexLibraries = !rootProject.ext.ci
     }
 
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {

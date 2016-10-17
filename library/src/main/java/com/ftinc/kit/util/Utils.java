@@ -16,9 +16,14 @@
 
 package com.ftinc.kit.util;
 
+import android.content.ContentResolver;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.PointF;
+import android.net.Uri;
 import android.os.Build;
+import android.support.annotation.AnyRes;
+import android.support.annotation.NonNull;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -127,6 +132,30 @@ public class Utils {
             uuidPref.set(uuid);
             return uuid;
         }
+    }
+
+
+    /**
+     * Get uri to any resource type
+     * @param context - context
+     * @param resId - resource id
+     * @throws Resources.NotFoundException if the given ID does not exist.
+     * @return - Uri to resource by given id
+     */
+    public static Uri getUriFromResource(@NonNull Context context, @AnyRes int resId) throws Resources.NotFoundException {
+        /** Return a Resources instance for your application's package. */
+        Resources res = context.getResources();
+        /**
+         * Creates a Uri which parses the given encoded URI string.
+         * @param uriString an RFC 2396-compliant, encoded URI
+         * @throws NullPointerException if uriString is null
+         * @return Uri for this given uri string
+         */
+        /** return uri */
+        return Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
+                "://" + res.getResourcePackageName(resId)
+                + '/' + res.getResourceTypeName(resId)
+                + '/' + res.getResourceEntryName(resId));
     }
 	
 	/**

@@ -27,7 +27,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-
 public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolder>
         extends RecyclerView.Adapter<VH> {
 
@@ -48,6 +47,7 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
     protected ArrayList<M> filteredItems = new ArrayList<>();
 
     private OnItemClickListener<M> itemClickListener;
+    private OnItemLongClickListener<M> itemLongClickListener;
     private View emptyView;
 
     private CharSequence query;
@@ -73,6 +73,15 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      */
     protected void onItemClick(View view, int position){
         if(itemClickListener != null) itemClickListener.onItemClick(view, getItem(position), position);
+    }
+
+    /**
+     * Call this to trigger the user set item long click lisetner
+     * @param view          the view that was clicked
+     * @param position      the position that was clicked
+     */
+    protected void onItemLongClick(View view, int position){
+        if(itemLongClickListener != null) itemLongClickListener.onItemLongClick(view, getItem(position), position);
     }
 
     /**
@@ -150,6 +159,13 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      */
     public void setOnItemClickListener(OnItemClickListener<M> itemClickListener){
         this.itemClickListener = itemClickListener;
+    }
+
+    /**
+     * Set the item long click listener for this adapter
+     */
+    public void setOnItemLongClickListener(OnItemLongClickListener<M> itemLongClickListener){
+        this.itemLongClickListener = itemLongClickListener;
     }
 
     /***********************************************************************************************
@@ -378,6 +394,16 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
                 }
             });
         }
+
+        if(itemLongClickListener != null){
+            vh.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    int position = vh.getAdapterPosition();
+                    return itemLongClickListener.onItemLongClick(v, getItem(position), position);
+                }
+            });
+        }
     }
 
     /**
@@ -413,6 +439,12 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
         void onItemClick(View v, T item, int position);
     }
 
+    /**
+     * The interface for detecting item long click events from within the adapter
+     */
+    public interface OnItemLongClickListener<T>{
+        boolean onItemLongClick(View v, T item, int position);
+    }
 
 
 }
