@@ -49,20 +49,8 @@ Pre-built layouts for common list item configurations includeing, one line, two 
 Include this line in your gradle build file:
 
 ```groovy
-compile 'com.52inc:52Kit-core:0.4.3'
+compile 'com.52inc:52Kit-core:0.5.0'
 ```
 
 **Snapshot:**  
 `N/A`
-
-
-### Transitive Dependencies
-
-*	`support-v4`:`23.1.1`
-*	`appcompat-v7`:`23.1.1`
-*	`recyclerview-v7`:`23.1.1`
-*	`timber`:`4.1.0`
-*	`butterknife`:`7.0.1`
-*	`rxJava`:`1.1.0`
-*	`rxAndroid`:`1.1.0`
-*	`rx-preferences`:`1.0.1`
