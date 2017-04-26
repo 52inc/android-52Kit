@@ -36,12 +36,6 @@ import java.io.IOException;
  */
 public final class Parser {
 
-    /***********************************************************************************************
-     *
-     * Constants
-     *
-     */
-
     private final static String DOCUMENT_TAG = "Changelog";
     private final static String TAG_VERSION = "Version";
     private final static String TAG_CHANGE = "Change";

@@ -129,7 +129,6 @@ public class IntentUtils {
      * @param latitude  Latitude
      * @param longitude Longitude
      * @param yaw       Panorama center-of-view in degrees clockwise from North.
-     *                  <p/>
      *                  Note: The two commas after the yaw parameter are required.
      *                  They are present for backwards-compatibility reasons.
      * @param pitch     Panorama center-of-view in degrees from -90 (look straight up) to 90 (look straight down.)
@@ -327,9 +326,8 @@ public class IntentUtils {
     /**
      * Pick file from sdcard with file manager. Chosen file can be obtained from Intent in onActivityResult.
      * See code below for example:
-     * <p/>
+     * 
      * <pre><code>
-     *     @Override
      *     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
      *         Uri file = data.getData();
      *     }
@@ -343,9 +341,8 @@ public class IntentUtils {
      * Pick a type of file from the sdcard with the file manager.
      * Chosen file can be obtained from Intent in onActivityResult.
      * See code below for example:
-     * <p/>
+     * 
      * <pre><code>
-     *     @Override
      *     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
      *         Uri file = data.getData();
      *     }
@@ -365,7 +362,7 @@ public class IntentUtils {
      * Valid examples include the following:
      * tel:2125551212
      * tel: (212) 555 1212
-     * <p/>
+     *
      * Note: This requires your application to request the following permission in your manifest:
      * <code>&lt;uses-permission android:name="android.permission.CALL_PHONE"/&gt;</code>
      *
@@ -388,18 +385,7 @@ public class IntentUtils {
     /**
      * Pick contact from phone book
      *
-     * @param scope You can restrict selection by passing required content type. Examples:
-     *              <p/>
-     *              <code><pre>
-     *              // Select only from users with emails
-     *              IntentUtils.pickContact(ContactsContract.CommonDataKinds.Email.CONTENT_TYPE);
-     *              <p/>
-     *              // Select only from users with phone numbers on pre Eclair devices
-     *              IntentUtils.pickContact(Contacts.Phones.CONTENT_TYPE);
-     *              <p/>
-     *              // Select only from users with phone numbers on devices with Eclair and higher
-     *              IntentUtils.pickContact(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
-     *              </pre></code>
+     * @param scope You can restrict selection by passing required content type.
      */
     public static Intent pickContact(String scope) {
         Intent intent;

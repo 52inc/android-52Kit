@@ -36,11 +36,9 @@ import com.ftinc.kit.winds.ui.widget.StickyRecyclerHeadersElevationDecoration;
 
 /**
  * Static tool class for inflating and displaying a changelog in a Material Design manner
- * </br>
  * <p>
  * Winds - 'Winds of Change'
  * </p>
- * </br>
  * Created by r0adkll on 3/11/15.
  */
 public class Winds {
@@ -86,7 +84,7 @@ public class Winds {
     }
 
     /**
-     * Open the changelog activity with the default configuration file {@link R.xml#changelog}
+     * Open the changelog activity with the default configuration file R.xml#changelog
      * @param ctx       the context to open with
      */
     public static void openChangelogActivity(Context ctx){
@@ -106,8 +104,6 @@ public class Winds {
 
     /**
      * Open the changelog dialog
-     *
-     * @param ctx
      */
     public static void openChangelogDialog(Activity ctx){
         openChangelogDialog(ctx, R.xml.changelog);
@@ -138,8 +134,7 @@ public class Winds {
     }
 
     /**
-     * Check to open the changelog activity with the default configuration file
-     * {@link R.xml#changelog}
+     * Check to open the changelog activity with the default configuration file R.xml.changelog
      *
      * @param ctx       the context to launch with
      */
@@ -172,8 +167,7 @@ public class Winds {
     }
 
     /**
-     * Check to open the changelog activity with the default configuration file
-     * {@link R.xml#changelog}
+     * Check to open the changelog activity with the default configuration file R.xml.changelog
      *
      * @param ctx       the context to launch with
      */

@@ -89,7 +89,7 @@ public class ColorUtils {
      * Calculate whether a color is light or dark, based on a commonly known
      * brightness formula.
      *
-     * @see {@literal http://en.wikipedia.org/wiki/HSV_color_space%23Lightness}
+     * @see <a href="http://en.wikipedia.org/wiki/HSV_color_space%23Lightness">http://en.wikipedia.org/wiki/HSV_color_space%23Lightness</a>
      */
     public static boolean isColorDark(int color) {
         return ((30 * Color.red(color) +
