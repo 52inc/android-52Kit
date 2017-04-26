@@ -1,29 +1,23 @@
 package com.ftinc.kit.example.ui.screens.drawer;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.ftinc.kit.drawer.Callbacks;
 import com.ftinc.kit.drawer.Drawer;
 import com.ftinc.kit.example.R;
 import com.ftinc.kit.widget.EmptyView;
-import com.ftinc.kit.widget.ScrimInsetsRelativeLayout;
 import com.ftinc.kit.winds.Winds;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import hugo.weaving.DebugLog;
-import timber.log.Timber;
 
-import static com.ftinc.kit.example.ui.screens.drawer.ExampleDrawerConfig.Item.*;
+import static com.ftinc.kit.example.ui.screens.drawer.ExampleDrawerConfig.Item.BOOKMARKS;
 
 /**
  * Project: android-52Kit

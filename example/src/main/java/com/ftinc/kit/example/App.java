@@ -20,10 +20,7 @@ import android.app.Application;
 import android.app.Service;
 import android.content.Context;
 
-import com.ftinc.kit.BuildConfig;
-
 import hugo.weaving.DebugLog;
-import timber.log.Timber;
 
 /**
  * Created by r0adkll on 3/12/15.
