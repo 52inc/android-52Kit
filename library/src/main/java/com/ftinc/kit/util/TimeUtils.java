@@ -42,7 +42,7 @@ public class TimeUtils {
 
     /**
      * <p>
-     *  Get a timestamp in a an *ago format <br/>
+     *  Get a timestamp in a an *ago format
      *  e.g.; "just now", "a minute ago", "5 minutes ago", "10 hours ago", "2 days ago", etc...
      * </p>
      *

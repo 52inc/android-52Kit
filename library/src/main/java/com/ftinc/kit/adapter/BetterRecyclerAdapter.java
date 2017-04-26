@@ -432,11 +432,6 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
         return RecyclerView.NO_ID;
     }
 
-    /***********************************************************************************************
-     *
-     * Inner Classes & Interfaces
-     *
-     */
 
     public interface Filter<T>{
         boolean filter(T item, @Nullable CharSequence query);

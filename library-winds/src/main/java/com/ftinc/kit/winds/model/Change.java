@@ -1,5 +1,6 @@
 package com.ftinc.kit.winds.model;
 
+
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Parcel;
@@ -14,18 +15,9 @@ import com.ftinc.kit.font.Face;
 import com.ftinc.kit.font.TypefaceSpan;
 import com.ftinc.kit.winds.R;
 
-/**
- * Project: android-52Kit
- * Package: com.ftinc.kit.winds.model
- * Created by drew.heavner on 3/13/15.
- */
+
 public class Change implements Parcelable{
 
-    /***********************************************************************************************
-     *
-     * Enums
-     *
-     */
 
     public enum Type{
         NEW,
@@ -58,11 +50,6 @@ public class Change implements Parcelable{
 
     }
 
-    /***********************************************************************************************
-     *
-     * Variables
-     *
-     */
 
     public Type type;
     public String text;
@@ -83,7 +70,7 @@ public class Change implements Parcelable{
     }
 
     /**
-     * Parse the string into html code by replacing all the '[' with '<' and ']' with '>'
+     * Parse the string into html code by replacing all the '[' with '&lt;' and ']' with '&gt;'
      * and converting it into a Span
      *
      * @param rawText   the raw text from xml

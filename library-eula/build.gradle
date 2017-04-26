@@ -11,6 +11,10 @@ android {
     dexOptions {
         preDexLibraries = !rootProject.ext.ci
     }
+
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {

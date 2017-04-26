@@ -16,6 +16,7 @@
 
 package com.ftinc.kit.widget;
 
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
@@ -29,19 +30,9 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 
 import com.ftinc.kit.R;
 
-/**
- * Project: DII
- * Package: co.ftinc.dii.ui.widget
- * Created by drew.heavner on 2/17/15.
- */
+
 public class ProgressIndicator extends View {
 
-
-    /***********************************************************************************************
-     *
-     * Variables
-     *
-     */
 
     private int mProgress = 0;
     private int mMax = 0;
@@ -53,11 +44,6 @@ public class ProgressIndicator extends View {
 
     private Paint mPaint;
 
-    /***********************************************************************************************
-     *
-     * Constructors
-     *
-     */
 
     public ProgressIndicator(Context context) {
         this(context, null);
@@ -103,11 +89,6 @@ public class ProgressIndicator extends View {
         a.recycle();
     }
 
-    /***********************************************************************************************
-     *
-     * Setters & Getters
-     *
-     */
 
     public void setProgress(final int progress){
 
@@ -154,11 +135,6 @@ public class ProgressIndicator extends View {
         invalidate();
     }
 
-    /***********************************************************************************************
-     *
-     * Overridden Methods
-     *
-     */
 
     @Override
     protected void onDraw(Canvas canvas) {

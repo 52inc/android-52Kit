@@ -1,12 +1,9 @@
 package com.ftinc.kit.drawer.model;
 
+
 import com.f2prateek.rx.preferences.Preference;
 
-/**
- * Project: android-52Kit
- * Package: com.ftinc.kit.drawer.model
- * Created by drew.heavner on 10/29/15.
- */
+
 public class BooleanPreferenceImpl implements IPreference<Boolean> {
 
     private Preference<Boolean> preference;
