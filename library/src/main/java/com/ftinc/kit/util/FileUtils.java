@@ -39,7 +39,6 @@ import java.io.OutputStream;
 import java.io.Reader;
 import java.io.Writer;
 
-import timber.log.Timber;
 
 public class FileUtils {
 
@@ -348,14 +347,14 @@ public class FileUtils {
                 try {
                     output.createNewFile();
                 } catch (IOException e) {
-                    Timber.e(e, "Error creating new output file for copying");
+                    e.printStackTrace();
                 }
             }
         }else if(!output.exists()){
             try {
                 output.createNewFile();
             } catch (IOException e) {
-                Timber.e(e, "Error creating new output file for copying");
+                e.printStackTrace();
             }
         }
 
@@ -390,14 +389,14 @@ public class FileUtils {
     /**
      * Video thumbnail task callback
      */
-    public static interface VideoThumbnailCallback{
+    public interface VideoThumbnailCallback{
 
         /**
          * Called when task is complete
          *
          * @param thumb     the thumbnail bitmap, or null
          */
-        public void onThumbnail(Bitmap thumb);
+        void onThumbnail(Bitmap thumb);
     }
 
 }

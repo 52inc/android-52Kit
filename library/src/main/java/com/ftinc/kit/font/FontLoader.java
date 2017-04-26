@@ -23,8 +23,6 @@ import android.util.LruCache;
 import android.view.View;
 import android.widget.TextView;
 
-import butterknife.ButterKnife;
-
 /**
  * This is a helper class for loading and applying Roboto fonts to {@link android.widget.TextView}
  * or for just loading and returning the {@link android.graphics.Typeface} themselves.
@@ -39,12 +37,6 @@ public class FontLoader {
      * The Lru typeface memory cache so as not to keep loading typefaces from the disk
      */
     private static LruCache<String, Typeface> mLoadedTypefaces = new LruCache<>(3 * 1024 * 1024); // 3 MiB cache
-
-    /*********************************************************************************
-     *
-     * Public Accessible Methods
-     *
-     */
 
 
     /**
@@ -83,7 +75,7 @@ public class FontLoader {
      * @param type      the typeface type argument
      */
     public static void apply(View parent, int viewId, Face type){
-        TextView text = ButterKnife.findById(parent, viewId);
+        TextView text = (TextView) parent.findViewById(viewId);
         if(text != null)
             apply(text, type);
     }
@@ -96,7 +88,7 @@ public class FontLoader {
      * @param type          the typeface code to apply
      */
     public static void apply(Activity activity, int viewId, Face type){
-        TextView text = ButterKnife.findById(activity, viewId);
+        TextView text = (TextView) activity.findViewById(viewId);
         if(text != null)
             apply(text, type);
     }
@@ -127,13 +119,4 @@ public class FontLoader {
         }
         return existing;
     }
-
-
-    /*********************************************************************************
-     *
-     * Private Helper Methods
-     *
-     */
-
-
 }

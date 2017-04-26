@@ -424,7 +424,7 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
      */
     @Override
     public long getItemId(int position) {
-        if(position > -1 && position < getItemCount()) {
+        if(position > RecyclerView.NO_ID && position < getItemCount()) {
             M item = getItem(position);
             if (item != null) return item.hashCode();
             return position;

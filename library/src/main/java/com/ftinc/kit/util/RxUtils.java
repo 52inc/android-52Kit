@@ -1,7 +1,7 @@
 package com.ftinc.kit.util;
 
 import android.os.Handler;
-import android.support.annotation.Nullable;
+import android.util.Log;
 
 import java.util.concurrent.TimeUnit;
 
@@ -12,7 +12,6 @@ import rx.android.schedulers.HandlerScheduler;
 import rx.functions.Action0;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
-import timber.log.Timber;
 
 /**
  * Utility Helper class for RxJava additions
@@ -169,7 +168,7 @@ public class RxUtils {
      * @param <T>       the transformation type
      * @return          the transformer
      */
-    public static <T> Observable.Transformer<T, T> applyLogging(final String name){
+    public static <T> Observable.Transformer<T, T> applyLogging(final String name, final Logger logger){
         return new Observable.Transformer<T, T>() {
             @Override
             public Observable<T> call(Observable<T> observable) {
@@ -177,19 +176,19 @@ public class RxUtils {
                         .doOnNext(new Action1<T>() {
                             @Override
                             public void call(T t) {
-                                Timber.d("[%s] onNext(%s)", name, t);
+                                logger.log(Log.DEBUG, "[%s] onNext(%s)", name, t);
                             }
                         })
                         .doOnError(new Action1<Throwable>() {
                             @Override
                             public void call(Throwable throwable) {
-                                Timber.d(throwable, "[%s] onError()", name);
+                                logger.log(throwable, Log.DEBUG, "[%s] onError()", name);
                             }
                         })
                         .doOnCompleted(new Action0() {
                             @Override
                             public void call() {
-                                Timber.d("[%s] onCompleted()", name);
+                                logger.log(Log.DEBUG, "[%s] onCompleted()", name);
                             }
                         });
             }
@@ -205,7 +204,7 @@ public class RxUtils {
      * @param <T>       The transformation type
      * @return          The transformer
      */
-    public static <T> Observable.Transformer<T, T> benchmark(final String name){
+    public static <T> Observable.Transformer<T, T> benchmark(final String name, final Logger logger){
         final long[] startTime = new long[1];
         return new Observable.Transformer<T, T>() {
             @Override
@@ -221,11 +220,16 @@ public class RxUtils {
                             @Override
                             public void call() {
                                 long timeMs = TimeUnit.NANOSECONDS.toMillis(startTime[0]);
-                                Timber.d("[%s] Observable Duration: %s", name, TimeUtils.getTimeAgo(timeMs));
+                                logger.log(Log.DEBUG, "[%s] Observable Duration: %s", name, TimeUtils.getTimeAgo(timeMs));
                             }
                         });
             }
         };
     }
 
+
+    public interface Logger {
+        void log(int priority, String message, Object... args);
+        void log(Throwable e, int priority, String message, Object... args);
+    }
 }

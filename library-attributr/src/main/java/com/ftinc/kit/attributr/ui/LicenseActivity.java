@@ -37,6 +37,7 @@ import com.ftinc.kit.attributr.R;
 import com.ftinc.kit.adapter.BetterRecyclerAdapter;
 import com.ftinc.kit.attributr.ui.widget.StickyRecyclerHeadersElevationDecoration;
 import com.ftinc.kit.util.BuildUtils;
+import com.ftinc.kit.util.SizeUtils;
 import com.ftinc.kit.util.UIUtils;
 import com.ftinc.kit.util.Utils;
 
@@ -138,7 +139,7 @@ public class LicenseActivity extends ActionBarActivity implements View.OnClickLi
     @Override
     public void onItemClick(View v, com.ftinc.kit.attributr.model.Library item, int position) {
         if(BuildUtils.isLollipop()){
-            v.setElevation(Utils.dpToPx(this, 4));
+            v.setElevation(SizeUtils.dpToPx(this, 4));
         }
 
         View name = ButterKnife.findById(v, R.id.line_1);

@@ -19,16 +19,14 @@ buildscript {
     }
     dependencies {
         classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1'
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.7'
     }
 }
 
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'com.jakewharton.hugo'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
@@ -45,28 +43,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-    aaptOptions {
-        useNewCruncher false
-    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':library')
-    compile (project(':library-winds')){
-        exclude group: 'com.52inc'
-    }
-    compile (project(':library-attributr')){
-        exclude group: 'com.52inc'
-    }
-    compile (project(':library-drawer')){
-        exclude group: 'com.52inc'
-    }
+    compile project(':library-winds')
+    compile project(':library-attributr')
+    compile project(':library-drawer')
 
     // Dagger 2
-    compile 'com.google.dagger:dagger:2.0'
-    apt 'com.google.dagger:dagger-compiler:2.0'
+    compile 'com.google.dagger:dagger:2.10'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.10'
     provided 'org.glassfish:javax.annotation:10.0-b28'
 
     compile 'com.squareup.picasso:picasso:2.5.2'

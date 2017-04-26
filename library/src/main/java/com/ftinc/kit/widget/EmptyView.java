@@ -33,32 +33,25 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.ActionMenuView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ftinc.kit.R;
 import com.ftinc.kit.font.Face;
 import com.ftinc.kit.font.FontLoader;
+import com.ftinc.kit.util.SizeUtils;
 import com.ftinc.kit.util.UIUtils;
 import com.ftinc.kit.util.Utils;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-import timber.log.Timber;
-
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
-/**
- * Project: Chipper
- * Package: com.r0adkll.chipper.ui.widget
- * Created by drew.heavner on 11/20/14.
- */
+
 public class EmptyView extends RelativeLayout {
 
     /***********************************************************************************************
@@ -184,8 +177,8 @@ public class EmptyView extends RelativeLayout {
             mEmptyMessageColor = defaultColor;
             mEmptyIconColor = defaultColor;
             mEmptyActionColor = defaultColor;
-            mEmptyMessageTextSize = (int) Utils.dpToPx(context, 18);
-            mEmptyActionTextSize = (int) Utils.dpToPx(context, 14);
+            mEmptyMessageTextSize = (int) SizeUtils.dpToPx(context, 18);
+            mEmptyActionTextSize = (int) SizeUtils.dpToPx(context, 14);
             mEmptyMessageTypeface = Face.ROBOTO_REGULAR;
             return;
         }
@@ -200,12 +193,12 @@ public class EmptyView extends RelativeLayout {
         int typeface = a.getInt(R.styleable.EmptyView_emptyMessageTypeface, 0);
         mEmptyMessageTypeface = MessageTypeface.from(typeface).getTypeface();
         mEmptyMessageTextSize = a.getDimensionPixelSize(R.styleable.EmptyView_emptyMessageTextSize,
-                (int)Utils.dpToPx(context, 18));
+                (int) SizeUtils.dpToPx(context, 18));
 
         mEmptyActionColor = a.getColor(R.styleable.EmptyView_emptyActionColor, defaultColor);
         mEmptyActionText = a.getString(R.styleable.EmptyView_emptyActionText);
         mEmptyActionTextSize = a.getDimensionPixelSize(R.styleable.EmptyView_emptyActionTextSize,
-                (int)Utils.dpToPx(context, 14));
+                (int) SizeUtils.dpToPx(context, 14));
 
         mState = a.getInt(R.styleable.EmptyView_emptyState, STATE_EMPTY);
 
@@ -257,7 +250,7 @@ public class EmptyView extends RelativeLayout {
         // Setup the Action Label
         LinearLayout.LayoutParams actionParams = new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
         actionParams.topMargin = getResources().getDimensionPixelSize(R.dimen.activity_padding);
-        int padding = (int) Utils.dpToPx(getContext(), 8);
+        int padding = (int) SizeUtils.dpToPx(getContext(), 8);
         mAction.setText(mEmptyActionText);
         mAction.setTextColor(mEmptyActionColor);
         mAction.setTextSize(TypedValue.COMPLEX_UNIT_PX, mEmptyActionTextSize);

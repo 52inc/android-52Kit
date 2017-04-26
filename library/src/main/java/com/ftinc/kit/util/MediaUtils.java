@@ -26,7 +26,7 @@ import java.util.concurrent.Callable;
 
 import rx.Observable;
 import rx.exceptions.OnErrorThrowable;
-import timber.log.Timber;
+
 
 /**
  * This is the utility class for helping capture photos and media
@@ -67,7 +67,7 @@ public class MediaUtils {
             grantPermissions(ctx, mCurrentCaptureUri);
             intent.putExtra(MediaStore.EXTRA_OUTPUT, mCurrentCaptureUri);
         } catch (IOException e) {
-            Timber.e(e, "Error creating temporary file for capture");
+            e.printStackTrace();
         }
 
         return intent;
@@ -112,7 +112,6 @@ public class MediaUtils {
                     if(mCurrentCaptureUri != null){
                         revokePermissions(context, mCurrentCaptureUri);
                         File file = getAccessibleTempFile(context, mCurrentCaptureUri);
-                        Timber.d("Handling photo capture result(%s)", file.getPath());
                         mCurrentCaptureUri = null;
                         return Observable.just(file);
                     }
@@ -124,7 +123,6 @@ public class MediaUtils {
                         return Observable.fromCallable(new Callable<File>() {
                             @Override
                             public File call() throws Exception {
-                                Timber.d("[MediaUtils] Loading chosen media: [%s]: %s", fileName, mediaUri);
 
                                 ParcelFileDescriptor parcelFileDescriptor = null;
                                 try {
@@ -149,7 +147,6 @@ public class MediaUtils {
 
                                         return tempFile;
                                     } catch (IOException e) {
-                                        Timber.e(e, "Error creating temporary file");
                                         throw OnErrorThrowable.from(e);
                                     } finally {
 
@@ -160,7 +157,7 @@ public class MediaUtils {
                                                 fos.close();
                                             }
                                         } catch (IOException e1) {
-                                            Timber.e(e1, "Error closing streams");
+                                            e1.printStackTrace();
                                         }
                                     }
 

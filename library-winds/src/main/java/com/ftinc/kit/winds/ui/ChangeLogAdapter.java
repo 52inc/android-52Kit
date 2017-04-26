@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.ftinc.kit.adapter.BetterRecyclerAdapter;
 import com.ftinc.kit.font.Face;
 import com.ftinc.kit.font.FontLoader;
+import com.ftinc.kit.util.SizeUtils;
 import com.ftinc.kit.winds.R;
 import com.ftinc.kit.winds.internal.VersionComparator;
 import com.ftinc.kit.winds.model.Change;
@@ -82,7 +83,7 @@ public class ChangeLogAdapter extends BetterRecyclerAdapter<Change, ChangeLogAda
         long nextHID = getHeaderId(i+1);
 
         if(hId != nextHID){
-            holder.itemView.setPadding(0, 0, 0, (int)Utils.dpToPx(holder.itemView.getContext(), 16f));
+            holder.itemView.setPadding(0, 0, 0, (int) SizeUtils.dpToPx(holder.itemView.getContext(), 16f));
         }else{
             holder.itemView.setPadding(0, 0, 0, 0);
         }

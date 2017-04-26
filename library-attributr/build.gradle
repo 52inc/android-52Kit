@@ -16,6 +16,8 @@ android {
 dependencies {
     compile project(':library')
     compile 'com.timehop.stickyheadersrecyclerview:library:0.4.2@aar'
+    compile "com.jakewharton:butterknife:$butterKnifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
 }
 
 apply from: '../gradle-mvn-push.gradle'

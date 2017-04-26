@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -53,7 +54,7 @@ public class EulaActivity extends AppCompatActivity {
      *
      */
 
-    private ImageView mLogo;
+    /*@BindView(R2.id.logo)*/ ImageView mLogo;
     private TextView mEulaText;
     private TextView mActionCancel;
     private TextView mActionAccept;

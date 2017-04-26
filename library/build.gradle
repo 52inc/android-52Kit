@@ -20,20 +20,11 @@ android {
 
 dependencies {
 
-    // The Support Libraries
-    compile rootProject.ext.supportV4
-    compile rootProject.ext.supportAppCompat
-    compile rootProject.ext.supportRecyclerView
+    compile "com.android.support:appcompat-v7:$supportVersion"
+    compile "com.android.support:recyclerview-v7:$supportVersion"
 
-    // Wharton Libraries
-    compile rootProject.ext.timber
-    compile rootProject.ext.butterKnife
-
-    // Rx
-    compile rootProject.ext.rxJava
-    compile rootProject.ext.rxAndroid
-    compile rootProject.ext.rxPrefs
-
+    compile "io.reactivex:rxjava:$rxVersion"
+    compile "io.reactivex:rxandroid:$rxAndroidVersion"
 }
 
 apply from: '../gradle-mvn-push.gradle'

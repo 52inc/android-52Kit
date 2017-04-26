@@ -24,18 +24,13 @@ import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.AnyRes;
 import android.support.annotation.NonNull;
-import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Patterns;
-import android.util.TypedValue;
 import android.webkit.MimeTypeMap;
-
-import com.f2prateek.rx.preferences.Preference;
 
 import java.net.URLConnection;
 import java.util.Calendar;
 import java.util.Random;
-import java.util.UUID;
 
 /**
  * This is the standard utils file containing common util functions
@@ -92,46 +87,6 @@ public class Utils {
                 "sdk".equals(Build.PRODUCT) ||
                 "sdk_x86".equals(Build.PRODUCT) ||
                 "vbox86p".equals(Build.PRODUCT);
-    }
-
-    /**
-     * Generate a unique device identifier that can be replicated
-     * on the device
-     * <p>
-     * CAVEAT This method requires the android.Manifest.permission#READ_PHONE_STATE permission
-     * </p>
-     * @param ctx       the application context
-     * @return          the device unique id
-     */
-    public static String generateUniqueDeviceId(Context ctx){
-        final TelephonyManager tm = (TelephonyManager) ctx.getSystemService(Context.TELEPHONY_SERVICE);
-
-        final String tmDevice, tmSerial, androidId;
-        tmDevice = "" + tm.getDeviceId();
-        tmSerial = "" + tm.getSimSerialNumber();
-        androidId = "" + android.provider.Settings.Secure.getString(ctx.getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
-
-        UUID deviceUuid = new UUID(androidId.hashCode(), ((long)tmDevice.hashCode() << 32) | tmSerial.hashCode());
-        return deviceUuid.toString();
-    }
-
-    /**
-     * Generate a new UUID if one is not stored. This id is session/install based so every time
-     * you install/re-install or wipe data for this application, this value will update and
-     * change.
-     *
-     * @param uuidPref      the uuid preference
-     * @return              the unique device id
-     */
-    public static String generateUniqueDeviceId(Preference<String> uuidPref){
-        // Check if uuid is set
-        if(uuidPref.isSet()){
-            return uuidPref.get();
-        }else{
-            String uuid = UUID.randomUUID().toString();
-            uuidPref.set(uuid);
-            return uuid;
-        }
     }
 
 
@@ -210,39 +165,6 @@ public class Utils {
      */
     public static float distance(PointF p1, PointF p2){
         return (float) Math.sqrt(Math.pow((p2.x - p1.x), 2) + Math.pow(p2.y - p1.y,2));
-    }
-
-    /**
-     * Convert Density-Independent Pixels to actual pixels
-     *
-     * @param ctx       the application context
-     * @param dpSize    the size in DP units
-     * @return          the size in Pixel units
-     */
-    public static float dpToPx(Context ctx, float dpSize) {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpSize, ctx.getResources().getDisplayMetrics());
-    }
-
-    /**
-     * Convert Density-Independent Pixels to actual pixels
-     *
-     * @param ctx       the application context to convert the value with
-     * @param dpSize    the size in DP units
-     * @return          the size in Pixel units
-     */
-    public static int dipToPx(Context ctx, float dpSize){
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpSize, ctx.getResources().getDisplayMetrics());
-    }
-
-    /**
-     * Convert Scale-Dependent Pixels to actual pixels
-     *
-     * @param ctx       the application context
-     * @param spSize    the size in SP units
-     * @return          the size in Pixel units
-     */
-    public static float spToPx(Context ctx, float spSize){
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, spSize, ctx.getResources().getDisplayMetrics());
     }
 
     /**

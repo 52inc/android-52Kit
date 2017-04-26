@@ -44,7 +44,6 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.ButterKnife;
-import timber.log.Timber;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS;

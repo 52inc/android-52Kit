@@ -34,8 +34,6 @@ import com.ftinc.kit.winds.ui.ChangeLogAdapter;
 import com.ftinc.kit.winds.ui.ChangeLogDialog;
 import com.ftinc.kit.winds.ui.widget.StickyRecyclerHeadersElevationDecoration;
 
-import timber.log.Timber;
-
 /**
  * Static tool class for inflating and displaying a changelog in a Material Design manner
  * </br>
@@ -131,8 +129,6 @@ public class Winds {
             // Validate that there is a new version code
             if(validateVersion(ctx, changeLog)) {
                 openChangelogActivity(ctx, configId);
-            }else{
-                Timber.i("No new changelog available.");
             }
 
         }else{
@@ -167,8 +163,6 @@ public class Winds {
             // Validate that there is a new version code
             if(validateVersion(ctx, changeLog)) {
                 openChangelogDialog(ctx, configId);
-            }else{
-                Timber.i("No new changelog available.");
             }
 
         }else{

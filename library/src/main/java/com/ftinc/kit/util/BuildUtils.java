@@ -18,9 +18,7 @@ package com.ftinc.kit.util;
 
 import android.app.ActivityManager;
 import android.content.Context;
-import android.content.res.Configuration;
 import android.os.Build;
-import android.util.DisplayMetrics;
 
 /**
  * Utility class for useful functions relating to the build/os of the device
@@ -28,6 +26,14 @@ import android.util.DisplayMetrics;
  * Created by r0adkll on 3/7/15.
  */
 public class BuildUtils {
+
+    /**
+     * Return whether or not the device is running Nougat 7.0
+     * @see android.os.Build.VERSION_CODES#N
+     */
+    public static boolean isNougat(){
+        return (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N);
+    }
 
     /**
      * Return whether or not the device is running Marshmellow 6.0
