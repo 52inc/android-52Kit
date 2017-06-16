@@ -401,7 +401,9 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
                 @Override
                 public void onClick(View v) {
                     int position = vh.getAdapterPosition();
-                    itemClickListener.onItemClick(v, getItem(position), position);
+                    if (position != RecyclerView.NO_POSITION) {
+                        itemClickListener.onItemClick(v, getItem(position), position);
+                    }
                 }
             });
         }
@@ -411,7 +413,10 @@ public abstract class BetterRecyclerAdapter<M, VH extends RecyclerView.ViewHolde
                 @Override
                 public boolean onLongClick(View v) {
                     int position = vh.getAdapterPosition();
-                    return itemLongClickListener.onItemLongClick(v, getItem(position), position);
+                    if (position != RecyclerView.NO_POSITION) {
+                        return itemLongClickListener.onItemLongClick(v, getItem(position), position);
+                    }
+                    return false;
                 }
             });
         }
