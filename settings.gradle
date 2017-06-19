@@ -1,1 +1,1 @@
-include ':library', ':example', ':library-winds', ':library-attributr', ':library-drawer', ':library-eula'
+include ':library', ':example', ':library-winds', ':library-attributr', ':library-drawer', ':library-eula', ':library-kotlin'
