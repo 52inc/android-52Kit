@@ -27,8 +27,8 @@ dependencies {
     compile "io.reactivex:rxandroid:$rxAndroidVersion"
 }
 
-//apply from: '../gradle-mvn-push.gradle'
-apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
+apply from: '../tools/gradle-mvn-push.gradle'
+//apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
 
 afterEvaluate { project ->
     android.libraryVariants.all { variant ->
