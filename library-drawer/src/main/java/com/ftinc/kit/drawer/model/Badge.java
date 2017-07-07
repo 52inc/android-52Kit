@@ -84,8 +84,18 @@ public class Badge {
             return this;
         }
 
+        public Builder badgeColor(@ColorInt int color) {
+            badge.color = color;
+            return this;
+        }
+
         public Builder textColor(@ColorRes int resId){
             badge.textColor = context.getResources().getColor(resId);
+            return this;
+        }
+
+        public Builder badgeTextColor(@ColorInt int color) {
+            badge.textColor = color;
             return this;
         }
 
