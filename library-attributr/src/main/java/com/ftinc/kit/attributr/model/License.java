@@ -822,6 +822,7 @@ public enum License {
 
     NONE("", "", "");
 
+
     private final String mKey;
     private final String mLicenseText;
     private final String mFormalName;
