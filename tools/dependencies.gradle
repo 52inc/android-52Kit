@@ -1,14 +1,14 @@
 ext {
     androidPlugin = 'com.android.tools.build:gradle:2.3.1'
     minSdkVersion = 16
-    compileSdkVersion = 25
-    buildToolsVersion = '26.0.0'
+    compileSdkVersion = 26
+    buildToolsVersion = '26.0.1'
 
     ci = 'true' == System.getenv('CI')
 
     junitVersion = '4.12'
 
-    supportVersion = '25.4.0'
+    supportVersion = '26.0.1'
     rxVersion = '1.2.10'
     rxAndroidVersion = '1.2.1'
     timberVersion = '4.5.1'
