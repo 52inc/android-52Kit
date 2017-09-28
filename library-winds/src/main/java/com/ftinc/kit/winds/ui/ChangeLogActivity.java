@@ -19,7 +19,7 @@ package com.ftinc.kit.winds.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -36,7 +36,7 @@ import butterknife.ButterKnife;
  * Package: com.ftinc.kit.winds.ui
  * Created by drew.heavner on 3/13/15.
  */
-public class ChangeLogActivity extends ActionBarActivity implements View.OnClickListener {
+public class ChangeLogActivity extends AppCompatActivity implements View.OnClickListener {
 
     /***********************************************************************************************
      *

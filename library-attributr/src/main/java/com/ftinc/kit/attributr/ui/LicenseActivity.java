@@ -20,7 +20,7 @@ package com.ftinc.kit.attributr.ui;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -39,8 +39,6 @@ import com.ftinc.kit.adapter.BetterRecyclerAdapter;
 import com.ftinc.kit.attributr.ui.widget.StickyRecyclerHeadersElevationDecoration;
 import com.ftinc.kit.util.BuildUtils;
 import com.ftinc.kit.util.SizeUtils;
-import com.ftinc.kit.util.UIUtils;
-import com.ftinc.kit.util.Utils;
 
 import java.util.List;
 
@@ -49,7 +47,7 @@ import butterknife.ButterKnife;
 /**
  * Created by r0adkll on 3/11/15.
  */
-public class LicenseActivity extends ActionBarActivity implements View.OnClickListener, BetterRecyclerAdapter.OnItemClickListener<com.ftinc.kit.attributr.model.Library> {
+public class LicenseActivity extends AppCompatActivity implements View.OnClickListener, BetterRecyclerAdapter.OnItemClickListener<com.ftinc.kit.attributr.model.Library> {
 
     /***********************************************************************************************
      *

@@ -293,6 +293,7 @@ public class EmptyView extends RelativeLayout {
      *
      */
 
+
     /**
      * Set the Icon by resource identifier
      *
@@ -302,6 +303,7 @@ public class EmptyView extends RelativeLayout {
         mIcon.setImageResource(resId);
     }
 
+
     /**
      * Set the icon for this empty view
      *
@@ -310,6 +312,7 @@ public class EmptyView extends RelativeLayout {
     public void setIcon(Drawable drawable){
         mIcon.setImageDrawable(drawable);
     }
+
 
     /**
      * Set the size of the icon in the center of the view
@@ -324,6 +327,7 @@ public class EmptyView extends RelativeLayout {
         mIcon.setLayoutParams(iconParams);
     }
 
+
     /**
      * Set the color of the icon
      *
@@ -334,6 +338,7 @@ public class EmptyView extends RelativeLayout {
         mIcon.setColorFilter(mEmptyIconColor, PorterDuff.Mode.SRC_IN);
     }
 
+
     /**
      * Set the color of the icon
      *
@@ -342,6 +347,7 @@ public class EmptyView extends RelativeLayout {
     public void setIconColorRes(@ColorRes int resId){
         setIconColor(getResources().getColor(resId));
     }
+
 
     /**
      * Get the icon for this empty view
@@ -362,6 +368,7 @@ public class EmptyView extends RelativeLayout {
         mMessage.setText(message);
     }
 
+
     /**
      * Set the message of the empty view
      *
@@ -370,6 +377,7 @@ public class EmptyView extends RelativeLayout {
     public void setEmptyMessage(@StringRes int resId){
         setEmptyMessage(getResources().getString(resId));
     }
+
 
     /**
      * Set the text color of the message textview
@@ -380,6 +388,7 @@ public class EmptyView extends RelativeLayout {
         mMessage.setTextColor(color);
     }
 
+
     /**
      * Set the text color of the message textview
      *
@@ -388,6 +397,7 @@ public class EmptyView extends RelativeLayout {
     public void setEmptyMessageColorResource(@ColorRes int resId){
         setEmptyMessageColor(getResources().getColor(resId));
     }
+
 
     /**
      * Get the message of the empty view
@@ -398,6 +408,7 @@ public class EmptyView extends RelativeLayout {
         return mEmptyMessage;
     }
 
+
     /**
      * Set the typeface of the message text
      *
@@ -407,6 +418,7 @@ public class EmptyView extends RelativeLayout {
         mMessage.setTypeface(typeface);
     }
 
+
     /**
      * Set they message typeface with the {@link FontLoader} {@link Face} enums
      *
@@ -415,6 +427,7 @@ public class EmptyView extends RelativeLayout {
     public void setMessageTypeface(Face typeface){
         FontLoader.apply(mMessage, typeface);
     }
+
 
     /**
      * Set the action button label, this in-turn enables it. Pass null to disable.
@@ -427,6 +440,7 @@ public class EmptyView extends RelativeLayout {
         mAction.setVisibility(TextUtils.isEmpty(mEmptyActionText) ? View.GONE : View.VISIBLE);
     }
 
+
     /**
      * Set the action button label
      *
@@ -436,6 +450,7 @@ public class EmptyView extends RelativeLayout {
         setActionLabel(getResources().getString(resId));
     }
 
+
     /**
      * Get the action button label
      *
@@ -444,6 +459,7 @@ public class EmptyView extends RelativeLayout {
     public CharSequence getActionLabel(){
         return mEmptyActionText;
     }
+
 
     /**
      * Set the action button text color
@@ -455,6 +471,7 @@ public class EmptyView extends RelativeLayout {
         mAction.setTextColor(mEmptyActionColor);
     }
 
+
     /**
      * Set the action button text color
      *
@@ -463,6 +480,7 @@ public class EmptyView extends RelativeLayout {
     public void setActionColorRes(@ColorRes int color){
         setActionColor(getResources().getColor(color));
     }
+
 
     /**
      * Get the action button text color
@@ -473,6 +491,7 @@ public class EmptyView extends RelativeLayout {
     public int getActionColor(){
         return mEmptyActionColor;
     }
+
 
     /**
      * Set this view to loading state to show a loading indicator and hide the other parts
@@ -486,6 +505,7 @@ public class EmptyView extends RelativeLayout {
         mIcon.setVisibility(View.GONE);
     }
 
+
     /**
      * Set this view to it's empty state showing the icon, message, and action if configured
      */
@@ -496,6 +516,37 @@ public class EmptyView extends RelativeLayout {
         if(!TextUtils.isEmpty(mEmptyMessage)) mMessage.setVisibility(View.VISIBLE);
         if(!TextUtils.isEmpty(mEmptyActionText)) mAction.setVisibility(View.VISIBLE);
     }
+
+
+    /**
+     * Set the state of this view
+     * @param state set the state as loading or empty
+     */
+    public void setState(@States int state) {
+        switch (state) {
+            case STATE_LOADING:
+                setLoading();
+                break;
+            case STATE_EMPTY:
+                setEmpty();
+                break;
+        }
+    }
+
+
+    /**
+     * Convience function for {@link #setLoading()} and {@link #setEmpty()}
+     * @param isLoading set whether or not this view should show it's loading state
+     */
+    public void setLoading(boolean isLoading) {
+        if (isLoading) {
+            setLoading();
+        }
+        else {
+            setEmpty();
+        }
+    }
+
 
     /**
      * Set the action click listener callback

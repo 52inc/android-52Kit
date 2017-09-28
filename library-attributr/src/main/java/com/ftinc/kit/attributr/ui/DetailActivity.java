@@ -21,11 +21,10 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.transition.ChangeBounds;
-import android.transition.ChangeTransform;
 import android.transition.Explode;
 import android.transition.Fade;
 import android.transition.TransitionSet;
@@ -46,7 +45,7 @@ import butterknife.ButterKnife;
 /**
  * Created by r0adkll on 3/12/15.
  */
-public class DetailActivity extends ActionBarActivity implements View.OnClickListener {
+public class DetailActivity extends AppCompatActivity implements View.OnClickListener {
 
     /***********************************************************************************************
      *
