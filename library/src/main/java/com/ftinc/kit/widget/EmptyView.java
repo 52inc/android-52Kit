@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 52inc.
+ * Copyright (c) 2018 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -496,7 +496,10 @@ public class EmptyView extends RelativeLayout {
     /**
      * Set this view to loading state to show a loading indicator and hide the other parts
      * of this view.
+     *
+     * @deprecated see {@link #setLoading(boolean)} and {@link #setState(int)}
      */
+    @Deprecated
     public void setLoading(){
         mState = STATE_LOADING;
         mProgress.setVisibility(View.VISIBLE);
@@ -508,7 +511,10 @@ public class EmptyView extends RelativeLayout {
 
     /**
      * Set this view to it's empty state showing the icon, message, and action if configured
+     *
+     * @deprecated see {@link #setLoading(boolean)} and {@link #setState(int)}
      */
+    @Deprecated
     public void setEmpty(){
         mState = STATE_EMPTY;
         mProgress.setVisibility(View.GONE);

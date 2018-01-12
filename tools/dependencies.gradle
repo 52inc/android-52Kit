@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 52inc.
+ * Copyright (c) 2018 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,13 +19,13 @@ ext {
     androidPlugin = 'com.android.tools.build:gradle:2.3.1'
     minSdkVersion = 16
     compileSdkVersion = 26
-    buildToolsVersion = '26.0.1'
+    buildToolsVersion = '27.0.1'
 
     ci = 'true' == System.getenv('CI')
 
     junitVersion = '4.12'
 
-    supportVersion = '26.0.1'
+    supportVersion = '27.0.2'
     rxVersion = '1.2.10'
     rxAndroidVersion = '1.2.1'
     timberVersion = '4.5.1'
