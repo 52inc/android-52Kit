@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 52inc.
+ * Copyright (c) 2018 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,8 +22,8 @@ import kotlin.reflect.KProperty
 import android.support.v4.app.Fragment as SupportFragment
 
 
-fun bindArgument(key: String) : ReadOnlyProperty<SupportFragment, Int> =
-        Lazy { fragment: SupportFragment, _ -> fragment.arguments.getInt(key) }
+fun bindArgument(key: String) : ReadOnlyProperty<SupportFragment, Int?> =
+        Lazy { fragment: SupportFragment, _ -> fragment.arguments?.getInt(key) }
 
 
 private class Lazy<in T, out V>(private val initializer: (T, KProperty<*>) -> V) : ReadOnlyProperty<T, V> {

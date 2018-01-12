@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 52inc.
+ * Copyright (c) 2018 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@ fun View.dipToPx(dp: Float) : Int = this.dpToPx(dp).toInt()
 fun View.spToPx(sp: Float): Float = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, this.resources.displayMetrics)
 
 @ColorInt fun View.color(@ColorRes resId: Int) : Int = ContextCompat.getColor(this.context, resId)
-fun View.drawable(@DrawableRes resId: Int) : Drawable = ContextCompat.getDrawable(this.context, resId)
+fun View.drawable(@DrawableRes resId: Int) : Drawable? = ContextCompat.getDrawable(this.context, resId)
 fun View.visible() { this.visibility = View.VISIBLE }
 fun View.invisible(){ this.visibility = View.INVISIBLE }
 fun View.gone(){ this.visibility = View.GONE }

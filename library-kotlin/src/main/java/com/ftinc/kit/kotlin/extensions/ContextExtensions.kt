@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 52inc.
+ * Copyright (c) 2018 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,4 +32,4 @@ fun Context.dipToPx(dp: Float) : Int = this.dpToPx(dp).toInt()
 fun Context.spToPx(sp: Float): Float = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, this.resources.displayMetrics)
 
 @ColorInt fun Context.color(@ColorRes resId: Int) : Int = ContextCompat.getColor(this, resId)
-fun Context.drawable(@DrawableRes resId: Int) : Drawable = ContextCompat.getDrawable(this, resId)
+fun Context.drawable(@DrawableRes resId: Int) : Drawable? = ContextCompat.getDrawable(this, resId)
