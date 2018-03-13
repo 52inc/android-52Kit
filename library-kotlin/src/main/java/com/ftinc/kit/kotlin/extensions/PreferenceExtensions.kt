@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 52inc.
+ * Copyright (c) 2018 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ interface Preferences {
     abstract class Preference<T : Any?>(val key: String) : ReadWriteProperty<Preferences, T>
 
 
-    class StringPreference(key: String, val default: String? = null) : Preference<String?>(key) {
+    class StringPreference(key: String, private val default: String? = null) : Preference<String?>(key) {
 
         override fun getValue(thisRef: Preferences, property: KProperty<*>): String? {
             return thisRef.sharedPreferences.getString(key, default)
@@ -44,7 +44,7 @@ interface Preferences {
     }
 
 
-    class IntPreference(key: String, val default: Int = 0) : Preference<Int>(key) {
+    class IntPreference(key: String, private val default: Int = 0) : Preference<Int>(key) {
 
         override fun getValue(thisRef: Preferences, property: KProperty<*>): Int {
             return thisRef.sharedPreferences.getInt(key, default)
@@ -57,7 +57,7 @@ interface Preferences {
     }
 
 
-    class LongPreference(key: String, val default: Long = 0) : Preference<Long>(key) {
+    class LongPreference(key: String, private val default: Long = 0) : Preference<Long>(key) {
 
         override fun getValue(thisRef: Preferences, property: KProperty<*>): Long {
             return thisRef.sharedPreferences.getLong(key, default)
@@ -70,7 +70,7 @@ interface Preferences {
     }
 
 
-    class BooleanPreference(key: String, val default: Boolean = false) : Preference<Boolean>(key) {
+    class BooleanPreference(key: String, private val default: Boolean = false) : Preference<Boolean>(key) {
 
         override fun getValue(thisRef: Preferences, property: KProperty<*>): Boolean {
             return thisRef.sharedPreferences.getBoolean(key, default)
@@ -83,7 +83,7 @@ interface Preferences {
     }
 
 
-    class StringSetPreference(key: String, val default: Set<String> = HashSet()) : Preference<Set<String>>(key) {
+    class StringSetPreference(key: String, private val default: Set<String> = HashSet()) : Preference<Set<String>>(key) {
 
         override fun getValue(thisRef: Preferences, property: KProperty<*>): Set<String> {
             return thisRef.sharedPreferences.getStringSet(key, default)
