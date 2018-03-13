@@ -30,5 +30,5 @@ Attributr, formaly found [here](https://github.com/52inc/Attributr), is a librar
 ## Include
 
 ```groovy
-compile 'com.52inc:52Kit-attributr:0.4.0'
+implementation 'com.52inc:52Kit-attributr:0.5.3'
 ```

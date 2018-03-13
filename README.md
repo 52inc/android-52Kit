@@ -49,7 +49,11 @@ Pre-built layouts for common list item configurations includeing, one line, two 
 Include this line in your gradle build file:
 
 ```groovy
-compile 'com.52inc:52Kit-core:0.5.0'
+implementation 'com.52inc:52Kit-core:0.5.3'
+implementation 'com.52inc:52Kit-attributr:0.5.3'
+implementation 'com.52inc:52Kit-winds:0.5.3'
+implementation 'com.52inc:52Kit-drawer:0.5.3'
+implementation 'com.52inc:52Kit-kotlin:0.5.3'
 ```
 
 **Snapshot:**  

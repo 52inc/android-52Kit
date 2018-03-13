@@ -85,5 +85,5 @@ Now that you built your drawer configuration we can now attach the drawer to an 
 Just add this line to your gradle file:
 
 ```groovy
-compile 'com.52inc:52Kit-drawer:0.4.0'
+implementation 'com.52inc:52Kit-drawer:0.5.3'
 ```

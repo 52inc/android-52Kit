@@ -18,7 +18,6 @@
 package com.ftinc.kit.kotlin.utils
 
 
-import android.os.Build
 import android.os.Build.VERSION_CODES.JELLY_BEAN_MR2
 import android.os.Build.VERSION_CODES.LOLLIPOP
 import android.os.Bundle
