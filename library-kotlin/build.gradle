@@ -18,14 +18,16 @@ android {
 dependencies {
     testImplementation "junit:junit:$junitVersion"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    compile project(':library')
     compile "com.android.support:support-v4:$supportVersion"
     compile "com.android.support:recyclerview-v7:$supportVersion"
     implementation "com.android.support:support-annotations:$supportVersion"
 }
 
 apply from: '../tools/gradle-mvn-push.gradle'
+
 /*
- * Copyright (c) 2017 52inc.
+ * Copyright (c) 2018 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,3 +44,12 @@ apply from: '../tools/gradle-mvn-push.gradle'
  */
 
 //apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
+
+
+afterEvaluate { project ->
+    android.libraryVariants.all { variant ->
+        tasks.androidJavadocs.doFirst {
+            classpath += files(variant.javaCompile.classpath.files)
+        }
+    }
+}
