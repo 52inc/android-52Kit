@@ -15,4 +15,19 @@
  *
  */
 
-include ':library', ':example', ':library-winds', ':library-attributr', ':library-drawer', ':library-eula', ':library-kotlin', ':library-arch'
+package com.ftinc.kit.arch.presentation.delegates
+
+
+import android.os.Bundle
+
+
+interface ActivityDelegate {
+
+    fun onCreate(savedInstanceState: Bundle?)
+    fun onSaveInstanceState(outState: Bundle)
+    fun onResume()
+    fun onStart()
+    fun onStop()
+    fun onPause()
+    fun onDestroy()
+}

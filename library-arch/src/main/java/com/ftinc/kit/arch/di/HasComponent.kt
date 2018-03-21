@@ -15,4 +15,10 @@
  *
  */
 
-include ':library', ':example', ':library-winds', ':library-attributr', ':library-drawer', ':library-eula', ':library-kotlin', ':library-arch'
+package com.ftinc.kit.arch.di
+
+
+interface HasComponent<out C> {
+
+    fun getComponent(): C
+}

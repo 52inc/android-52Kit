@@ -15,4 +15,16 @@
  *
  */
 
-include ':library', ':example', ':library-winds', ':library-attributr', ':library-drawer', ':library-eula', ':library-kotlin', ':library-arch'
+package com.ftinc.kit.arch
+
+
+/**
+ * A configuration singleton instance to house states and constants surrounding this library module
+ */
+object Arch {
+
+    /**
+     * Enable/Disable logging within this library
+     */
+    var loggingEnabled = true
+}

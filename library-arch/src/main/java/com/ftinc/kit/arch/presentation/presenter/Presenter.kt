@@ -15,4 +15,21 @@
  *
  */
 
-include ':library', ':example', ':library-winds', ':library-attributr', ':library-drawer', ':library-eula', ':library-kotlin', ':library-arch'
+package com.ftinc.kit.arch.presentation.presenter
+
+
+import io.reactivex.disposables.CompositeDisposable
+
+
+abstract class Presenter {
+
+    protected val disposables = CompositeDisposable()
+
+
+    abstract fun start()
+
+
+    open fun stop() {
+        disposables.clear()
+    }
+}

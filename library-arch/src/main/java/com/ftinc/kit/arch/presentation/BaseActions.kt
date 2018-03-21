@@ -15,4 +15,12 @@
  *
  */
 
-include ':library', ':example', ':library-winds', ':library-attributr', ':library-drawer', ':library-eula', ':library-kotlin', ':library-arch'
+package com.ftinc.kit.arch.presentation
+
+
+interface BaseActions {
+
+    fun showLoading(isLoading: Boolean)
+    fun showError(description: String)
+    fun hideError()
+}

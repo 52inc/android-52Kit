@@ -15,4 +15,25 @@
  *
  */
 
-include ':library', ':example', ':library-winds', ':library-attributr', ':library-drawer', ':library-eula', ':library-kotlin', ':library-arch'
+package com.ftinc.kit.arch.app
+
+
+import android.app.Application
+
+
+/**
+ * A delegate to provide configuration application setups based on flavor or build type that
+ * can be injected via Dagger
+ */
+interface AppDelegate {
+
+    fun onCreate(app: Application)
+}
+
+
+/**
+ * No-Op delegate to provide when needed
+ */
+class NoOpAppDelegate : AppDelegate {
+    override fun onCreate(app: Application) {}
+}

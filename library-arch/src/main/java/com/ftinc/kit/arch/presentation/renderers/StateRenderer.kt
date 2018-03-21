@@ -15,4 +15,17 @@
  *
  */
 
-include ':library', ':example', ':library-winds', ':library-attributr', ':library-drawer', ':library-eula', ':library-kotlin', ':library-arch'
+package com.ftinc.kit.arch.presentation.renderers
+
+
+/**
+ * Responsible for rendering a view's state.
+ */
+interface StateRenderer<in VS> {
+
+    /**
+     * Accepts a pojo representing the current state of the view in order to render it on to the screen of the user.
+     * @param state state to render
+     */
+    fun render(state: VS)
+}
