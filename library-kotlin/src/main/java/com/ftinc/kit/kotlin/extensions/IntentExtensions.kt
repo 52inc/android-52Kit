@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 52inc.
+ * Copyright (c) 2018 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,28 @@ package com.ftinc.kit.kotlin.extensions
 
 
 import android.content.Intent
+import com.ftinc.kit.kotlin.utils.Bundler
 
 
+/**
+ * Add the [Intent.FLAG_ACTIVITY_NEW_TASK] and [Intent.FLAG_ACTIVITY_CLEAR_TASK] flags to an intent
+ */
 fun Intent.clear(): Intent = this.setFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK or android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK)
+
+
+/**
+ * Add the [Intent.FLAG_ACTIVITY_CLEAR_TOP] and [Intent.FLAG_ACTIVITY_SINGLE_TOP] flags to an intent
+ */
 fun Intent.top(): Intent = this.setFlags(android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP or android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP)
+
+
+/**
+ * Generate a Data based Intent for returning in [Context.startActivityForResult(intent, requestCode)]
+ */
+fun dataIntent(init: Bundler.() -> Unit): Intent {
+    val intent = Intent()
+    val bundler = Bundler()
+    bundler.init()
+    intent.putExtras(bundler.build())
+    return intent
+}
