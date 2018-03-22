@@ -44,35 +44,42 @@ abstract class BaseActivity : AppCompatActivity() {
         delegates.forEach { it.onCreate(savedInstanceState) }
     }
 
+
     override fun setContentView(layoutResID: Int) {
         super.setContentView(layoutResID)
         setSupportActionBar(appbar)
     }
+
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         delegates.forEach { it.onSaveInstanceState(outState) }
     }
 
+
     override fun onResume() {
         super.onResume()
         delegates.forEach { it.onResume() }
     }
+
 
     override fun onStart() {
         super.onStart()
         delegates.forEach { it.onStart() }
     }
 
+
     override fun onPause() {
         super.onPause()
         delegates.forEach { it.onPause() }
     }
 
+
     override fun onStop() {
         super.onStop()
         delegates.forEach { it.onStop() }
     }
+
 
     override fun onDestroy() {
         disposables.clear()

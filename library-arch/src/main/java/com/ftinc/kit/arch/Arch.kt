@@ -26,5 +26,5 @@ object Arch {
     /**
      * Enable/Disable logging within this library
      */
-    var loggingEnabled = true
+    @JvmField var loggingEnabled = true
 }

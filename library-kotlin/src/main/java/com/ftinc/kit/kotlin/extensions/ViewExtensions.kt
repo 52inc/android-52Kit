@@ -19,10 +19,9 @@ package com.ftinc.kit.kotlin.extensions
 
 
 import android.graphics.drawable.Drawable
-import android.support.annotation.ColorInt
-import android.support.annotation.ColorRes
-import android.support.annotation.DrawableRes
+import android.support.annotation.*
 import android.support.v4.content.ContextCompat
+import android.support.v7.widget.RecyclerView
 import android.util.TypedValue
 import android.view.View
 
@@ -33,6 +32,12 @@ fun View.spToPx(sp: Float): Float = TypedValue.applyDimension(TypedValue.COMPLEX
 
 @ColorInt fun View.color(@ColorRes resId: Int) : Int = ContextCompat.getColor(this.context, resId)
 fun View.drawable(@DrawableRes resId: Int) : Drawable? = ContextCompat.getDrawable(this.context, resId)
+fun View.plural(@PluralsRes resId: Int, quantity: Int, vararg args: Any): String {
+    return this.resources.getQuantityString(resId, quantity, *args)
+}
+fun View.string(@StringRes resId: Int): String? = this.context.getString(resId)
+fun View.string(@StringRes resId: Int, vararg args: Any): String = this.context.getString(resId, *args)
+
 fun View.visible() { this.visibility = View.VISIBLE }
 fun View.invisible(){ this.visibility = View.INVISIBLE }
 fun View.gone(){ this.visibility = View.GONE }

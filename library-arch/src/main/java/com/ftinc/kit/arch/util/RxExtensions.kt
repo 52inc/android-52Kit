@@ -19,6 +19,7 @@ package com.ftinc.kit.arch.util
 
 
 import com.ftinc.kit.arch.Arch
+import com.ftinc.kit.arch.presentation.state.Ui
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -103,6 +104,15 @@ fun <T : Any> Observable<T>.logState(): Observable<T> {
     return this.doOnNext { state ->
         if (Arch.loggingEnabled) {
             Timber.v("    --- $state")
+        }
+    }
+}
+
+
+fun <T : Ui.State.Change> Observable<T>.logChange(): Observable<T> {
+    return this.doOnNext { change ->
+        if (Arch.loggingEnabled) {
+            Timber.d(change.logText)
         }
     }
 }

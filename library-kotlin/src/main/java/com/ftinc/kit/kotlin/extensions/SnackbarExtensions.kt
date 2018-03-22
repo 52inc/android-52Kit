@@ -27,7 +27,7 @@ import android.support.v4.app.Fragment
 import android.view.View
 
 
-fun Activity.find(@IdRes resId: Int) = this.findViewById<View>(resId)
+internal fun Activity.find(@IdRes resId: Int) = this.findViewById<View>(resId)
 
 fun Activity.snackbar(message: String) = snackbar(find(android.R.id.content), message)
 

@@ -15,21 +15,23 @@
  *
  */
 
-package com.ftinc.kit.arch.presentation
+package com.ftinc.kit.arch.presentation.state
 
-import com.ftinc.kit.arch.presentation.state.BaseState
+import com.ftinc.kit.arch.presentation.BaseActions
 import com.ftinc.kit.arch.presentation.renderers.UiBaseStateRenderer
 
 
 /**
- * Base set of Actions for the MVI structure providing some default behaviors
+ * Base [Ui.State] implementation that contains [isLoading] and [error] fields for common uses
  *
- * @see [BaseState]
+ * @param isLoading field indicating that data is being loaded in the current view
+ * @param error field indicating if an error has occurred, null otherwise
+ * @see [BaseActions]
  * @see [UiBaseStateRenderer]
+ * @see [Ui]
+ * @see [Ui.State]
  */
-interface BaseActions {
-
-    fun showLoading(isLoading: Boolean)
-    fun showError(description: String)
-    fun hideError()
-}
+abstract class BaseState<C : Ui.State.Change>(
+        val isLoading: Boolean,
+        val error: String?
+) : Ui.State<C>
