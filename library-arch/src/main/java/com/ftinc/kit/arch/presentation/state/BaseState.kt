@@ -32,6 +32,6 @@ import com.ftinc.kit.arch.presentation.renderers.UiBaseStateRenderer
  * @see [Ui.State]
  */
 abstract class BaseState<C : Ui.State.Change>(
-        val isLoading: Boolean,
-        val error: String?
+        open val isLoading: Boolean,
+        open val error: String?
 ) : Ui.State<C>
