@@ -35,8 +35,8 @@ import io.reactivex.Scheduler
  * @see [BaseState]
  * @see [BaseActions]
  */
-abstract class UiBaseStateRenderer<VS : BaseState<C>, C : Ui.State.Change>(
-        val actions: BaseActions,
+abstract class UiBaseStateRenderer<VS : BaseState<C>, C : Ui.State.Change, out A : BaseActions>(
+        val actions: A,
         main: Scheduler,
         comp: Scheduler
 ) : DisposableStateRenderer<VS>(main, comp) {
