@@ -45,7 +45,6 @@ import com.ftinc.kit.font.Face;
 import com.ftinc.kit.font.FontLoader;
 import com.ftinc.kit.util.SizeUtils;
 import com.ftinc.kit.util.UIUtils;
-import com.ftinc.kit.util.Utils;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -226,17 +225,17 @@ public class EmptyView extends RelativeLayout {
 
         // Setup the Icon
         if(mEmptyIcon > 0) {
-            int width = mEmptyIconSize == -1 ? WRAP_CONTENT : mEmptyIconSize;
-            int height = mEmptyIconSize == -1 ? WRAP_CONTENT : mEmptyIconSize;
-            LinearLayout.LayoutParams iconParams = new LinearLayout.LayoutParams(width, height);
-            int padding = getResources().getDimensionPixelSize(R.dimen.activity_padding);
-            mIcon.setPadding(0, 0, 0, padding);
-            mIcon.setColorFilter(mEmptyIconColor, PorterDuff.Mode.SRC_IN);
             mIcon.setImageResource(mEmptyIcon);
-            container.addView(mIcon, iconParams);
         }else{
             mIcon.setVisibility(View.GONE);
         }
+
+        mIcon.setPadding(0, 0, 0, getResources().getDimensionPixelSize(R.dimen.activity_padding));
+        mIcon.setColorFilter(mEmptyIconColor, PorterDuff.Mode.SRC_IN);
+        int width = mEmptyIconSize == -1 ? WRAP_CONTENT : mEmptyIconSize;
+        int height = mEmptyIconSize == -1 ? WRAP_CONTENT : mEmptyIconSize;
+        LinearLayout.LayoutParams iconParams = new LinearLayout.LayoutParams(width, height);
+        container.addView(mIcon, iconParams);
 
         // Setup the message
         LinearLayout.LayoutParams msgParams = new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
