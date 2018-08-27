@@ -300,6 +300,7 @@ public class EmptyView extends RelativeLayout {
      */
     public void setIcon(@DrawableRes int resId){
         mIcon.setImageResource(resId);
+        mIcon.setVisibility(View.VISIBLE);
     }
 
 
@@ -310,6 +311,7 @@ public class EmptyView extends RelativeLayout {
      */
     public void setIcon(Drawable drawable){
         mIcon.setImageDrawable(drawable);
+        mIcon.setVisibility(View.VISIBLE);
     }
 
 

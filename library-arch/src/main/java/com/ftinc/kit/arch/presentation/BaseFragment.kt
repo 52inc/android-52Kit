@@ -77,4 +77,8 @@ abstract class BaseFragment : Fragment() {
         }
         return componentType.java.cast((activity as HasComponent<*>).getComponent())!!
     }
+
+
+    protected fun addDelegate(delegate: FragmentDelegate) = delegates.add(delegate)
+    protected fun removeDelegate(delegate: FragmentDelegate) = delegates.remove(delegate)
 }

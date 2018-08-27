@@ -45,10 +45,10 @@ android {
 
 dependencies {
     testImplementation "junit:junit:$junitVersion"
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api project(':library-kotlin')
     api "com.android.support:appcompat-v7:$supportVersion"
     api "com.android.support:recyclerview-v7:$supportVersion"

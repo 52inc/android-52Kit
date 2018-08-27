@@ -24,6 +24,7 @@ import android.support.annotation.RequiresApi
 import android.util.Size
 import android.util.SizeF
 import java.io.Serializable
+import java.lang.IllegalArgumentException
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 import android.support.v4.app.Fragment as SupportFragment
@@ -118,6 +119,19 @@ fun <T : Serializable> SupportFragment.bindSerializable(key: String?) : ExtraPro
 inline fun <reified E : Enum<E>> SupportFragment.bindEnum(key: String) : ExtraProperty<E> = Extra(BundleAccessor.Fragment(this)) {
     val name = it?.getString(key)
     java.lang.Enum.valueOf(E::class.java, name)
+}
+
+
+/**
+ * @see [Bundler.enum]
+ */
+inline fun <reified E : Enum<E>> SupportFragment.bindOptionalEnum(key: String) : ExtraProperty<E?> = Extra(BundleAccessor.Fragment(this)) {
+    val name = it?.getString(key)
+    try {
+        java.lang.Enum.valueOf(E::class.java, name)
+    } catch (e: Exception) {
+        null
+    }
 }
 
 
@@ -275,6 +289,18 @@ fun <T : Serializable> Activity.bindSerializable(key: String?) : ExtraProperty<T
 inline fun <reified E : Enum<E>> Activity.bindEnum(key: String) : ExtraProperty<E> = Extra(BundleAccessor.Activity(this)) {
     val name = it?.getString(key)
     java.lang.Enum.valueOf(E::class.java, name)
+}
+
+/**
+ * @see [Bundler.enum]
+ */
+inline fun <reified E : Enum<E>> Activity.bindOptionalEnum(key: String) : ExtraProperty<E?> = Extra(BundleAccessor.Activity(this)) {
+    val name = it?.getString(key)
+    try {
+        java.lang.Enum.valueOf(E::class.java, name)
+    } catch (e: Exception) {
+        null
+    }
 }
 
 
