@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 52inc.
+ * Copyright (c) 2018 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,43 +18,51 @@
 package com.ftinc.kit.widget;
 
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.IntDef;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
-import android.util.TypedValue;
-import android.widget.ImageView;
+import com.ftinc.kit.R;
 
-/**
- * This was created based on a snippet from StackOverflow 
- * from user @user Michel-F. Portzert at the thread
- * http://stackoverflow.com/questions/12059328/android-imageview-fit-width
- * 
- * 
- * @author drew.heavner
- *
- */
-public class AspectRatioImageView extends ImageView{
 
-    // Ratio Type Constants
+public class AspectRatioImageView extends AppCompatImageView {
+
+
     public static final int RATIO_WIDTH = 0;
     public static final int RATIO_HEIGHT = 1;
 
-    // The Ratio Type
-    private int mRatioType = 0;
+    @IntDef({RATIO_WIDTH, RATIO_HEIGHT})
+	public @interface RatioType {}
 
-	/**
-	 * Constructor
-	 * @param context
-	 */
+    private int ratioType = 0;
+
+
 	public AspectRatioImageView(Context context) {
-		super(context);
+		this(context, null);
 	}
 	
 	public AspectRatioImageView(Context context, AttributeSet attrs) {
-		super(context, attrs);
+		this(context, attrs, 0);
 	}
 
 	public AspectRatioImageView(Context context, AttributeSet attrs,
                                 int defStyle) {
 		super(context, attrs, defStyle);
+		parseAttributes(context, attrs, defStyle);
+	}
+
+	public void setRatioType(@RatioType int ratioType) {
+		this.ratioType = ratioType;
+		requestLayout();
+	}
+
+	private void parseAttributes(Context context, AttributeSet attrs, int defStyle) {
+		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.AspectRatioImageView, defStyle, 0);
+		if (a != null) {
+			ratioType = a.getInt(R.styleable.AspectRatioImageView_ratioType, RATIO_WIDTH);
+			a.recycle();
+		}
 	}
 
 	/**
@@ -63,19 +71,18 @@ public class AspectRatioImageView extends ImageView{
 	 */
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int dimHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 140, getResources().getDisplayMetrics());
-
-		if(getDrawable() != null){
-            if(mRatioType == RATIO_WIDTH) {
-                int width = MeasureSpec.getSize(widthMeasureSpec);
-                int height = Math.round(width * ((float) getDrawable().getIntrinsicHeight() / (float) getDrawable().getIntrinsicWidth()));
-                setMeasuredDimension(width, height);
-            }else if(mRatioType == RATIO_HEIGHT){
-                int height = dimHeight;
-                int width = Math.round(height * ((float) getDrawable().getIntrinsicWidth() / (float) getDrawable().getIntrinsicHeight()));
-                setMeasuredDimension(width, height);
-            }
-		}else{
+		Drawable drawable = getDrawable();
+		if (getDrawable() != null) {
+			if (ratioType == RATIO_WIDTH) {
+				int width = MeasureSpec.getSize(widthMeasureSpec);
+				int height = Math.round(width * (((float) drawable.getIntrinsicHeight()) / ((float) drawable.getIntrinsicWidth())));
+				setMeasuredDimension(width, height);
+			} else if (ratioType == RATIO_HEIGHT) {
+				int height = MeasureSpec.getSize(heightMeasureSpec);
+				int width = Math.round(height * ((float) drawable.getIntrinsicWidth()) / ((float) drawable.getIntrinsicHeight()));
+				setMeasuredDimension(width, height);
+			}
+		} else {
 			super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 		}
 	}
