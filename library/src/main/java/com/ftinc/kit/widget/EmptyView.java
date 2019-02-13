@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -104,6 +104,7 @@ public class EmptyView extends RelativeLayout {
     private int mEmptyIcon = -1;
     private int mEmptyIconSize = -1;
     private int mEmptyIconColor = -1;
+    private int mEmptyIconPadding = -1;
 
     private CharSequence mEmptyMessage = "You currently don't have any items";
     private int mEmptyMessageColor = -1;
@@ -175,11 +176,11 @@ public class EmptyView extends RelativeLayout {
                 R.styleable.EmptyView, defStyle, 0);
         if (a == null) {
             mEmptyMessageColor = defaultColor;
-            mEmptyIconColor = defaultColor;
             mEmptyActionColor = defaultColor;
             mEmptyMessageTextSize = (int) SizeUtils.dpToPx(context, 18);
             mEmptyActionTextSize = (int) SizeUtils.dpToPx(context, 14);
             mEmptyMessageTypeface = Face.ROBOTO_REGULAR;
+            mEmptyIconPadding = getResources().getDimensionPixelSize(R.dimen.activity_padding);
             return;
         }
 
@@ -187,9 +188,10 @@ public class EmptyView extends RelativeLayout {
         mEmptyIcon = a.getResourceId(R.styleable.EmptyView_emptyIcon, -1);
         mEmptyIconSize = a.getDimensionPixelSize(R.styleable.EmptyView_emptyIconSize, -1);
         mEmptyIconColor = a.getColor(R.styleable.EmptyView_emptyIconColor, defaultColor);
+        mEmptyIconPadding = a.getDimensionPixelSize(R.styleable.EmptyView_emptyIconPadding, getResources().getDimensionPixelSize(R.dimen.activity_padding));
 
         mEmptyMessage = a.getString(R.styleable.EmptyView_emptyMessage);
-        mEmptyMessageColor = a.getColor(R.styleable.EmptyView_emptyMessageColor, defaultColor);
+        mEmptyMessageColor = a.getColor(R.styleable.EmptyView_emptyMessageColor, -1);
         int typeface = a.getInt(R.styleable.EmptyView_emptyMessageTypeface, 0);
         mEmptyMessageTypeface = MessageTypeface.from(typeface).getTypeface();
         mEmptyMessageTextSize = a.getDimensionPixelSize(R.styleable.EmptyView_emptyMessageTextSize,
@@ -230,8 +232,10 @@ public class EmptyView extends RelativeLayout {
             mIcon.setVisibility(View.GONE);
         }
 
-        mIcon.setPadding(0, 0, 0, getResources().getDimensionPixelSize(R.dimen.activity_padding));
-        mIcon.setColorFilter(mEmptyIconColor, PorterDuff.Mode.SRC_IN);
+        mIcon.setPadding(0, 0, 0, mEmptyIconPadding);
+        if (mEmptyIconColor != -1) {
+            mIcon.setColorFilter(mEmptyIconColor, PorterDuff.Mode.SRC_IN);
+        }
         int width = mEmptyIconSize == -1 ? WRAP_CONTENT : mEmptyIconSize;
         int height = mEmptyIconSize == -1 ? WRAP_CONTENT : mEmptyIconSize;
         LinearLayout.LayoutParams iconParams = new LinearLayout.LayoutParams(width, height);
@@ -328,6 +332,9 @@ public class EmptyView extends RelativeLayout {
         mIcon.setLayoutParams(iconParams);
     }
 
+    public void setIconPadding(int bottom) {
+        mIcon.setPadding(0, 0, 0, bottom);
+    }
 
     /**
      * Set the color of the icon
@@ -336,7 +343,11 @@ public class EmptyView extends RelativeLayout {
      */
     public void setIconColor(@ColorInt int color){
         mEmptyIconColor = color;
-        mIcon.setColorFilter(mEmptyIconColor, PorterDuff.Mode.SRC_IN);
+        if (mEmptyIconColor != -1) {
+            mIcon.setColorFilter(mEmptyIconColor, PorterDuff.Mode.SRC_IN);
+        } else {
+            mIcon.clearColorFilter();
+        }
     }
 
 
