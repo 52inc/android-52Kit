@@ -191,7 +191,7 @@ public class EmptyView extends RelativeLayout {
         mEmptyIconPadding = a.getDimensionPixelSize(R.styleable.EmptyView_emptyIconPadding, getResources().getDimensionPixelSize(R.dimen.activity_padding));
 
         mEmptyMessage = a.getString(R.styleable.EmptyView_emptyMessage);
-        mEmptyMessageColor = a.getColor(R.styleable.EmptyView_emptyMessageColor, -1);
+        mEmptyMessageColor = a.getColor(R.styleable.EmptyView_emptyMessageColor, defaultColor);
         int typeface = a.getInt(R.styleable.EmptyView_emptyMessageTypeface, 0);
         mEmptyMessageTypeface = MessageTypeface.from(typeface).getTypeface();
         mEmptyMessageTextSize = a.getDimensionPixelSize(R.styleable.EmptyView_emptyMessageTextSize,
