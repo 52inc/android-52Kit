@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ abstract class UiPresenter<VS : Ui.State<C>, C : Ui.State.Change>(
         val merged = smashObservables()
                 .logChange()
 
-        disposables += merged.scan(ui.state, { state, change -> state.reduce(change) as VS })
+        disposables += merged.scan(ui.state) { state, change -> state.reduce(change) as VS }
                 .logState()
                 .subscribe(ui::render)
     }

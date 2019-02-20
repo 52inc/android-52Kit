@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,29 +15,15 @@
  *
  */
 
-package com.ftinc.kit.arch.presentation.delegates
+package com.ftinc.kit.arch.presentation
 
+/**
+ * An interface to define components that can easily plug into the base Activity/Fragment
+ * delegate system using [com.ftinc.kit.arch.presentation.delegates.StatefulActivityDelegate] or
+ * [com.ftinc.kit.arch.presentation.delegates.StatefulFragmentDelegate]
+ */
+interface Stateful {
 
-import android.os.Bundle
-import com.ftinc.kit.arch.presentation.presenter.Presenter
-
-
-class PresenterFragmentDelegate(val presenter: Presenter) : FragmentDelegate {
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        presenter.start()
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-    }
-
-    override fun onResume() {
-    }
-
-    override fun onPause() {
-    }
-
-    override fun onDestroy() {
-        presenter.stop()
-    }
+    fun start()
+    fun stop()
 }

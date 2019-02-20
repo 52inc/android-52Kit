@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     protected val appbar: Toolbar? by bindOptionalView(R.id.appbar)
     protected val disposables = CompositeDisposable()
-    private val delegates: ArrayList<ActivityDelegate> = ArrayList()
+    protected val delegates: ArrayList<ActivityDelegate> = ArrayList()
 
 
     protected abstract fun setupComponent()
@@ -86,8 +86,4 @@ abstract class BaseActivity : AppCompatActivity() {
         delegates.forEach { it.onDestroy() }
         super.onDestroy()
     }
-
-
-    protected fun addDelegate(delegate: ActivityDelegate) = delegates.add(delegate)
-    protected fun removeDelegate(delegate: ActivityDelegate) = delegates.remove(delegate)
 }

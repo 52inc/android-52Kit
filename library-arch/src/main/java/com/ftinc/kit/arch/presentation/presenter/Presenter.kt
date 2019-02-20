@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,18 +18,16 @@
 package com.ftinc.kit.arch.presentation.presenter
 
 
+import com.ftinc.kit.arch.presentation.Stateful
 import io.reactivex.disposables.CompositeDisposable
 
 
-abstract class Presenter {
+abstract class Presenter : Stateful {
 
     protected val disposables = CompositeDisposable()
 
 
-    abstract fun start()
-
-
-    open fun stop() {
+    override fun stop() {
         disposables.clear()
     }
 }

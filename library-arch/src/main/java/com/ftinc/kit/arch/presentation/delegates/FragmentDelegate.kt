@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,8 @@ interface FragmentDelegate {
     fun onActivityCreated(savedInstanceState: Bundle?)
     fun onSaveInstanceState(outState: Bundle)
     fun onResume()
+    fun onStart()
+    fun onStop()
     fun onPause()
     fun onDestroy()
 }

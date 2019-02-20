@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,9 +28,11 @@ import kotlin.reflect.KClass
 
 abstract class BaseFragment : Fragment() {
 
-    private val delegates = ArrayList<FragmentDelegate>()
+    protected val delegates = ArrayList<FragmentDelegate>()
     protected val disposables = CompositeDisposable()
 
+
+    open fun setupComponent() = Unit
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -39,24 +41,30 @@ abstract class BaseFragment : Fragment() {
         delegates.forEach { it.onActivityCreated(savedInstanceState) }
     }
 
-
     override fun onSaveInstanceState(outState: Bundle) {
         delegates.forEach { it.onSaveInstanceState(outState) }
         super.onSaveInstanceState(outState)
     }
-
 
     override fun onPause() {
         super.onPause()
         delegates.forEach(FragmentDelegate::onPause)
     }
 
+    override fun onStart() {
+        super.onStart()
+        delegates.forEach(FragmentDelegate::onStart)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        delegates.forEach(FragmentDelegate::onStop)
+    }
 
     override fun onResume() {
         super.onResume()
         delegates.forEach(FragmentDelegate::onResume)
     }
-
 
     override fun onDestroy() {
         disposables.clear()
@@ -64,21 +72,21 @@ abstract class BaseFragment : Fragment() {
         super.onDestroy()
     }
 
-
-    open fun setupComponent() {
-    }
-
-
     protected fun <C : Any> getComponent(componentType: KClass<C>): C {
         if (parentFragment is HasComponent<*>) {
-            return componentType.java.cast((parentFragment as HasComponent<*>).getComponent())
+            return componentType.java.cast((parentFragment as HasComponent<*>).getComponent())!!
         } else if (activity is HasComponent<*>) {
             return componentType.java.cast((activity as HasComponent<*>).getComponent())!!
         }
         return componentType.java.cast((activity as HasComponent<*>).getComponent())!!
     }
 
-
-    protected fun addDelegate(delegate: FragmentDelegate) = delegates.add(delegate)
-    protected fun removeDelegate(delegate: FragmentDelegate) = delegates.remove(delegate)
+    protected inline fun <C : Any, reified P : Any> getComponent(componentSelector: (P) -> C): C {
+        if (parentFragment is P) {
+            return componentSelector(parentFragment as P)
+        } else if (activity is P) {
+            return componentSelector(activity as P)
+        }
+        return componentSelector(activity as P)
+    }
 }

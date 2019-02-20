@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@
 package com.ftinc.kit.arch.presentation.renderers
 
 
+import com.ftinc.kit.arch.presentation.Stateful
 import com.jakewharton.rxrelay2.PublishRelay
 import com.jakewharton.rxrelay2.Relay
 import io.reactivex.Observable
@@ -28,16 +29,13 @@ import io.reactivex.disposables.CompositeDisposable
 abstract class DisposableStateRenderer<T>(
         val main: Scheduler,
         val comp: Scheduler
-) : StateRenderer<T> {
+) : StateRenderer<T>, Stateful {
 
     protected val disposables = CompositeDisposable()
     protected val state: Relay<T> = PublishRelay.create<T>().toSerialized()
 
 
-    abstract fun start()
-
-
-    open fun stop() {
+    override fun stop() {
         disposables.clear()
     }
 
