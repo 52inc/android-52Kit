@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -82,9 +82,9 @@ public class ProgressIndicator extends View {
             return;
         }
 
-        mProgress = a.getInteger(R.styleable.ProgressIndicator_progress, 0);
-        mMax = a.getInteger(R.styleable.ProgressIndicator_max, 0);
-        mProgressColor = a.getColor(R.styleable.ProgressIndicator_progressColor,
+        mProgress = a.getInteger(R.styleable.ProgressIndicator_pi_progress, 0);
+        mMax = a.getInteger(R.styleable.ProgressIndicator_pi_max, 0);
+        mProgressColor = a.getColor(R.styleable.ProgressIndicator_pi_progressColor,
                 context.getResources().getColor(R.color.primary_dark_material_light));
 
         a.recycle();

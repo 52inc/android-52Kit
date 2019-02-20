@@ -72,9 +72,9 @@
     </declare-styleable>
 
     <declare-styleable name="ProgressIndicator">
-        <attr name="progressColor" format="color|reference" />
-        <attr name="max" format="integer" />
-        <attr name="progress" format="integer" />
+        <attr name="pi_progressColor" format="color|reference" />
+        <attr name="pi_max" format="integer" />
+        <attr name="pi_progress" format="integer" />
     </declare-styleable>
 
     <declare-styleable name="ForegroundLinearLayout">
