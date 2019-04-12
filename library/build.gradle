@@ -36,12 +36,8 @@ android {
 }
 
 dependencies {
-
-    api "com.android.support:appcompat-v7:$supportVersion"
-    api "com.android.support:recyclerview-v7:$supportVersion"
-
-    implementation "io.reactivex:rxjava:$rxVersion"
-    implementation "io.reactivex:rxandroid:$rxAndroidVersion"
+    api "androidx.appcompat:appcompat:1.0.2"
+    api "androidx.recyclerview:recyclerview:1.0.0"
 }
 
 apply from: '../tools/gradle-mvn-push.gradle'

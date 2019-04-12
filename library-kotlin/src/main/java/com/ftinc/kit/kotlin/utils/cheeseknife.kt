@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,14 +20,15 @@ package com.ftinc.kit.kotlin.utils
 import android.app.Activity
 import android.os.Build
 import android.os.Bundle
-import android.support.annotation.RequiresApi
+import android.os.Parcelable
+import androidx.annotation.RequiresApi
 import android.util.Size
 import android.util.SizeF
 import java.io.Serializable
 import java.lang.IllegalArgumentException
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
-import android.support.v4.app.Fragment as SupportFragment
+import androidx.fragment.app.Fragment as SupportFragment
 
 
 /*
@@ -105,6 +106,14 @@ fun SupportFragment.bindSize(key: String?, default: Size? = null) : ExtraPropert
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 fun SupportFragment.bindSizeF(key: String?, default: SizeF? = null) : ExtraProperty<SizeF?> = Extra(BundleAccessor.Fragment(this)) {
     it?.getSizeF(key) ?: default
+}
+
+fun <T : Parcelable> SupportFragment.bindParcelable(key: String) : ExtraProperty<T> = Extra(BundleAccessor.Fragment(this)) {
+    it!!.getParcelable<T>(key)!!
+}
+
+fun <T : Parcelable> SupportFragment.bindOptionalParcelable(key: String) : ExtraProperty<T?> = Extra(BundleAccessor.Fragment(this)) {
+    it?.getParcelable<T>(key)
 }
 
 
@@ -277,6 +286,13 @@ fun Activity.bindSizeF(key: String?, default: SizeF? = null) : ExtraProperty<Siz
     it?.getSizeF(key) ?: default
 }
 
+fun <T : Parcelable> Activity.bindParcelable(key: String) : ExtraProperty<T> = Extra(BundleAccessor.Activity(this)) {
+    it!!.getParcelable<T>(key)!!
+}
+
+fun <T : Parcelable> Activity.bindOptionalParcelable(key: String) : ExtraProperty<T?> = Extra(BundleAccessor.Activity(this)) {
+    it?.getParcelable<T>(key)
+}
 
 @Suppress("UNCHECKED_CAST")
 fun <T : Serializable> Activity.bindSerializable(key: String?) : ExtraProperty<T?> = Extra(BundleAccessor.Activity(this)) {
@@ -381,7 +397,7 @@ sealed class BundleAccessor {
     }
 
 
-    class Fragment(private val fragment: android.support.v4.app.Fragment) : BundleAccessor() {
+    class Fragment(private val fragment: androidx.fragment.app.Fragment) : BundleAccessor() {
 
         override val bundle: Bundle?
             get() = fragment.arguments

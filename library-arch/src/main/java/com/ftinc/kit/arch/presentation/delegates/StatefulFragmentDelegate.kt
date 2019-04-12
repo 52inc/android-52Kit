@@ -18,8 +18,8 @@
 package com.ftinc.kit.arch.presentation.delegates
 
 
-import android.arch.lifecycle.Lifecycle
-import android.arch.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.OnLifecycleEvent
 import android.os.Bundle
 import com.ftinc.kit.arch.presentation.Stateful
 import com.ftinc.kit.arch.presentation.renderers.DisposableStateRenderer

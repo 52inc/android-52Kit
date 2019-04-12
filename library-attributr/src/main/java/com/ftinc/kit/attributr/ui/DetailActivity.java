@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,8 +21,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.transition.ChangeBounds;
 import android.transition.Explode;
@@ -94,10 +94,10 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_license_detail);
 
         // Inflate components
-        mAppbar = ButterKnife.findById(this, R.id.appbar);
-        mName = ButterKnife.findById(this, R.id.name);
-        mAuthor = ButterKnife.findById(this, R.id.author);
-        mLicense = ButterKnife.findById(this, R.id.license);
+        mAppbar = findViewById(R.id.appbar);
+        mName = findViewById(R.id.name);
+        mAuthor = findViewById(R.id.author);
+        mLicense = findViewById(R.id.license);
 
         // Apply components
         setSupportActionBar(mAppbar);

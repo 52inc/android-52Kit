@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ package com.ftinc.kit.example.ui.screens
 
 import android.app.Activity
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import com.ftinc.kit.kotlin.utils.bindBoolean
 
 
@@ -28,7 +28,7 @@ class TestActivity : Activity() {
     private val testProperty by bindBoolean("Bacon")
 
 
-    class TestFragment : Fragment() {
+    class TestFragment : androidx.fragment.app.Fragment() {
 
         private val testProperty by bindBoolean("baconbacon")
 

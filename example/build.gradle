@@ -48,6 +48,11 @@ android {
     lintOptions {
         abortOnError false
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -55,12 +60,11 @@ dependencies {
 
     implementation project(':library-winds')
     implementation project(':library-attributr')
-    implementation project(':library-drawer')
     implementation project(':library-kotlin')
 
     // Dagger 2
-    implementation 'com.google.dagger:dagger:2.11'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.11'
+    implementation 'com.google.dagger:dagger:2.21'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.21'
     compileOnly 'org.glassfish:javax.annotation:10.0-b28'
 
     implementation 'com.squareup.picasso:picasso:2.5.2'

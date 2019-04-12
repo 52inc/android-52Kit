@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,8 +23,8 @@ import android.content.res.Resources;
 import android.graphics.PointF;
 import android.net.Uri;
 import android.os.Build;
-import android.support.annotation.AnyRes;
-import android.support.annotation.NonNull;
+import androidx.annotation.AnyRes;
+import androidx.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.webkit.MimeTypeMap;
@@ -126,7 +126,7 @@ public class Utils {
 	/**
 	 * Get the MIME type of a file
 	 * @param url
-	 * @return
+	 * @return the mime type
 	 */
 	public static String getMimeType(String url)
 	{
@@ -151,7 +151,7 @@ public class Utils {
 	 * Parse a file's mime type from the file extension
 	 * 
 	 * @param filename
-	 * @return
+	 * @return the mime type
 	 */
 	public static String parseMimeType(String filename){
 		return URLConnection.guessContentTypeFromName(filename);

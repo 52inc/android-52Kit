@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 
 package com.ftinc.kit.attributr.ui;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -145,8 +145,8 @@ public class LibraryAdapter extends BetterRecyclerAdapter<com.ftinc.kit.attribut
         TextView name, author;
         public LibraryViewHolder(View itemView) {
             super(itemView);
-            name = ButterKnife.findById(itemView, R.id.line_1);
-            author = ButterKnife.findById(itemView, R.id.line_2);
+            name = itemView.findViewById(R.id.line_1);
+            author = itemView.findViewById(R.id.line_2);
         }
     }
 
@@ -156,7 +156,7 @@ public class LibraryAdapter extends BetterRecyclerAdapter<com.ftinc.kit.attribut
 
         public HeaderViewHolder(View itemView) {
             super(itemView);
-            title = ButterKnife.findById(itemView, R.id.title);
+            title = itemView.findViewById(R.id.title);
             FontLoader.apply(title, Face.ROBOTO_MEDIUM);
         }
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ package com.ftinc.kit.kotlin.extensions
 
 
 fun <T1, T2> Collection<T1>.combine(other: Iterable<T2>): List<Pair<T1, T2>> {
-    return this.combine(other, {thisItem: T1, otherItem: T2 -> Pair(thisItem, otherItem) })
+    return this.combine(other) { thisItem: T1, otherItem: T2 -> Pair(thisItem, otherItem) }
 }
 
 

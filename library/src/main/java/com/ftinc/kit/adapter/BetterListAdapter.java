@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -107,7 +107,7 @@ public abstract class BetterListAdapter<T, VH extends BetterListAdapter.ViewHold
 	 *  view holder that you overrid from ViewHolder();
 	 * 
 	 * @param view
-	 * @return
+	 * @return the view holder
 	 */
 	public abstract VH createHolder(View view);
 	

@@ -21,13 +21,12 @@ android {
 dependencies {
     api project(':library')
     api 'com.timehop.stickyheadersrecyclerview:library:0.4.3@aar'
-    api "com.jakewharton:butterknife:$butterKnifeVersion"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
+    api "com.jakewharton:butterknife:10.1.0"
+    annotationProcessor "com.jakewharton:butterknife-compiler:10.1.0"
 }
 
-apply from: '../tools/gradle-mvn-push.gradle'
 /*
- * Copyright (c) 2018 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,12 +42,12 @@ apply from: '../tools/gradle-mvn-push.gradle'
  *
  */
 
-//apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
+//apply from: '../tools/gradle-mvn-push.gradle'
 
-afterEvaluate { project ->
-    android.libraryVariants.all { variant ->
-        tasks.androidJavadocs.doFirst {
-            classpath += files(variant.javaCompile.classpath.files)
-        }
-    }
-}
+//afterEvaluate { project ->
+//    android.libraryVariants.all { variant ->
+//        tasks.androidJavadocs.doFirst {
+//            classpath += files(variant.javaCompile.classpath.files)
+//        }
+//    }
+//}

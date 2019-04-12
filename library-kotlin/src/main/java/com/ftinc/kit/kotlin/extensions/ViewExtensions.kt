@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,9 +19,9 @@ package com.ftinc.kit.kotlin.extensions
 
 
 import android.graphics.drawable.Drawable
-import android.support.annotation.*
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.RecyclerView
+import androidx.annotation.*
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
 import android.util.TypedValue
 import android.view.View
 

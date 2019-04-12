@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2017 52inc.
+  ~ Copyright (c) 2019 52inc.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -27,10 +27,6 @@
 
         <item name="toolbarTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
         <item name="toolbarPopupTheme">@style/ThemeOverlay.AppCompat.Light</item>
-
-        <item name="drawerBackground">@color/red_400</item>
-        <item name="drawerSeparatorColor">@color/navdrawer_seperator_color_dark</item>
-
     </style>
 
 </resources>

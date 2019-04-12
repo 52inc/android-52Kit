@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@
 package com.ftinc.kit.winds.internal;
 
 import android.content.Context;
-import android.support.annotation.XmlRes;
+import androidx.annotation.XmlRes;
 
 import com.ftinc.kit.winds.model.Change;
 import com.ftinc.kit.winds.model.ChangeLog;

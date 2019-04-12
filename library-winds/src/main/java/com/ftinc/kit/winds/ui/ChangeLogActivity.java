@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,9 +19,9 @@ package com.ftinc.kit.winds.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -67,8 +67,8 @@ public class ChangeLogActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_changelog);
 
-        mAppbar = ButterKnife.findById(this, R.id.appbar);
-        mContainer = ButterKnife.findById(this, R.id.container);
+        mAppbar = findViewById(R.id.appbar);
+        mContainer = findViewById(R.id.container);
 
         configAppBar();
         parseExtras(savedInstanceState);

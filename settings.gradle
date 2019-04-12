@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,4 +15,4 @@
  *
  */
 
-include ':library', ':example', ':library-winds', ':library-attributr', ':library-drawer', ':library-eula', ':library-kotlin', ':library-arch'
+include ':library', ':example', ':library-winds', ':library-attributr', ':library-eula', ':library-kotlin', ':library-arch'

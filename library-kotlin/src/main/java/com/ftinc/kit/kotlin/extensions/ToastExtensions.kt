@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,8 +19,8 @@ package com.ftinc.kit.kotlin.extensions
 
 
 import android.content.Context
-import android.support.annotation.StringRes
-import android.support.v4.app.Fragment
+import androidx.annotation.StringRes
+import androidx.fragment.app.Fragment
 import android.widget.Toast
 
 

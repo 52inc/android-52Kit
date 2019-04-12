@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,8 +26,8 @@ import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.annotation.AttrRes;
-import android.support.annotation.ColorRes;
+import androidx.annotation.AttrRes;
+import androidx.annotation.ColorRes;
 import android.text.TextUtils;
 import android.util.Pair;
 import android.util.TypedValue;
@@ -105,7 +105,7 @@ public class UIUtils {
 
     /**
      * Get the selectableItemBackground attribute drawable
-     * @return
+     * @return the selectable item drawable
      */
     public static Drawable getSelectableItemBackground(Context ctx){
         int[] attrs = new int[] { R.attr.selectableItemBackground /* index 0 */};
@@ -117,7 +117,7 @@ public class UIUtils {
 
     /**
      * Get the selectableItemBackground attribute drawable
-     * @return
+     * @return the borderless selectable background drawable
      */
     public static Drawable getSelectableItemBackgroundBorderless(Context ctx){
         int[] attrs = new int[] { R.attr.selectableItemBackgroundBorderless /* index 0 */};
@@ -129,9 +129,9 @@ public class UIUtils {
 
     /**
      * Get the color value for give attribute
-     * @param ctx
-     * @param colorAttrId
-     * @return
+     * @param ctx the activity context
+     * @param colorAttrId the color attr id
+     * @return the color int
      */
     public static int getColorAttr(Context ctx, @AttrRes int colorAttrId){
         int[] attrs = new int[] { colorAttrId /* index 0 */};
@@ -146,7 +146,7 @@ public class UIUtils {
      *
      * @param ctx
      * @param drawableAttrId
-     * @return
+     * @return the drawable
      */
     public static Drawable getDrawableAttr(Context ctx, @AttrRes int drawableAttrId){
         int[] attrs = new int[] { drawableAttrId /* index 0 */};
@@ -176,7 +176,7 @@ public class UIUtils {
      * Get the usuable status bar height with a translucent status bar
      *
      * @param ctx
-     * @return
+     * @return the usable status bar height
      */
     public static int getUsableStatusBarHeight(Context ctx){
         if(BuildUtils.isKitKat()){

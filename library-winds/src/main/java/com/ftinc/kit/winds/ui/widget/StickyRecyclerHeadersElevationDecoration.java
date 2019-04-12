@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,9 +21,9 @@ import android.annotation.TargetApi;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.os.Build;
-import android.support.v4.util.LongSparseArray;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.collection.LongSparseArray;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
@@ -105,12 +105,12 @@ public class StickyRecyclerHeadersElevationDecoration extends RecyclerView.ItemD
 
                 if(translationY == 0 && shouldDrawShadow){
 
-                    ImageView shadow = ButterKnife.findById(firstHeader, R.id.shadow);
+                    ImageView shadow = firstHeader.findViewById(R.id.shadow);
                     shadow.setVisibility(View.VISIBLE);
 
                 }else{
 
-                    ImageView shadow = ButterKnife.findById(firstHeader, R.id.shadow);
+                    ImageView shadow = firstHeader.findViewById(R.id.shadow);
                     shadow.setVisibility(View.GONE);
 
                 }
@@ -146,7 +146,7 @@ public class StickyRecyclerHeadersElevationDecoration extends RecyclerView.ItemD
                         }
 
                         // don't render shadow
-                        ImageView shadow = ButterKnife.findById(header, R.id.shadow);
+                        ImageView shadow = header.findViewById(R.id.shadow);
                         shadow.setVisibility(View.GONE);
 
                         canvas.save();

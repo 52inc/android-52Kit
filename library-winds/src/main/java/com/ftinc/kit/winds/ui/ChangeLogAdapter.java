@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 
 package com.ftinc.kit.winds.ui;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,13 +32,9 @@ import com.ftinc.kit.winds.internal.VersionComparator;
 import com.ftinc.kit.winds.model.Change;
 import com.ftinc.kit.winds.model.ChangeLog;
 import com.ftinc.kit.winds.model.Version;
-import com.ftinc.kit.util.Utils;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersAdapter;
 
 import java.util.Collections;
-import java.util.Comparator;
-
-import butterknife.ButterKnife;
 
 /**
  * Project: android-52Kit
@@ -48,18 +44,8 @@ import butterknife.ButterKnife;
 public class ChangeLogAdapter extends BetterRecyclerAdapter<Change, ChangeLogAdapter.VersionViewHolder>
         implements StickyRecyclerHeadersAdapter<ChangeLogAdapter.HeaderViewHolder> {
 
-    /***********************************************************************************************
-     *
-     * Variables
-     *
-     */
-
     private ChangeLog mChangeLog;
 
-    /**
-     * Set the changelog for this adapter
-     * @param log
-     */
     public void setChangeLog(ChangeLog log){
         mChangeLog = log;
 
@@ -77,12 +63,6 @@ public class ChangeLogAdapter extends BetterRecyclerAdapter<Change, ChangeLogAda
         // Notify content has changed
         notifyDataSetChanged();
     }
-
-    /***********************************************************************************************
-     *
-     * Adapter Methods
-     *
-     */
 
     @Override
     public VersionViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -106,13 +86,6 @@ public class ChangeLogAdapter extends BetterRecyclerAdapter<Change, ChangeLogAda
         }
 
     }
-
-    /***********************************************************************************************
-     *
-     * Sticky Header Methods
-     *
-     */
-
 
     @Override
     public long getHeaderId(int position) {
@@ -145,25 +118,11 @@ public class ChangeLogAdapter extends BetterRecyclerAdapter<Change, ChangeLogAda
         }
     }
 
-    /***********************************************************************************************
-     *
-     * Helper Methods
-     *
-     */
-
-
-
-    /***********************************************************************************************
-     *
-     * ViewHolder's
-     *
-     */
-
     public static class VersionViewHolder extends RecyclerView.ViewHolder{
         TextView text;
         public VersionViewHolder(View itemView) {
             super(itemView);
-            text = ButterKnife.findById(itemView, R.id.text);
+            text = itemView.findViewById(R.id.text);
             text.setSingleLine(false);
         }
     }
@@ -172,7 +131,7 @@ public class ChangeLogAdapter extends BetterRecyclerAdapter<Change, ChangeLogAda
         TextView title;
         public HeaderViewHolder(View itemView) {
             super(itemView);
-            title = ButterKnife.findById(itemView, R.id.title);
+            title = itemView.findViewById(R.id.title);
             FontLoader.apply(title, Face.ROBOTO_MEDIUM);
         }
     }

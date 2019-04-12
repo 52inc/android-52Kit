@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,15 +20,13 @@ package com.ftinc.kit.winds.ui;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.annotation.XmlRes;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.annotation.XmlRes;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -93,8 +91,8 @@ public class ChangeLogDialog extends DialogFragment implements View.OnClickListe
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dialog_changelog, container, false);
 
-        mContainer = ButterKnife.findById(view, R.id.container);
-        mOkButton = ButterKnife.findById(view, R.id.button_ok);
+        mContainer = view.findViewById(R.id.container);
+        mOkButton = view.findViewById(R.id.button_ok);
         FontLoader.apply(mOkButton, Face.ROBOTO_MEDIUM);
 
         // Generate Winds Recycler View

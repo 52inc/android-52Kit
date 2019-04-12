@@ -19,14 +19,14 @@ package com.ftinc.kit.arch.presentation
 
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import com.ftinc.kit.arch.presentation.delegates.FragmentDelegate
 import com.ftinc.kit.arch.di.HasComponent
 import io.reactivex.disposables.CompositeDisposable
 import kotlin.reflect.KClass
 
 
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment : androidx.fragment.app.Fragment() {
 
     protected val delegates = ArrayList<FragmentDelegate>()
     protected val disposables = CompositeDisposable()

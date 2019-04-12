@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ import android.os.Build.VERSION_CODES.LOLLIPOP
 import android.os.Bundle
 import android.os.IBinder
 import android.os.Parcelable
-import android.support.annotation.RequiresApi
+import androidx.annotation.RequiresApi
 import android.util.Size
 import android.util.SizeF
 import android.util.SparseArray

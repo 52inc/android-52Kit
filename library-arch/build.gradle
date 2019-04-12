@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ android {
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.compileSdkVersion
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
 
@@ -45,19 +45,19 @@ android {
 
 dependencies {
     testImplementation "junit:junit:$junitVersion"
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'androidx.test:runner:1.1.2-alpha02'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha02'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api project(':library-kotlin')
-    api "com.android.support:appcompat-v7:$supportVersion"
-    api "com.android.support:recyclerview-v7:$supportVersion"
+    api "androidx.appcompat:appcompat:1.0.2"
+    api "androidx.recyclerview:recyclerview:1.0.0"
 
-    api "io.reactivex.rxjava2:rxjava:$rxjava_version"
-    api "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
-    api "com.jakewharton.rxrelay2:rxrelay:$rxrelay_version"
+    api "io.reactivex.rxjava2:rxjava:2.2.8"
+    api "io.reactivex.rxjava2:rxandroid:2.1.1"
+    api "com.jakewharton.rxrelay2:rxrelay:2.1.0"
 
-    api "com.jakewharton.timber:timber:$timber_version"
+    api "com.jakewharton.timber:timber:4.7.1"
 }
 
 apply from: '../tools/gradle-mvn-push.gradle'

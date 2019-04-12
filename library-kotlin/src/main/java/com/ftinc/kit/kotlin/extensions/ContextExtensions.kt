@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,16 +20,21 @@ package com.ftinc.kit.kotlin.extensions
 
 import android.content.Context
 import android.graphics.drawable.Drawable
-import android.support.annotation.ColorInt
-import android.support.annotation.ColorRes
-import android.support.annotation.DrawableRes
-import android.support.v4.content.ContextCompat
+import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
 import android.util.TypedValue
+import androidx.fragment.app.Fragment
 
 
 fun Context.dpToPx(dp: Float) : Float = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, this.resources.displayMetrics)
 fun Context.dipToPx(dp: Float) : Int = this.dpToPx(dp).toInt()
 fun Context.spToPx(sp: Float): Float = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, this.resources.displayMetrics)
+
+fun Fragment.dpToPx(dp: Float) : Float = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, this.resources.displayMetrics)
+fun Fragment.dipToPx(dp: Float) : Int = this.dpToPx(dp).toInt()
+fun Fragment.spToPx(sp: Float): Float = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, this.resources.displayMetrics)
 
 @ColorInt fun Context.color(@ColorRes resId: Int) : Int = ContextCompat.getColor(this, resId)
 fun Context.drawable(@DrawableRes resId: Int) : Drawable? = ContextCompat.getDrawable(this, resId)

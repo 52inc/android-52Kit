@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,15 +36,13 @@ dependencies {
     testImplementation "junit:junit:$junitVersion"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api project(':library')
-    api "com.android.support:support-v4:$supportVersion"
-    api "com.android.support:recyclerview-v7:$supportVersion"
-    api "com.android.support:design:$supportVersion"
-    api "com.android.support:preference-v14:$supportVersion"
-    implementation "com.android.support:support-annotations:$supportVersion"
+    api "androidx.recyclerview:recyclerview:1.0.0"
+    api "com.google.android.material:material:1.0.0"
+    api "androidx.legacy:legacy-preference-v14:1.0.0"
+    implementation "androidx.annotation:annotation:1.0.2"
 }
 
 apply from: '../tools/gradle-mvn-push.gradle'
-
 
 afterEvaluate { project ->
     android.libraryVariants.all { variant ->

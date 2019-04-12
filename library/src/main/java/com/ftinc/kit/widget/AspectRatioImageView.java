@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 52inc.
+ * Copyright (c) 2019 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,8 +20,8 @@ package com.ftinc.kit.widget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.IntDef;
-import android.support.v7.widget.AppCompatImageView;
+import androidx.annotation.IntDef;
+import androidx.appcompat.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import com.ftinc.kit.R;
 
