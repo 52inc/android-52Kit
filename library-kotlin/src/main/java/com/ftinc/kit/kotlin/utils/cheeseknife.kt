@@ -116,6 +116,14 @@ fun <T : Parcelable> SupportFragment.bindOptionalParcelable(key: String) : Extra
     it?.getParcelable<T>(key)
 }
 
+fun <T : Parcelable> SupportFragment.bindParcelableList(key: String) : ExtraProperty<List<T>> = Extra(BundleAccessor.Fragment(this)) {
+    it!!.getParcelableArrayList<T>(key)!!.toList()
+}
+
+fun <T : Parcelable> SupportFragment.bindOptionalParcelableList(key: String) : ExtraProperty<List<T>?> = Extra(BundleAccessor.Fragment(this)) {
+    it?.getParcelableArrayList<T>(key)?.toList()
+}
+
 
 @Suppress("UNCHECKED_CAST")
 fun <T : Serializable> SupportFragment.bindSerializable(key: String?) : ExtraProperty<T?> = Extra(BundleAccessor.Fragment(this)) {
@@ -292,6 +300,14 @@ fun <T : Parcelable> Activity.bindParcelable(key: String) : ExtraProperty<T> = E
 
 fun <T : Parcelable> Activity.bindOptionalParcelable(key: String) : ExtraProperty<T?> = Extra(BundleAccessor.Activity(this)) {
     it?.getParcelable<T>(key)
+}
+
+fun <T : Parcelable> Activity.bindParcelableList(key: String) : ExtraProperty<List<T>> = Extra(BundleAccessor.Activity(this)) {
+    it!!.getParcelableArrayList<T>(key)!!.toList()
+}
+
+fun <T : Parcelable> Activity.bindOptionalParcelableList(key: String) : ExtraProperty<List<T>?> = Extra(BundleAccessor.Activity(this)) {
+    it?.getParcelableArrayList<T>(key)?.toList()
 }
 
 @Suppress("UNCHECKED_CAST")
