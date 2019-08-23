@@ -28,11 +28,9 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-
     dexOptions {
         preDexLibraries = !rootProject.ext.ci
     }
-
 
     buildTypes {
         release {
@@ -69,8 +67,7 @@ dependencies {
     api "com.jakewharton.timber:timber:$timberVersion"
 }
 
-apply from: '../tools/gradle-mvn-push.gradle'
-
+apply from: '../tools/bintray-publish-android.gradle'
 
 afterEvaluate { project ->
     android.libraryVariants.all { variant ->

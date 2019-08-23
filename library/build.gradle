@@ -72,7 +72,7 @@ dependencies {
     testImplementation "org.robolectric:robolectric:$robolectricVersion"
 }
 
-apply from: '../tools/gradle-mvn-push.gradle'
+apply from: '../tools/bintray-publish-android.gradle'
 
 afterEvaluate { project ->
     android.libraryVariants.all { variant ->

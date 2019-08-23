@@ -18,18 +18,6 @@
 
 <resources>
 
-    <declare-styleable name="BaseTheme">
-        <attr name="toolbarTheme" format="reference" />
-        <attr name="toolbarPopupTheme" format="reference" />
-
-        <!-- TODO: Add more theme attributes -->
-
-    </declare-styleable>
-
-    <declare-styleable name="ScrimInsetsView">
-        <attr name="siv_insetForeground" format="reference|color" />
-    </declare-styleable>
-
     <declare-styleable name="BezelImageView">
         <attr name="maskDrawable" format="reference" />
         <attr name="borderDrawable" format="reference" />
@@ -71,26 +59,13 @@
 
     </declare-styleable>
 
-    <declare-styleable name="ProgressIndicator">
-        <attr name="pi_progressColor" format="color|reference" />
-        <attr name="pi_max" format="integer" />
-        <attr name="pi_progress" format="integer" />
-    </declare-styleable>
-
     <declare-styleable name="ForegroundLinearLayout">
         <attr name="android:foreground" />
         <attr name="foregroundInsidePadding" />
         <attr name="android:foregroundGravity" />
     </declare-styleable>
 
-    <declare-styleable name="AspectRatioImageView">
-        <attr name="ratioType" format="enum">
-            <enum name="width" value="0" />
-            <enum name="height" value="0" />
-        </attr>
-    </declare-styleable>
-
-    <declare-styleable name="AspectRatioFrameLayout">
+    <declare-styleable name="AspectRatioView">
         <attr name="ratioType" format="enum">
             <enum name="width" value="0" />
             <enum name="height" value="0" />

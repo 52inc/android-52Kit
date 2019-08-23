@@ -50,9 +50,9 @@ class AspectRatioImageView @JvmOverloads constructor(
     }
 
     private fun parseAttributes(attrs: AttributeSet?, defStyle: Int) {
-        val a = context.obtainStyledAttributes(attrs, R.styleable.AspectRatioImageView, defStyle, 0)
+        val a = context.obtainStyledAttributes(attrs, R.styleable.AspectRatioView, defStyle, 0)
         if (a != null) {
-            ratioType = RatioType.values()[a.getInt(R.styleable.AspectRatioImageView_ratioType,
+            ratioType = RatioType.values()[a.getInt(R.styleable.AspectRatioView_ratioType,
                     RatioType.WIDTH.ordinal)]
             a.recycle()
         }
