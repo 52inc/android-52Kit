@@ -5,5 +5,9 @@ workflow "Run tests" {
 
 action "Raul6469/android-gradle-action@1.0.0" {
   uses = "Raul6469/android-gradle-action@1.0.0"
-  secrets = ["ANDROID_LICENCE"]
+  secrets = [
+    "ANDROID_LICENCE",
+    "FTINC_BINTRAY_USER",
+    "FTINC_BINTRAY_API_KEY",
+  ]
 }
