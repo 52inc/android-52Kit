@@ -19,7 +19,9 @@ package com.ftinc.kit.extensions
 
 
 import android.content.Context
+import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
+import android.os.Bundle
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
@@ -45,3 +47,20 @@ fun Context.dimenPixelSize(@DimenRes resId: Int): Int = resources.getDimensionPi
 fun Context.dimen(@DimenRes resId: Int): Float = resources.getDimension(resId)
 
 fun Context.smallestWidth(config: ScreenUtils.Config): Boolean = ScreenUtils.smallestWidth(this.resources, config)
+
+
+@Suppress("UNCHECKED_CAST")
+fun <T> Context.systemService(name: String): Lazy<T> = lazy {
+    this.getSystemService(name) as T
+}
+
+fun Context.getMetaData(): Bundle? {
+    val appInfo = this.packageManager.getApplicationInfo(this.packageName, PackageManager.GET_META_DATA)
+    return appInfo?.metaData
+}
+
+@Suppress("UNCHECKED_CAST")
+fun <T> Context.getMetaData(name: String): T? {
+    val appInfo = this.packageManager.getApplicationInfo(this.packageName, PackageManager.GET_META_DATA)
+    return appInfo?.metaData?.get(name)?.let { it as? T }
+}

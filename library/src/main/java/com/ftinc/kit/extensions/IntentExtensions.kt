@@ -19,6 +19,7 @@ package com.ftinc.kit.extensions
 
 
 import android.content.Intent
+import android.os.Parcel
 import com.ftinc.kit.util.BundleBuilder
 
 
@@ -43,4 +44,15 @@ fun dataIntent(init: BundleBuilder.() -> Unit): Intent {
     bundler.init()
     intent.putExtras(bundler.build())
     return intent
+}
+
+/**
+ * Get the data size in Bytes for this intent when it is parceled
+ */
+fun Intent.bytes(): Int {
+    val p = Parcel.obtain()
+    this.writeToParcel(p, 0)
+    val bytes = p.dataSize()
+    p.recycle()
+    return bytes
 }
