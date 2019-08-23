@@ -46,6 +46,7 @@ fun View.string(@StringRes resId: Int): String? = context.getString(resId)
 fun View.string(@StringRes resId: Int, vararg args: Any): String = context.getString(resId, *args)
 fun View.dimenPixelSize(@DimenRes resId: Int): Int = resources.getDimensionPixelSize(resId)
 fun View.dimen(@DimenRes resId: Int): Float = resources.getDimension(resId)
+fun View.int(@IntegerRes resId: Int): Int = resources.getInteger(resId)
 
 fun EditText.moveCursorToEnd() {
     this.setSelection(this.text.length)

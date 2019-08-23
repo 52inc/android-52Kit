@@ -22,12 +22,9 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import androidx.annotation.ColorInt
-import androidx.annotation.ColorRes
-import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import android.util.TypedValue
-import androidx.annotation.DimenRes
+import androidx.annotation.*
 import androidx.fragment.app.Fragment
 import com.ftinc.kit.util.ScreenUtils
 
@@ -45,6 +42,14 @@ fun Context.color(@ColorRes resId: Int) : Int = ContextCompat.getColor(this, res
 fun Context.drawable(@DrawableRes resId: Int) : Drawable? = ContextCompat.getDrawable(this, resId)
 fun Context.dimenPixelSize(@DimenRes resId: Int): Int = resources.getDimensionPixelSize(resId)
 fun Context.dimen(@DimenRes resId: Int): Float = resources.getDimension(resId)
+fun Context.int(@IntegerRes resId: Int): Int = resources.getInteger(resId)
+
+@ColorInt
+fun Fragment.color(@ColorRes resId: Int) : Int = ContextCompat.getColor(requireContext(), resId)
+fun Fragment.drawable(@DrawableRes resId: Int) : Drawable? = ContextCompat.getDrawable(requireContext(), resId)
+fun Fragment.dimenPixelSize(@DimenRes resId: Int): Int = resources.getDimensionPixelSize(resId)
+fun Fragment.dimen(@DimenRes resId: Int): Float = resources.getDimension(resId)
+fun Fragment.int(@IntegerRes resId: Int): Int = resources.getInteger(resId)
 
 fun Context.smallestWidth(config: ScreenUtils.Config): Boolean = ScreenUtils.smallestWidth(this.resources, config)
 
