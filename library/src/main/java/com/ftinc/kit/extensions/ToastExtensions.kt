@@ -15,18 +15,17 @@
  *
  */
 
-package com.ftinc.kit.arch.presentation.presenter
+package com.ftinc.kit.extensions
 
 
-import com.ftinc.kit.arch.presentation.Stateful
-import io.reactivex.disposables.CompositeDisposable
+import android.content.Context
+import androidx.annotation.StringRes
+import androidx.fragment.app.Fragment
+import android.widget.Toast
 
 
-abstract class Presenter : Stateful {
+fun Context.toast(message: String) = Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+fun Context.toast(@StringRes resId: Int) = Toast.makeText(this, resId, Toast.LENGTH_SHORT).show()
 
-    protected val disposables = CompositeDisposable()
-
-    override fun stop() {
-        disposables.clear()
-    }
-}
+fun Fragment.toast(message: String) = Toast.makeText(this.activity, message, Toast.LENGTH_SHORT).show()
+fun Fragment.toast(@StringRes resId: Int) = Toast.makeText(this.activity, resId, Toast.LENGTH_SHORT).show()

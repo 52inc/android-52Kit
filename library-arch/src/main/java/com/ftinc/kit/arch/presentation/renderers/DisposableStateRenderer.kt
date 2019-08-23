@@ -34,16 +34,13 @@ abstract class DisposableStateRenderer<T>(
     protected val disposables = CompositeDisposable()
     protected val state: Relay<T> = PublishRelay.create<T>().toSerialized()
 
-
     override fun stop() {
         disposables.clear()
     }
 
-
     override fun render(state: T) {
         this.state.accept(state)
     }
-
 
     protected fun <T> Observable<T>.addToLifecycle(): Observable<T> {
         return this.subscribeOn(comp)

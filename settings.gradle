@@ -15,4 +15,4 @@
  *
  */
 
-include ':library', ':example', ':library-winds', ':library-attributr', ':library-eula', ':library-kotlin', ':library-arch'
+include ':library', ':library-winds', ':library-arch'

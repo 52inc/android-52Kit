@@ -16,6 +16,8 @@
  */
 
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -23,21 +25,51 @@ android {
 
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     lintOptions {
         abortOnError false
+        xmlReport true
     }
 
     dexOptions {
         preDexLibraries = !rootProject.ext.ci
     }
 
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+        freeCompilerArgs = ["-Xallow-result-return-type"]
+    }
+
+}
+
+androidExtensions {
+    experimental = true
 }
 
 dependencies {
-    api "androidx.appcompat:appcompat:1.0.2"
-    api "androidx.recyclerview:recyclerview:1.0.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.google.android.material:material:$materialVersion"
+    implementation "androidx.annotation:annotation:$androidXAnnotation"
+    implementation "com.jakewharton.timber:timber:$timberVersion"
+
+    api "androidx.core:core-ktx:$androidXCoreVersion"
+    api "androidx.appcompat:appcompat:$androidXAppCompatVersion"
+    api "androidx.constraintlayout:constraintlayout:$androidXConstraintLayoutVersion"
+
+    testImplementation 'junit:junit:4.12'
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    testImplementation "androidx.test:core-ktx:$androidXTestCoreVersion"
+    testImplementation "androidx.test.ext:junit-ktx:$androidXTestExtKotlinRunnerVersion"
+    testImplementation "androidx.test:rules:$androidXTestRulesVersion"
+    testImplementation "com.google.truth:truth:$truthVersion"
+    testImplementation "org.robolectric:robolectric:$robolectricVersion"
 }
 
 apply from: '../tools/gradle-mvn-push.gradle'

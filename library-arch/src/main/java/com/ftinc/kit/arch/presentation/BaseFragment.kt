@@ -26,7 +26,7 @@ import io.reactivex.disposables.CompositeDisposable
 import kotlin.reflect.KClass
 
 
-abstract class BaseFragment : androidx.fragment.app.Fragment() {
+abstract class BaseFragment : Fragment() {
 
     protected val delegates = ArrayList<FragmentDelegate>()
     protected val disposables = CompositeDisposable()

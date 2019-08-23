@@ -26,12 +26,12 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.functions.BiFunction
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
+import kotlin.math.pow
 
 
 operator fun CompositeDisposable.plusAssign(disposable: Disposable) {
     this.add(disposable)
 }
-
 
 fun <T, R> Observable<T>.scanMap(func2: (T?, T) -> R): Observable<R> {
     return this.startWith(null as T?) //emit a null change first, otherwise the .buffer() below won't emit at first (needs 2 emissions to emit)
@@ -40,14 +40,12 @@ fun <T, R> Observable<T>.scanMap(func2: (T?, T) -> R): Observable<R> {
             .map { func2.invoke(it[0], it[1]) }
 }
 
-
 fun <T, R> Observable<T>.scanMap(initialValue: T, func2: (T, T) -> R): Observable<R> {
     return this.startWith(initialValue)
             .buffer(2, 1)
             .filter { it.size >= 2 }
             .map { func2.invoke(it[0], it[1]) }
 }
-
 
 data class Nullable<out T> constructor(val value: T?) {
     constructor() : this(null)
@@ -70,7 +68,6 @@ data class Nullable<out T> constructor(val value: T?) {
     }
 }
 
-
 fun <T : Any?> T.toNullable(): Nullable<T> {
     if (this == null) {
         return Nullable.NULL //reuse singleton
@@ -79,30 +76,27 @@ fun <T : Any?> T.toNullable(): Nullable<T> {
     }
 }
 
-
 fun <T : Any, R : Any?> Observable<T>.mapNullable(func: (T) -> R?): Observable<Nullable<R?>> {
     return this.map { Nullable(func.invoke(it)) }
 }
 
-
 fun <T : Any> Observable<T>.uiDebounce(): Observable<T> {
-    return this.debounce(300, java.util.concurrent.TimeUnit.MILLISECONDS)
+    return this.debounce(300, TimeUnit.MILLISECONDS)
 }
-
 
 fun <T : Any> Observable<T>.uiDebounce(delayInMilliseconds: Long): Observable<T> {
-    return this.debounce(delayInMilliseconds, java.util.concurrent.TimeUnit.MILLISECONDS)
+    return this.debounce(delayInMilliseconds, TimeUnit.MILLISECONDS)
 }
 
-
+@Suppress("RedundantLambdaArrow")
 fun <T : Any> Observable<T>.mapError(throwable: Throwable): Observable<T> {
     return this.onErrorResumeNext { _: Throwable -> Observable.error<T>(throwable) }
 }
 
-
-fun <T : Any> Observable<T>.logState(): Observable<T> {
+fun <T : Any> Observable<T>.logState(tag: String? = null): Observable<T> {
     return this.doOnNext { state ->
         if (Arch.loggingEnabled) {
+            tag?.let { Timber.tag(it) }
             Timber.v("    --- $state")
         }
     }
@@ -122,7 +116,8 @@ fun <T: Any> Observable<T>.retryWithBackoff(numRetries: Int = 3, delayInSeconds:
     return this.retryWhen { t ->
         t.zipWith(Observable.range(1, numRetries), BiFunction<Throwable, Int, Int> { _, i -> i} )
                 .flatMap { retryCount ->
-                    Observable.timer(Math.pow(delayInSeconds.toDouble(), retryCount.toDouble()).toLong(), TimeUnit.SECONDS)
+                    Observable.timer(delayInSeconds.toDouble().pow(retryCount.toDouble()).toLong(),
+                            TimeUnit.SECONDS)
                 }
     }
 }

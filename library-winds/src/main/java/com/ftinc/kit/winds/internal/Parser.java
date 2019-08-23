@@ -99,7 +99,7 @@ public final class Parser {
         Version version = new Version();
 
         // Pull attribute
-        version.code = Utils.parseInt(parser.getAttributeValue(null, ATTR_CODE), -1);
+        version.code = Utils.INSTANCE.parseInt(parser.getAttributeValue(null, ATTR_CODE), -1);
         version.name = parser.getAttributeValue(null, ATTR_NAME);
         version.date = parser.getAttributeValue(null, ATTR_DATE);
 

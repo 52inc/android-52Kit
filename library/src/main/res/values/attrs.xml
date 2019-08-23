@@ -90,4 +90,11 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="AspectRatioFrameLayout">
+        <attr name="ratioType" format="enum">
+            <enum name="width" value="0" />
+            <enum name="height" value="0" />
+        </attr>
+    </declare-styleable>
+
 </resources>

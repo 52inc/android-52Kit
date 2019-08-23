@@ -15,18 +15,20 @@
  *
  */
 
-package com.ftinc.kit.arch.presentation.presenter
+package com.ftinc.kit.util
 
+import android.os.Build
 
-import com.ftinc.kit.arch.presentation.Stateful
-import io.reactivex.disposables.CompositeDisposable
+object Utils {
 
+    /**
+     * Return whether or not the current device is an emulator
+     */
+    val isEmulator: Boolean
+        get() = "google_sdk" == Build.PRODUCT ||
+                Build.PRODUCT.contains("sdk_google_phone") ||
+                "sdk" == Build.PRODUCT ||
+                "sdk_x86" == Build.PRODUCT ||
+                "vbox86p" == Build.PRODUCT
 
-abstract class Presenter : Stateful {
-
-    protected val disposables = CompositeDisposable()
-
-    override fun stop() {
-        disposables.clear()
-    }
 }

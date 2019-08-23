@@ -16,35 +16,37 @@
  */
 
 ext {
-    androidPlugin = 'com.android.tools.build:gradle:2.3.1'
     minSdkVersion = 22
     compileSdkVersion = 28
     buildToolsVersion = '28.0.3'
 
     ci = 'true' == System.getenv('CI')
 
+    // Testing dependencies
     junitVersion = '4.12'
+    mockitoVersion = '3.0.0'
+    androidXTestCoreVersion = '1.2.0'
+    androidXTestExtKotlinRunnerVersion = '1.1.1'
+    androidXTestRulesVersion = '1.2.0-beta01'
+    truthVersion = '0.44'
+    robolectricVersion = '4.3'
 
-    supportVersion = '1.0.0-beta01'
-    rxVersion = '1.2.10'
-    rxAndroidVersion = '1.2.1'
+    // AndroidX
+    androidXCoreVersion = '1.2.0-alpha03'
+    androidXAppCompatVersion = '1.1.0-rc01'
+    androidXConstraintLayoutVersion = '2.0.0-beta2'
+    androidXAnnotation = '1.1.0'
+    androidXPreferenceVersion = '1.1.0-alpha04'
+    androidXRecyclerVersion = '1.1.0-beta03'
+
+    // RxJava
+    rxJavaVersion = '2.2.9'
+    rxAndroidVersion = '2.1.1'
+    rxRelayVersion = '2.1.0'
+
+    // Google
+    materialVersion = '1.1.0-alpha09'
+
+    // Wharton
     timberVersion = '4.7.1'
-    butterKnifeVersion = '8.6.0'
-
-    rxjava_version =         '2.1.16'
-    rxandroid_version =      '2.0.2'
-    rxrelay_version =        '2.0.0'
-    timber_version =         '4.6.1'
-
-    supportAnnotations = "com.android.support:support-annotations:$supportVersion"
-    supportV4 = "com.android.support:support-v4:$supportVersion"
-    supportRecyclerView = "com.android.support:recyclerview-v7:$supportVersion"
-    supportAppCompat = "com.android.support:appcompat-v7:$supportVersion"
-    supportDesign = "com.android.support:design:$supportVersion"
-
-    rxJava = "io.reactivex:rxjava:$rxVersion"
-    rxAndroid = "io.reactivex:rxandroid:$rxAndroidVersion"
-
-    timber = 'com.jakewharton.timber:timber:4.3.0'
-    butterKnife = 'com.jakewharton:butterknife:8.6.0'
 }

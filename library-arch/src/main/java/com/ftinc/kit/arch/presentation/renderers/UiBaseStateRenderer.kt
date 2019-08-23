@@ -49,7 +49,6 @@ abstract class UiBaseStateRenderer<VS : BaseState<C>, C : Ui.State.Change, out A
                 .addToLifecycle()
                 .subscribe { actions.showLoading(it) }
 
-
         disposables += state
                 .mapNullable { it.error }
                 .distinctUntilChanged()
@@ -64,7 +63,6 @@ abstract class UiBaseStateRenderer<VS : BaseState<C>, C : Ui.State.Change, out A
 
         onStart()
     }
-
 
     abstract fun onStart()
 }

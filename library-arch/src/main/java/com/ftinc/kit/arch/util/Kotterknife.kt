@@ -105,7 +105,7 @@ private val Dialog.viewFinder: Dialog.(Int) -> View?
 private val DialogFragment.viewFinder: DialogFragment.(Int) -> View?
     get() = { dialog.findViewById(it) }
 private val SupportDialogFragment.viewFinder: SupportDialogFragment.(Int) -> View?
-    get() = { dialog.findViewById(it) }
+    get() = { dialog?.findViewById(it) }
 private val Fragment.viewFinder: Fragment.(Int) -> View?
     get() = { view.findViewById(it) }
 private val SupportFragment.viewFinder: SupportFragment.(Int) -> View?

@@ -23,10 +23,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.ftinc.kit.adapter.BetterRecyclerAdapter;
 import com.ftinc.kit.font.Face;
 import com.ftinc.kit.font.FontLoader;
-import com.ftinc.kit.util.SizeUtils;
 import com.ftinc.kit.winds.R;
 import com.ftinc.kit.winds.internal.VersionComparator;
 import com.ftinc.kit.winds.model.Change;

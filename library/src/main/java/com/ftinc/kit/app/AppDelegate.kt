@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 52inc.
+ * Copyright (c) 2018 52inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,18 +15,24 @@
  *
  */
 
-package com.ftinc.kit.arch.presentation.presenter
+package com.ftinc.kit.app
 
 
-import com.ftinc.kit.arch.presentation.Stateful
-import io.reactivex.disposables.CompositeDisposable
+import android.app.Application
 
 
-abstract class Presenter : Stateful {
+/**
+ * A delegate to provide configuration application setups based on flavor or build type that
+ * can be injected via Dagger
+ */
+interface AppDelegate {
 
-    protected val disposables = CompositeDisposable()
+    fun onCreate(app: Application)
+}
 
-    override fun stop() {
-        disposables.clear()
-    }
+/**
+ * No-Op delegate to provide when needed
+ */
+class NoOpAppDelegate : AppDelegate {
+    override fun onCreate(app: Application) {}
 }

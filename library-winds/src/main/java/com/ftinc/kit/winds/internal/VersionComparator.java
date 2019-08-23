@@ -28,6 +28,6 @@ import java.util.Comparator;
 public final class VersionComparator implements Comparator<Version> {
     @Override
     public int compare(Version lhs, Version rhs) {
-        return Utils.compare(rhs.code, lhs.code);
+        return Utils.INSTANCE.compare(rhs.code, lhs.code);
     }
 }

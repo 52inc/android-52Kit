@@ -29,16 +29,20 @@ abstract class UiPresenter<VS : Ui.State<C>, C : Ui.State.Change>(
         val ui: Ui<VS, C>
 ) : Presenter() {
 
+    /**
+     * Override this field to add a tag to the observable scan log call
+     */
+    open val tag: String? = null
+
     @Suppress("UNCHECKED_CAST")
     override fun start() {
         val merged = smashObservables()
                 .logChange()
 
         disposables += merged.scan(ui.state) { state, change -> state.reduce(change) as VS }
-                .logState()
+                .logState(tag)
                 .subscribe(ui::render)
     }
-
 
     abstract fun smashObservables(): Observable<C>
 }
