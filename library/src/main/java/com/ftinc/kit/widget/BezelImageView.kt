@@ -152,14 +152,14 @@ class BezelImageView @JvmOverloads constructor(
                     mDesaturateColorFilter
                 else
                     null
-                cacheCanvas.saveLayer(mBoundsF, mMaskedPaint, Canvas.ALL_SAVE_FLAG)
+                cacheCanvas.saveLayer(mBoundsF, mMaskedPaint)
                 super.onDraw(cacheCanvas)
                 cacheCanvas.restoreToCount(sc)
             } else if (mDesaturateOnPress && isPressed) {
                 val sc = cacheCanvas.save()
                 cacheCanvas.drawRect(0f, 0f, mCachedWidth.toFloat(), mCachedHeight.toFloat(), mBlackPaint)
                 mMaskedPaint.colorFilter = mDesaturateColorFilter
-                cacheCanvas.saveLayer(mBoundsF, mMaskedPaint, Canvas.ALL_SAVE_FLAG)
+                cacheCanvas.saveLayer(mBoundsF, mMaskedPaint)
                 super.onDraw(cacheCanvas)
                 cacheCanvas.restoreToCount(sc)
             } else {

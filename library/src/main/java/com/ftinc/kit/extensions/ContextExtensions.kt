@@ -59,6 +59,11 @@ fun <T> Context.systemService(name: String): Lazy<T> = lazy {
     this.getSystemService(name) as T
 }
 
+@Suppress("UNCHECKED_CAST")
+fun <T> Fragment.systemService(name: String): Lazy<T> = lazy {
+    requireContext().getSystemService(name) as T
+}
+
 fun Context.getMetaData(): Bundle? {
     val appInfo = this.packageManager.getApplicationInfo(this.packageName, PackageManager.GET_META_DATA)
     return appInfo?.metaData
