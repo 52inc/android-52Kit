@@ -17,7 +17,6 @@
 
 package com.ftinc.kit.extensions
 
-
 import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
@@ -27,7 +26,6 @@ import android.util.TypedValue
 import androidx.annotation.*
 import androidx.fragment.app.Fragment
 import com.ftinc.kit.util.ScreenUtils
-
 
 fun Context.dp(dp: Float) : Float = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, this.resources.displayMetrics)
 fun Context.dip(dp: Float) : Int = this.dp(dp).toInt()
