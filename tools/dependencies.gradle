@@ -32,9 +32,9 @@ ext {
     robolectricVersion = '4.3'
 
     // AndroidX
-    androidXCoreVersion = '1.2.0-alpha03'
-    androidXAppCompatVersion = '1.1.0-rc01'
-    androidXConstraintLayoutVersion = '2.0.0-beta2'
+    androidXCoreVersion = '1.2.0-beta01'
+    androidXAppCompatVersion = '1.1.0'
+    androidXConstraintLayoutVersion = '2.0.0-beta3'
     androidXAnnotation = '1.1.0'
     androidXPreferenceVersion = '1.1.0-alpha04'
     androidXRecyclerVersion = '1.1.0-beta03'
@@ -45,7 +45,7 @@ ext {
     rxRelayVersion = '2.1.0'
 
     // Google
-    materialVersion = '1.1.0-alpha09'
+    materialVersion = '1.2.0-alpha01'
 
     // Wharton
     timberVersion = '4.7.1'
