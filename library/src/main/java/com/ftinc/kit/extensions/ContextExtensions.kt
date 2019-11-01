@@ -28,10 +28,12 @@ import androidx.fragment.app.Fragment
 import com.ftinc.kit.util.ScreenUtils
 
 fun Context.dp(dp: Float) : Float = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, this.resources.displayMetrics)
+fun Context.pt(pt: Float) : Float = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PT, pt, this.resources.displayMetrics)
 fun Context.dip(dp: Float) : Int = this.dp(dp).toInt()
 fun Context.sp(sp: Float): Float = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, this.resources.displayMetrics)
 
 fun Fragment.dp(dp: Float) : Float = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, this.resources.displayMetrics)
+fun Fragment.pt(pt: Float) : Float = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PT, pt, this.resources.displayMetrics)
 fun Fragment.dip(dp: Float) : Int = this.dp(dp).toInt()
 fun Fragment.sp(sp: Float): Float = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, this.resources.displayMetrics)
 

@@ -31,6 +31,8 @@ import androidx.annotation.Dimension.SP
 
 fun View.dp(@Dimension(unit = DP) dp: Int) : Float = TypedValue.applyDimension(
         TypedValue.COMPLEX_UNIT_DIP, dp.toFloat(), this.resources.displayMetrics)
+fun View.pt(pt: Int) : Float = TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_PT, pt.toFloat(), this.resources.displayMetrics)
 fun View.dip(@Dimension(unit = DP) dp: Int) : Int = dp(dp).toInt()
 fun View.sp(@Dimension(unit = SP) sp: Int): Float = TypedValue.applyDimension(
         TypedValue.COMPLEX_UNIT_SP, sp.toFloat(), this.resources.displayMetrics)

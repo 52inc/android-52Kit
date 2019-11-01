@@ -22,6 +22,7 @@ import android.util.TypedValue
 import androidx.annotation.*
 
 fun ViewHolder.dp(dp: Int) : Float = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp.toFloat(), this.itemView.resources.displayMetrics)
+fun ViewHolder.pt(pt: Int) : Float = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PT, pt.toFloat(), this.itemView.resources.displayMetrics)
 fun ViewHolder.dip(dp: Int) : Int = dp(dp).toInt()
 fun ViewHolder.sp(sp: Int): Float = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp.toFloat(), this.itemView.resources.displayMetrics)
 fun ViewHolder.sip(sp: Int): Int = sp(sp).toInt()
