@@ -59,12 +59,6 @@
 
     </declare-styleable>
 
-    <declare-styleable name="ForegroundLinearLayout">
-        <attr name="android:foreground" />
-        <attr name="foregroundInsidePadding" />
-        <attr name="android:foregroundGravity" />
-    </declare-styleable>
-
     <declare-styleable name="AspectRatioView">
         <attr name="ratioType" format="enum">
             <enum name="width" value="0" />
