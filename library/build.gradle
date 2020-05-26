@@ -63,7 +63,7 @@ dependencies {
     api "androidx.appcompat:appcompat:$androidXAppCompatVersion"
     api "androidx.constraintlayout:constraintlayout:$androidXConstraintLayoutVersion"
 
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
     testImplementation "org.mockito:mockito-core:$mockitoVersion"
     testImplementation "androidx.test:core-ktx:$androidXTestCoreVersion"
     testImplementation "androidx.test.ext:junit-ktx:$androidXTestExtKotlinRunnerVersion"

@@ -34,4 +34,6 @@ fun ViewHolder.sip(sp: Int): Int = sp(sp).toInt()
 
 fun ViewHolder.string(@StringRes resId: Int): String = this.itemView.context.getString(resId)
 fun ViewHolder.string(@StringRes resId: Int, vararg args: Any): String = this.itemView.context.getString(resId, *args)
+@Deprecated("Use quantity() instead", replaceWith = ReplaceWith("quantity"))
 fun ViewHolder.plural(@PluralsRes resId: Int, quantity: Int, vararg args: Any): String = this.itemView.context.resources.getQuantityString(resId, quantity, *args)
+fun ViewHolder.quantity(@PluralsRes resId: Int, quantity: Int, vararg args: Any): String = this.itemView.context.resources.getQuantityString(resId, quantity, *args)

@@ -14,8 +14,8 @@ Include this line in your gradle build file:
 
 ```groovy
 // The core library with useful utilities and extension functions
-implementation 'com.ftinc:kit:2.0.0'
+implementation 'com.ftinc:kit:$latest_version'
 
 // The architecture library that uses RxJava2 based MVI setup
-implementation 'com.ftinc:kit-arch:2.0.0'
+implementation 'com.ftinc:kit-arch:$latest_version'
 ```

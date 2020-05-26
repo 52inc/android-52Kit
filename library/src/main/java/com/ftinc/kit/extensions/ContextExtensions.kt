@@ -37,12 +37,23 @@ fun Fragment.pt(pt: Float) : Float = TypedValue.applyDimension(TypedValue.COMPLE
 fun Fragment.dip(dp: Float) : Int = this.dp(dp).toInt()
 fun Fragment.sp(sp: Float): Float = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, this.resources.displayMetrics)
 
+fun Context.dp(dp: Int) : Float = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp.toFloat(), this.resources.displayMetrics)
+fun Context.pt(pt: Int) : Float = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PT, pt.toFloat(), this.resources.displayMetrics)
+fun Context.dip(dp: Int) : Int = this.dp(dp).toInt()
+fun Context.sp(sp: Int): Float = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp.toFloat(), this.resources.displayMetrics)
+
+fun Fragment.dp(dp: Int) : Float = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp.toFloat(), this.resources.displayMetrics)
+fun Fragment.pt(pt: Int) : Float = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PT, pt.toFloat(), this.resources.displayMetrics)
+fun Fragment.dip(dp: Int) : Int = this.dp(dp).toInt()
+fun Fragment.sp(sp: Int): Float = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp.toFloat(), this.resources.displayMetrics)
+
 @ColorInt
 fun Context.color(@ColorRes resId: Int) : Int = ContextCompat.getColor(this, resId)
 fun Context.drawable(@DrawableRes resId: Int) : Drawable? = ContextCompat.getDrawable(this, resId)
 fun Context.dimenPixelSize(@DimenRes resId: Int): Int = resources.getDimensionPixelSize(resId)
 fun Context.dimen(@DimenRes resId: Int): Float = resources.getDimension(resId)
 fun Context.int(@IntegerRes resId: Int): Int = resources.getInteger(resId)
+fun Context.quantity(@PluralsRes resId: Int, count: Int, vararg args: Any): String = resources.getQuantityString(resId, count, *args)
 
 @ColorInt
 fun Fragment.color(@ColorRes resId: Int) : Int = ContextCompat.getColor(requireContext(), resId)
@@ -50,6 +61,7 @@ fun Fragment.drawable(@DrawableRes resId: Int) : Drawable? = ContextCompat.getDr
 fun Fragment.dimenPixelSize(@DimenRes resId: Int): Int = resources.getDimensionPixelSize(resId)
 fun Fragment.dimen(@DimenRes resId: Int): Float = resources.getDimension(resId)
 fun Fragment.int(@IntegerRes resId: Int): Int = resources.getInteger(resId)
+fun Fragment.quantity(@PluralsRes resId: Int, count: Int, vararg args: Any): String = resources.getQuantityString(resId, count, *args)
 
 fun Context.smallestWidth(config: ScreenUtils.Config): Boolean = ScreenUtils.smallestWidth(this.resources, config)
 

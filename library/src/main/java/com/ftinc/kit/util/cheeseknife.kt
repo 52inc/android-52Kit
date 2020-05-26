@@ -123,7 +123,6 @@ fun <T : Parcelable> SupportFragment.bindOptionalParcelableList(key: String) : E
     it?.getParcelableArrayList<T>(key)?.toList()
 }
 
-
 @Suppress("UNCHECKED_CAST")
 fun <T : Serializable> SupportFragment.bindSerializable(key: String?) : ExtraProperty<T?> = Extra(BundleAccessor.Fragment(this)) {
     it?.getSerializable(key)?.let { it as T }

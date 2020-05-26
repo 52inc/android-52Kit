@@ -17,9 +17,6 @@
 
 package com.ftinc.kit.recycler
 
-import androidx.recyclerview.widget.DiffUtil
-
-
 interface RecyclerViewItem {
 
     val layoutId: Int
@@ -27,18 +24,4 @@ interface RecyclerViewItem {
 
     fun isItemSame(new: RecyclerViewItem): Boolean
     fun isContentSame(new: RecyclerViewItem): Boolean
-
-    companion object {
-
-        val ITEM_CALLBACK = object : DiffUtil.ItemCallback<RecyclerViewItem>() {
-
-            override fun areItemsTheSame(oldItem: RecyclerViewItem, newItem: RecyclerViewItem): Boolean {
-                return oldItem.isItemSame(newItem)
-            }
-
-            override fun areContentsTheSame(oldItem: RecyclerViewItem, newItem: RecyclerViewItem): Boolean {
-                return oldItem.isContentSame(newItem)
-            }
-        }
-    }
 }
