@@ -12,6 +12,12 @@ abstract class EmptyViewListAdapter<Item, Holder : RecyclerView.ViewHolder>(
 ) : ListAdapter<Item, Holder>(diffCallback) {
 
     var emptyView: View? = null
+        set(value) {
+            field = value
+            if (value != null) {
+                emptyChangeModifier(value, currentList.isEmpty())
+            }
+        }
 
     override fun onCurrentListChanged(previousList: MutableList<Item>, currentList: MutableList<Item>) {
         if (emptyView != null) {
